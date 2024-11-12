@@ -9,6 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let nombreUsuario = ""; // Nombre del usuario
   let usuarioAdmin = ""; // Almacenará el usuario ingresado para admin
   let archivoSeleccionado = []; // Para almacenar la lista de archivos JSON
+  let listaMostrada = false; // Bandera para verificar si ya se mostró la lista de archivos
+  let esperandoSeleccionArchivo = false; // Indica si se está esperando la selección de un archivo
 
   // Función para mostrar la hora y fecha
   function actualizarFechaHora() {
@@ -116,6 +118,8 @@ window.addEventListener("DOMContentLoaded", () => {
               console.log("Archivos JSON recibidos:", data.archivos);
               archivoSeleccionado = data.archivos; // Guardamos la lista de archivos
               mostrarListaArchivos(data.archivos); // Muestra la lista
+              listaMostrada = true; // Marcamos que ya se mostró la lista
+              esperandoSeleccionArchivo = true; // Ahora esperamos que se seleccione un archivo
             } else {
               agregarMensajeIA(data.respuesta);
               console.log("Error al recibir los archivos JSON:", data.respuesta);
@@ -130,6 +134,7 @@ window.addEventListener("DOMContentLoaded", () => {
       // Verifica si el mensaje es un número válido y lo usa para seleccionar un archivo
       const numeroSeleccionado = parseInt(mensaje);
       if (
+        esperandoSeleccionArchivo &&
         archivoSeleccionado &&
         !isNaN(numeroSeleccionado) &&
         numeroSeleccionado > 0 &&
@@ -149,6 +154,7 @@ window.addEventListener("DOMContentLoaded", () => {
           .then((response) => response.json())
           .then((data) => {
             agregarMensajeIA(data.respuesta); // Muestra el contenido del archivo
+            esperandoSeleccionArchivo = false; // Después de mostrar el contenido, deshabilitamos la espera
           })
           .catch((error) => {
             console.error("Error al contactar con el backend:", error);
@@ -157,9 +163,11 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       // Si no se ha seleccionado un archivo o no se reconoce el número, responde al usuario
-      agregarMensajeIA(
-        "Por favor, selecciona un número de archivo para ver su contenido."
-      );
+      if (esperandoSeleccionArchivo) {
+        agregarMensajeIA(
+          "Por favor, selecciona un número de archivo para ver su contenido."
+        );
+      }
     }
 
     fetch("/chat", {
