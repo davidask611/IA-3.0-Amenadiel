@@ -1,0 +1,113 @@
+clave maquina virtual
+
+David1597
+
+34.30.143.15
+
+//
+Puertos
+ConnectServer = 44405
+GameServer = 55901
+GameServerCS = 55919
+MHPServer = 55999
+SQL Server = 1433
+//
+
+ip publica = 186.39.85.117
+
+usuario = sa
+
+clave = Clark2.0
+
+//
+REGALAR Wc GP por reset
+Líneas para agregar en la DB:
+UPDATE CashShopData SET WCoinC=WCoinC+100 WHERE AccountID=@Account
+UPDATE CashShopData SET GoblinPoint=GoblinPoint+100 WHERE AccountID=@Account
+
+//
+la IPv4 en router y IP publica (ipadress) en files
+//
+
+
+BORRAR BASE DE DATOS A (CERO)
+
+Si tienen Me_MuOnline
+
+deben darle click ala carpeta  dale click derecho y darle a New Query , ( yo lo tengo en ingles)
+
+Y  Copiar y pegar esto
+
+USE Me_MuOnline ( o como lo tengan escrito en mi caso , coloque USE Medium)
+
+DELETE AccountCharacter
+DELETE CashShopData
+DELETE CashShopInventory
+DELETE CashShopPeriodicItem
+DELETE Character
+DELETE EventLeoTheHelper
+DELETE EventSantaClaus
+DELETE Guild
+DELETE GuildMember
+DELETE HelperData
+DELETE LuckyCoin
+DELETE LuckyItem
+DELETE MasterSkillTree
+DELETE QuestKillCount
+DELETE QuestWorld
+DELETE RankingBloodCastle
+DELETE RankingChaosCastle
+DELETE RankingDevilSquare
+DELETE RankingDuel
+DELETE RankingIllusionTemple
+DELETE T_CGuid
+DELETE T_FriendList
+DELETE T_FriendMail
+DELETE T_FriendMain
+DELETE T_PetItem_Info
+DELETE T_WaitFriend
+DELETE warehouse
+DELETE MEMB_CREDITS
+DELETE MEMB_STAT
+DELETE MUCore_Ban
+DELETE MUCore_Change_Passwords
+DELETE MUCore_PayPal_Donate_Transactions
+DELETE MUCore_Shop_Logs
+DELETE MUCore_temp_passwords
+DELETE MEMB_INFO
+DELETE Guild
+DELETE GuildMember
+DELETE Gens_Duprian
+DELETE Gens_Rank
+DELETE Gens_Varnert
+DELETE CashLog
+DELETE dbo.CashLog
+DELETE CustomGift
+DELETE LOG_CREDITOS
+DELETE MUCore_ADMLista
+DELETE MUCore_AOHCreditos
+DELETE MUCore_Ban
+DELETE MUCore_Cron_Jobs
+DELETE MUCore_VoteCredits
+DELETE MUCore_VoteCreditsIp
+DELETE MUCore_temp_passwords
+DELETE OptionData
+DELETE QuestKillCount
+DELETE wshopp_item_log
+
+
+
+https://www.muonlinetutoriales.com/2013/02/editor-de-mapas-parte-i.html
+
+
+Query para bloquear/desbloquear cuentas
+
+UPDATE MEMB_INFO
+SET bloc_code = 0
+WHERE memb___id = 'clark';
+
+code=0 significa desbloqueado
+code=1 significa bloqueado
+
+
+

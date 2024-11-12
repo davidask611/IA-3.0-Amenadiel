@@ -203,3 +203,30 @@ body {
 .mensaje-ia {
   animation: aparecerMensaje 0.5s ease-in-out;
 }
+
+.panel-izquierdo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Mantiene los elementos en la parte inferior */
+  gap: 10px; /* Espacio entre el input y el botón */
+  padding: 20px; /* Espaciado interno */
+  height: 150px; /* Altura del panel */
+  position: fixed; /* Permite que el panel se quede en su lugar al hacer scroll */
+  bottom: 50px; /* Espaciado desde la parte inferior de la ventana */
+  right: 20px; /* Espaciado desde la parte derecha de la ventana */
+  width: 320px;
+}
+.boton-archivo {
+  background-color: #222;
+  color: yellow;
+  border: 2px solid blue;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin: 5px auto;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}

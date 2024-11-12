@@ -2,7 +2,8 @@ import json
 from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia, matematica
 import os
-
+import pdfplumber
+from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 app = Flask(__name__)
 
 # Configuración de clave secreta para la sesión
@@ -64,6 +65,46 @@ def ver_contenido():
         return jsonify({"respuesta": f"Contenido de {archivo_seleccionado}: {json.dumps(contenido, indent=2)}"})
     except Exception as e:
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
+
+# carga y proceso de archivos
+
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+# Ruta para manejar la subida de archivos
+@app.route("/subir_archivo", methods=["POST"])
+def subir_archivo():
+    archivo = request.files.get("archivo")
+    es_administrador = session.get('modo_administrador', False)
+    max_file_size = 10 * 1024 * 1024  # 10 MB
+
+    # Verificar si el archivo excede el límite de tamaño (solo para usuarios no administradores)
+    if not es_administrador and archivo.content_length > max_file_size:
+        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
+
+    # Guardar el archivo en la carpeta uploads
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], archivo.filename)
+    archivo.save(file_path)
+
+    # Procesar el archivo dependiendo del tipo y obtener su contenido
+    if archivo.filename.endswith(".json"):
+        contenido = process_json(file_path)
+    elif archivo.filename.endswith(".txt"):
+        contenido = process_txt(file_path)
+    elif archivo.filename.endswith(".pdf"):
+        contenido = process_pdf(file_path)
+    else:
+        return jsonify({"error": "Tipo de archivo no soportado. Solo se admiten archivos JSON, TXT y PDF."}), 400
+
+    # Enviar el contenido al chat (o un mensaje de error si algo salió mal)
+    if not contenido:
+        return jsonify({"respuesta": "No se pudo leer el contenido del archivo."}), 400
+
+    # Respuesta para mostrar en el chat
+    return jsonify({"respuesta": contenido})
+
 
 
 @app.route("/chat", methods=["POST"])

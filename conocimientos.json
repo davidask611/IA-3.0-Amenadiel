@@ -254,35 +254,19 @@
         ]
     },
     "contexto": {
-        "ultimaPregunta": "gracias",
+        "ultimaPregunta": "hola",
         "historialConversacion": [
             {
                 "pregunta": "hola",
                 "respuesta": "hola, como estas??"
             },
             {
-                "pregunta": "gracias",
-                "respuesta": "de nada amigo/a"
-            },
-            {
-                "pregunta": "gracias",
-                "respuesta": "de nada amigo/a"
-            },
-            {
-                "pregunta": "huerta",
-                "respuesta": "Verduras disponibles:<br>1. Tomate<br>2. Acelga<br>3. Morron<br>4. Zanahoria<br>5. Lechuga<br>6. Espinaca<br>7. Pepino<br>8. Berenjena<br>9. Rábano<br>10. Papa<br>11. Cebolla<br>12. Ajo<br>13. Brócoli<br>14. Col<br><br>Escribe un nombre para obtener mas detalles."
-            },
-            {
-                "pregunta": "tomate",
-                "respuesta": "Nombre: Tomate<br>• Temporada de siembra: Primavera<br>• Temporada de cosecha: Verano<br>• Frecuencia de riego: Cada 2 días<br>• Tipo de tierra: Tierra fértil y bien drenada, rica en materia orgánica (humo, compost)."
-            },
-            {
-                "pregunta": "papa",
-                "respuesta": "Nombre: Papa<br>• Temporada de siembra: Primavera<br>• Temporada de cosecha: Verano/otoño<br>• Frecuencia de riego: Cada 4 días<br>• Tipo de tierra: Tierra rica en nutrientes, bien aireada y con buen drenaje."
-            },
-            {
                 "pregunta": "hola",
                 "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
             },
             {
                 "pregunta": "hola",
@@ -293,8 +277,24 @@
                 "respuesta": "de nada amigo/a"
             },
             {
-                "pregunta": "gracias",
-                "respuesta": "de nada amigo/a"
+                "pregunta": "buenas",
+                "respuesta": "buenas como estas??"
+            },
+            {
+                "pregunta": "buenas",
+                "respuesta": "buenas como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
             }
         ],
         "recolectando_opinion": false,

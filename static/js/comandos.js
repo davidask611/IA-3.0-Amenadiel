@@ -92,9 +92,7 @@ window.addEventListener("DOMContentLoaded", () => {
           console.log("Modo administrador activado");
           agregarMensajeIA("¡Modo administrador activado!");
         } else {
-          agregarMensajeIA(
-            "Usuario o clave incorrectos. Intenta nuevamente."
-          );
+          agregarMensajeIA("Usuario o clave incorrectos. Intenta nuevamente.");
           console.log("Usuario o clave incorrectos");
           esperandoClaveAdmin = true;
         }
@@ -122,7 +120,10 @@ window.addEventListener("DOMContentLoaded", () => {
               esperandoSeleccionArchivo = true; // Ahora esperamos que se seleccione un archivo
             } else {
               agregarMensajeIA(data.respuesta);
-              console.log("Error al recibir los archivos JSON:", data.respuesta);
+              console.log(
+                "Error al recibir los archivos JSON:",
+                data.respuesta
+              );
             }
           })
           .catch((error) => {
@@ -189,10 +190,60 @@ window.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // Obtener elementos del DOM
+  // Obtener elementos del DOM
+  const botonSubirArchivo = document.getElementById("botonSubirArchivo");
+  const archivoInput = document.getElementById("archivoInput");
+
+  // Lógica para verificar si es admin (actualizar según tu implementación)
+  const esAdministrador = false; // Actualizar según la lógica de autenticación
+  const maxFileSize = esAdministrador ? Infinity : 10 * 1024 * 1024; // 10 MB para usuarios normales
+
+  // Escuchar el evento de click en el botón de subir archivo
+  botonSubirArchivo.addEventListener("click", async function () {
+    const archivo = archivoInput.files[0];
+
+    if (!archivo) {
+      alert("Por favor, selecciona un archivo.");
+      return;
+    }
+
+    // Verificar el tamaño del archivo
+    if (archivo.size > maxFileSize) {
+      alert(
+        "El archivo es demasiado grande. Máximo permitido: 10 MB para usuarios."
+      );
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+
+    try {
+      const response = await fetch("/subir_archivo", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+
+      // Comprobar si hubo un error
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      // Mostrar el contenido del archivo en el chat
+      const contenido = data.respuesta || "No se pudo leer el contenido.";
+      agregarMensajeIA(`Archivo subido [${archivo.name}]: ${contenido}`); // Personalizado para mostrar nombre del archivo y su contenido
+    } catch (error) {
+      console.error("Error al subir el archivo:", error);
+    }
+  });
+
   // Función para agregar el mensaje del usuario al chat
   function agregarMensajeUsuario(mensaje) {
     const mensajeElemento = document.createElement("div");
-    mensajeElemento.innerHTML = `[${nombreUsuario}]:<br><br>${mensaje}`;
+    mensajeElemento.innerHTML = `<span style="color: blue;">[${nombreUsuario}]:</span><br><br>${mensaje}`;
     mensajeElemento.classList.add("mensaje-usuario");
     mensajes.appendChild(mensajeElemento);
     mensajes.scrollTop = mensajes.scrollHeight;
@@ -201,7 +252,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // Función para agregar la respuesta de la IA al chat
   function agregarMensajeIA(respuesta) {
     const mensajeElemento = document.createElement("div");
-    mensajeElemento.innerHTML = `[Clark]:<br><br>${respuesta}`;
+    mensajeElemento.innerHTML = `<span style="color: #FF00AB;">[Clark]:</span><br><br>${respuesta}`;
     mensajeElemento.classList.add("mensaje-ia");
     mensajes.appendChild(mensajeElemento);
     mensajes.scrollTop = mensajes.scrollHeight;
@@ -214,7 +265,8 @@ window.addEventListener("DOMContentLoaded", () => {
       listaHTML += `<li>${index + 1}. ${archivo}</li>`; // Mostrar número y archivo
     });
     listaHTML += "</ul>";
-    agregarMensajeIA("Selecciona un número de archivo para ver su contenido:\n" + listaHTML);
+    agregarMensajeIA(
+      "Selecciona un número de archivo para ver su contenido:\n" + listaHTML
+    );
   }
-
 });

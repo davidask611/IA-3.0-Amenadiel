@@ -1,0 +1,119 @@
+modo_aprendizaje = False  # Variable global para el modo aprendizaje
+
+@app.route('/modo_aprendizaje', methods=['POST'])
+def cambiar_modo_aprendizaje():
+    global modo_aprendizaje
+    data = request.json
+    modo_aprendizaje = data.get("activar", False)
+    mensaje = "Modo aprendizaje activado." if modo_aprendizaje else "Modo aprendizaje desactivado."
+    return jsonify({"mensaje": mensaje})
+	
+	
+	
+	
+
+OAuth o Autenticación basada en Terceros
+Descripción: Permite que un usuario se autentique usando proveedores externos (Google, GitHub, etc.).
+Pasos:
+Configura la autenticación usando un servicio como OAuth.
+Esto delega la autenticación al proveedor externo sin requerir contraseñas locales.
+Ventajas: Alta seguridad y evita manejar contraseñas directamente.
+
+##########################################
+Función aprender_respuesta:
+
+Validación y Almacenamiento: Me parece muy bueno que estés comprobando si ya existe una respuesta antes de agregarla. Esta validación evitará que se agreguen respuestas duplicadas en la base de datos.
+Uso de setdefault: Es un buen enfoque para asegurarte de que las claves necesarias estén presentes, pero en algunos casos, si tienes un rendimiento muy alto, podrías evaluar usar un método diferente para manejar las categorías y respuestas.
+Sugerencia: Tal vez podrías añadir algún tipo de timestamp o versión para las respuestas, lo que ayudaría a hacer un seguimiento más fácil de las respuestas agregadas, especialmente cuando estés manejando archivos grandes.
+
+
+Revisión de Respuestas: La parte en que verificas si la respuesta debe ser confirmada por el administrador es clave. Te recomiendo que hagas un seguimiento de las interacciones fallidas y no solo el número de intentos, sino también los tipos de preguntas que no fueron respondidas correctamente, para que puedas priorizar mejoras en esas áreas.
+
+
+Futuro de los Archivos de Datos:
+
+Como mencionabas anteriormente, podrías integrar un mecanismo de búsqueda por similitud en los archivos (como recetas, plantas, etc.). Para eso, necesitarás primero procesar esos archivos y almacenarlos en una forma que permita hacer consultas rápidas. Un posible enfoque sería usar alguna estructura de datos como un índice invertido o incluso una herramienta de búsqueda semántica.
+Para mejorar la precisión de las respuestas, podrías usar un sistema que evalúe la relevancia de los archivos según el contexto de la pregunta (esto lo podrías hacer con NLP, como mencionamos antes). También sería bueno contar con una forma de revisar las respuestas generadas antes de almacenarlas en la categoría pública, especialmente si tienes documentos con información técnica o detallada, como diccionarios o manuales.
+
+
+Cuando se trata de archivos como un PDF de recetas, lo ideal sería extraer solo la información relevante para tu sistema, como los ingredientes, pasos de preparación y otros detalles específicos de la receta. De esta manera, evitas procesar contenido innecesario como agradecimientos, información sobre el autor, presentaciones, etc. Esto no solo optimiza el proceso de lectura, sino que también mejora la calidad de las respuestas que se generan.
+
+Te doy algunos pasos clave que podrías seguir para lograr esto:
+
+1. Extracción de Texto del PDF:
+Usar herramientas como PyPDF2 o pdfplumber para extraer el texto del archivo PDF. Estas herramientas te permiten obtener solo el contenido textual del documento, sin imágenes ni metadatos.
+
+Problema común: El texto extraído puede venir con mucho ruido (saltos de línea innecesarios, fragmentos extraños), así que es importante hacer una limpieza de texto. Aquí podrías usar expresiones regulares o bibliotecas como re en Python para filtrar la información relevante.
+
+2. Filtrado de Contenido Irrelevante:
+Para evitar que se almacenen agradecimientos o secciones innecesarias, puedes usar un procesamiento de texto básico para identificar patrones típicos en esos bloques (por ejemplo, frases como "Gracias a", "Presentado por", "Autor:", etc.).
+
+También podrías aplicar un enfoque de detección de títulos para identificar las secciones de recetas y concentrarte solo en esas. Por ejemplo, en las recetas, usualmente se usan encabezados o listas con ingredientes y pasos. Al identificar estos patrones, puedes extraer solo lo que necesitas.
+
+3. Estructuración de la Información:
+Después de extraer solo la información relevante, puedes estructurarlo en un formato adecuado (JSON, diccionario, base de datos) que sea fácil de procesar y buscar más adelante.
+
+Ejemplo de estructura:
+
+json
+Copiar código
+{
+  "receta": "Tarta de manzana",
+  "ingredientes": [
+    "2 manzanas",
+    "200g de harina",
+    "100g de azúcar"
+  ],
+  "instrucciones": [
+    "Pelar las manzanas.",
+    "Mezclar la harina y el azúcar.",
+    "Hornear a 180°C durante 40 minutos."
+  ]
+}
+4. Procesamiento Semántico:
+Si quieres hacer una búsqueda más inteligente (por ejemplo, si se pregunta algo como "¿Tienes una receta de tarta de manzana?"), puedes usar un modelo de NLP como spaCy o transformers para analizar las preguntas y encontrar las recetas que más se ajusten semánticamente a la consulta, incluso si las palabras exactas no coinciden.
+5. Almacenamiento Eficiente:
+Una vez que tienes la receta estructurada, puedes almacenarla en tu base de datos o archivo JSON de manera eficiente, y cuando el usuario pregunte por algo relacionado con recetas, tu sistema podrá acceder rápidamente a esta información y responder de manera más precisa.
+6. Optimización:
+Si vas a procesar muchos archivos PDF, sería ideal tener un proceso en segundo plano para preprocesar estos archivos y almacenar solo las recetas en una base de datos. Así, cuando un usuario haga una consulta, la IA puede acceder a la información de manera rápida sin necesidad de procesar los PDFs en tiempo real.
+Ejemplo de cómo podrías procesar un PDF de recetas:
+python
+Copiar código
+import pdfplumber
+import re
+
+def extraer_recetas(pdf_path):
+    recetas = []
+    
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            
+            # Filtrar el texto para obtener solo las recetas
+            recetas_encontradas = re.findall(r'(\w+ de \w+.*\n)', text)
+            for receta in recetas_encontradas:
+                # Aquí podrías hacer una limpieza para eliminar encabezados innecesarios
+                ingredientes = re.findall(r'ingrediente.*:\s*(.*)', text)
+                pasos = re.findall(r'paso.*:\s*(.*)', text)
+                
+                receta_dict = {
+                    "receta": receta.strip(),
+                    "ingredientes": ingredientes,
+                    "instrucciones": pasos
+                }
+                recetas.append(receta_dict)
+    
+    return recetas
+
+# Uso de la función
+recetas = extraer_recetas("recetas.pdf")
+print(recetas)
+Beneficios de este enfoque:
+Rendimiento mejorado: Al preprocesar y limpiar solo la información relevante, el sistema puede responder rápidamente sin tener que procesar el archivo completo cada vez.
+Precisión: Al enfocarte en lo que realmente importa (las recetas en este caso), puedes evitar respuestas imprecisas basadas en información irrelevante.
+Escalabilidad: Si subes más archivos, el sistema podrá seguir procesándolos eficientemente, manteniendo la base de datos organizada.
+
+
+
+
+tengo un boton en html y css para integrar, la idea es yo como admin subir archivos json txt pdf (tengo unos codigos para eso) y que los archivos se guarden en la carpeta uploads, y por otro lado un json llamado datos_previos el cual tendra 2 claves entrenamiento y publico con categorias de temas, la parte entrenamiento la usare para entrenar a la IA y la parte publico sera accesible para usuario comun. una funcion que acceda a los archivos dentro de uploads y busque respuestas que yo hare en modo admin tendra 3 intentos para que yo le confirme si tiene coherencia o no, en caso de recibir las 3 veces que no me pedira que le enseñe pero en caso de no encontrar datos me pedira directo que le enseñe y cuando tenga confirmacion me mostrara una lista de las categorias de publico para agregar mas una opcion de crear nueva categoria una vez que eliga agrega esa respuesta al publico.

@@ -27,6 +27,10 @@
             <button class="boton-usuario" aria-label="Botón para el usuario">Usuario</button>
             <button class="boton-abuelo" aria-label="Botón para el abuelo">Abuelo</button>
         </aside>
+        <aside class="panel-izquierdo">
+            <input type="file" id="archivoInput" accept=".json, .txt, .pdf">
+            <button id="botonSubirArchivo" class="boton-archivo" aria-label="Subir archivo">Subir Archivo</button>
+        </aside>
     </main>
 
     <script src="{{ url_for('static', filename='js/comandos.js') }}"></script>
