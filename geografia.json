@@ -1,0 +1,38 @@
+{
+    "pais": {
+      "nombre": "Argentina",
+      "paisesLimitrofes": ["Chile", "Bolivia", "Paraguay", "Brasil", "Uruguay"],
+      "monedaOficial": "Peso argentino",
+      "presidenteActual": "Alberto Fernández"
+    },
+    "provincias": [
+      {"provincia": "Buenos Aires", "capital": "La Plata"},
+      {"provincia": "Catamarca", "capital": "San Fernando del Valle de Catamarca"},
+      {"provincia": "Chaco", "capital": "Resistencia"},
+      {"provincia": "Chubut", "capital": "Rawson"},
+      {"provincia": "Córdoba", "capital": "Córdoba"},
+      {"provincia": "Corrientes", "capital": "Corrientes"},
+      {"provincia": "Entre Ríos", "capital": "Paraná"},
+      {"provincia": "Formosa", "capital": "Formosa"},
+      {"provincia": "Jujuy", "capital": "San Salvador de Jujuy"},
+      {"provincia": "La Pampa", "capital": "Santa Rosa"},
+      {"provincia": "La Rioja", "capital": "La Rioja"},
+      {"provincia": "Mendoza", "capital": "Mendoza"},
+      {"provincia": "Misiones", "capital": "Posadas"},
+      {"provincia": "Neuquén", "capital": "Neuquén"},
+      {"provincia": "Río Negro", "capital": "Viedma"},
+      {"provincia": "Salta", "capital": "Salta"},
+      {"provincia": "San Juan", "capital": "San Juan"},
+      {"provincia": "San Luis", "capital": "San Luis"},
+      {"provincia": "Santa Cruz", "capital": "Río Gallegos"},
+      {"provincia": "Santa Fe", "capital": "Santa Fe"},
+      {"provincia": "Santiago del Estero", "capital": "Santiago del Estero"},
+      {"provincia": "Tierra del Fuego", "capital": "Ushuaia"},
+      {"provincia": "Tucumán", "capital": "San Miguel de Tucumán"}
+    ],
+    "cultura": {
+      "musicaPopular": ["Folclore", "Tango", "Rock Nacional", "Cumbia"],
+      "museosImportantes": ["Museo Nacional de Bellas Artes", "Museo de Arte Latinoamericano de Buenos Aires (MALBA)", "Museo Histórico Nacional", "Museo de Ciencias Naturales Bernardino Rivadavia"],
+      "comidasTipicas": ["Locro", "Paella", "Empanada Salteña", "Torta Frita", "Milanesa", "Asado"]
+    }
+  }

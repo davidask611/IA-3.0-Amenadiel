@@ -1,0 +1,64 @@
+{
+    "animal": {
+        "perro": {
+            "labrador": {
+                "nombre_completo": "Labrador Retriever",
+                "descripcion": "Es una raza de perro grande, muy popular por su carácter amigable y su habilidad para el trabajo.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Alta",
+                    "amabilidad": "Muy alta"
+                }
+            },
+            "chihuahua": {
+                "nombre_completo": "Chihuahua",
+                "descripcion": "Es una de las razas más pequeñas, conocido por su valentía a pesar de su tamaño.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Media",
+                    "amabilidad": "Media"
+                }
+            }
+        },
+        "gato": {
+            "siames": {
+                "nombre_completo": "Gato Siamés",
+                "descripcion": "Raza de gato elegante, delgada y muy activa, conocida por su sociabilidad y voz fuerte.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Alta",
+                    "amabilidad": "Alta"
+                }
+            },
+            "persa": {
+                "nombre_completo": "Gato Persa",
+                "descripcion": "Una raza de gato con pelaje largo y carácter tranquilo y cariñoso.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Alta",
+                    "amabilidad": "Alta"
+                }
+            }
+        },
+        "ave": {
+            "loro": {
+                "nombre_completo": "Loro Amazónico",
+                "descripcion": "Un ave colorida y habladora, conocida por su capacidad para imitar sonidos.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Media",
+                    "amabilidad": "Alta"
+                }
+            },
+            "canario": {
+                "nombre_completo": "Canario",
+                "descripcion": "Un pájaro pequeño, famoso por su canto melodioso y su alegre disposición.",
+                "caracteristicas": {
+                    "peligro": "Bajo",
+                    "docilidad": "Alta",
+                    "amabilidad": "Alta"
+                }
+            }
+        }
+    }
+}

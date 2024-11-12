@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con IA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <!-- Cambiado de <nav> a <header> para mejorar la semántica -->
+    <header class="encabezado">
+        <div class="fecha-hora" id="fechaHora"></div>
+        <h1 class="titulo">Buenas soy Clark, espero seamos amigos y pueda ayudarte</h1>
+    </header>
+
+    <main class="contenido-principal">
+        <section class="chat">
+            <div class="mensajes" id="mensajes">
+                <!-- Aquí se mostrarán los mensajes de la conversación -->
+            </div>
+            <div class="enviar-mensaje">
+                <button class="boton-enviar" id="botonEnviar" aria-label="Enviar mensaje">Enviar</button>
+                <input type="text" class="input-mensaje" id="inputMensaje" placeholder="Escribe tu mensaje aquí..." aria-label="Área de texto para escribir un mensaje">
+            </div>
+        </section>
+        <aside class="panel-derecho">
+            <button class="boton-usuario" aria-label="Botón para el usuario">Usuario</button>
+            <button class="boton-abuelo" aria-label="Botón para el abuelo">Abuelo</button>
+        </aside>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/comandos.js') }}"></script>
+</body>
+</html>
