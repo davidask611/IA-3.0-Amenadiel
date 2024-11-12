@@ -254,7 +254,7 @@
         ]
     },
     "contexto": {
-        "ultimaPregunta": "hola",
+        "ultimaPregunta": "buenas tardes",
         "historialConversacion": [
             {
                 "pregunta": "hola",
@@ -281,20 +281,20 @@
                 "respuesta": "hola, como estas??"
             },
             {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
             },
             {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
             },
             {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
             },
             {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
+                "pregunta": "buenas tardes",
+                "respuesta": "buenas como estas??"
             }
         ],
         "recolectando_opinion": false,

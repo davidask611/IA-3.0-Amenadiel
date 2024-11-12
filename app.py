@@ -20,23 +20,24 @@ def home():
 
 @app.route("/ver_datos", methods=["POST"])
 def ver_datos():
-    # Verificación de acceso para modo administrador
     if not session.get('modo_administrador', False):
         print("Intento de acceso sin privilegios de administrador")
         return jsonify({"respuesta": "No tienes acceso para ver los datos."})
 
     # Obtener lista de archivos JSON en el directorio
     directorio_json = '.'  # Cambiar a la ruta que desees
-    archivos_json = [f for f in os.listdir(
-        directorio_json) if f.endswith('.json')]
+    archivos_json = [f for f in os.listdir(directorio_json) if f.endswith('.json')]
 
     if archivos_json:
-        respuesta = "Archivos JSON disponibles:\n" + "\n".join(archivos_json)
+        # Crear una lista numerada de archivos JSON
+        lista_archivos = "\n".join([f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)])
+        respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{lista_archivos}"
         print(f"Archivos JSON encontrados: {archivos_json}")
         return jsonify({"respuesta": respuesta, "archivos": archivos_json})
     else:
         print("No se encontraron archivos JSON en el directorio.")
         return jsonify({"respuesta": "No se encontraron archivos JSON en el directorio."})
+
 
 
 @app.route("/ver_contenido", methods=["POST"])
