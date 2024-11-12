@@ -106,6 +106,9 @@ body {
   margin-bottom: 10px;
   font-family: Arial, sans-serif;
   max-width: 50%;
+  white-space: pre-wrap; /* Mantiene saltos de línea y evita desbordamientos */
+  word-wrap: break-word; /* Ajusta palabras largas */
+  overflow-wrap: break-word; /* Ajusta el texto cuando se desborda */
 }
 
 .mensaje-ia {
@@ -118,6 +121,9 @@ body {
   margin-bottom: 10px;
   max-width: 50%;
   font-family: Arial, sans-serif;
+  white-space: pre-wrap; /* Mantiene saltos de línea y evita desbordamientos */
+  word-wrap: break-word; /* Ajusta palabras largas */
+  overflow-wrap: break-word; /* Ajusta el texto cuando se desborda */
 }
 
 .enviar-mensaje {

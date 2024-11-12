@@ -233,8 +233,12 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       // Mostrar el contenido del archivo en el chat
-      const contenido = data.respuesta || "No se pudo leer el contenido.";
-      agregarMensajeIA(`Archivo subido [${archivo.name}]: ${contenido}`); // Personalizado para mostrar nombre del archivo y su contenido
+      let contenido = data.respuesta || "No se pudo leer el contenido.";
+      // Verificar si es un objeto (JSON) y convertirlo a texto si es necesario
+      if (typeof contenido === "object") {
+        contenido = JSON.stringify(contenido, null, 2);
+      }
+      agregarMensajeIA(`Archivo subido [${archivo.name}]:<br><br> ${contenido}`); // Personalizado para mostrar nombre del archivo y su contenido
     } catch (error) {
       console.error("Error al subir el archivo:", error);
     }
