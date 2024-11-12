@@ -254,24 +254,8 @@
         ]
     },
     "contexto": {
-        "ultimaPregunta": "raiz cuadrada de 25",
+        "ultimaPregunta": "gracias",
         "historialConversacion": [
-            {
-                "pregunta": "gracias",
-                "respuesta": "de nada amigo/a"
-            },
-            {
-                "pregunta": "buenas tardes",
-                "respuesta": "buenas como estas??"
-            },
-            {
-                "pregunta": "buenas",
-                "respuesta": "buenas como estas??"
-            },
-            {
-                "pregunta": "bien",
-                "respuesta": "que bueno que estes bien"
-            },
             {
                 "pregunta": "hola",
                 "respuesta": "hola, como estas??"
@@ -295,6 +279,22 @@
             {
                 "pregunta": "papa",
                 "respuesta": "Nombre: Papa<br>• Temporada de siembra: Primavera<br>• Temporada de cosecha: Verano/otoño<br>• Frecuencia de riego: Cada 4 días<br>• Tipo de tierra: Tierra rica en nutrientes, bien aireada y con buen drenaje."
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
+            },
+            {
+                "pregunta": "gracias",
+                "respuesta": "de nada amigo/a"
             }
         ],
         "recolectando_opinion": false,

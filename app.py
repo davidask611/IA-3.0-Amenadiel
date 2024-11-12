@@ -1,6 +1,6 @@
 import json
 from flask import Flask, render_template, request, jsonify, session
-from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia
+from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia, matematica
 import os
 
 app = Flask(__name__)
@@ -26,18 +26,20 @@ def ver_datos():
 
     # Obtener lista de archivos JSON en el directorio
     directorio_json = '.'  # Cambiar a la ruta que desees
-    archivos_json = [f for f in os.listdir(directorio_json) if f.endswith('.json')]
+    archivos_json = [f for f in os.listdir(
+        directorio_json) if f.endswith('.json')]
 
     if archivos_json:
         # Crear una lista numerada de archivos JSON
-        lista_archivos = "\n".join([f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)])
-        respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{lista_archivos}"
+        lista_archivos = "\n".join(
+            [f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)])
+        respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{
+            lista_archivos}"
         print(f"Archivos JSON encontrados: {archivos_json}")
         return jsonify({"respuesta": respuesta, "archivos": archivos_json})
     else:
         print("No se encontraron archivos JSON en el directorio.")
         return jsonify({"respuesta": "No se encontraron archivos JSON en el directorio."})
-
 
 
 @app.route("/ver_contenido", methods=["POST"])
@@ -64,9 +66,9 @@ def ver_contenido():
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
 
 
-# Ruta para manejar el chat y activar modo administrador si se requiere
 @app.route("/chat", methods=["POST"])
 def chat():
+    # Obtener el mensaje y el estado del administrador
     mensaje = request.json.get("mensaje")
     es_administrador = request.json.get("es_administrador", False)
 
@@ -79,9 +81,19 @@ def chat():
     print(f"Estado de administrador: {
           session.get('modo_administrador', False)}")
 
-    # Procesar el mensaje recibido
-    respuesta = procesar_mensaje(
-        mensaje, conocimientos, geografia, es_administrador=session['modo_administrador'])
+    # Primero, procesamos el mensaje con la función de matemáticas
+    # Llamamos a la función matematica
+    respuesta_matematica = matematica(mensaje.lower())
+    if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
+        # Si la respuesta de la operación matemática es válida, la retornamos directamente
+        print(f"Resultado matemático procesado: {respuesta_matematica}")
+        return jsonify({"respuesta": respuesta_matematica})
+
+    # Si no es una operación matemática, procedemos con el procesamiento normal del mensaje
+    respuesta = procesar_mensaje(mensaje, conocimientos, geografia,
+                                 es_administrador=session.get('modo_administrador', False))
+
+    # Imprimir la respuesta para verificar que se está procesando correctamente
     print(f"Respuesta generada: {respuesta}")
 
     return jsonify({"respuesta": respuesta})

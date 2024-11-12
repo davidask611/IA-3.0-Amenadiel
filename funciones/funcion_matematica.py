@@ -1,4 +1,4 @@
-from Amenadiel import re, math
+import re, math
 # Funcion matematica
 
 

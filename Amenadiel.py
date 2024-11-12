@@ -276,10 +276,18 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia, es_administrador
 
     # Verificar si la pregunta es una operación matemática
     respuesta_matematica = matematica(pregunta_limpia)
+    # Imprimir la respuesta
+    print(f"Respuesta matemática: {respuesta_matematica}")
     if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
         conocimientos["contexto"]["ultimaPregunta"] = pregunta_limpia
         guardar_datos(conocimientos, 'conocimientos.json')
         return respuesta_matematica
+        # Verificar si la pregunta contiene términos matemáticos
+    if any(op in pregunta_limpia for op in ["raiz cuadrada", "raiz cubica", "%", "log", "sin", "cos", "tan"]):
+        respuesta_matematica = matematica(pregunta_limpia)
+        print(f"Resultado de la operación matemática: {respuesta_matematica}")
+        if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
+            return respuesta_matematica
 
     # Mensaje amigable si no se encuentra respuesta
     respuestas_amigables = [
