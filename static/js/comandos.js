@@ -107,7 +107,7 @@ window.addEventListener("DOMContentLoaded", () => {
           .then((data) => {
             if (data.archivos) {
               console.log("Archivos JSON recibidos:", data.archivos);
-              agregarMensajeIA("Archivos JSON disponibles:\n" + data.archivos.join("\n"));
+              mostrarListaArchivos(data.archivos);
             } else {
               agregarMensajeIA(data.respuesta);
               console.log("Error al recibir los archivos JSON:", data.respuesta);
@@ -139,6 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Función para agregar el mensaje del usuario al chat
   function agregarMensajeUsuario(mensaje) {
     const mensajeElemento = document.createElement("div");
     mensajeElemento.innerHTML = `[${nombreUsuario}]:<br><br>${mensaje}`;
@@ -147,6 +148,7 @@ window.addEventListener("DOMContentLoaded", () => {
     mensajes.scrollTop = mensajes.scrollHeight;
   }
 
+  // Función para agregar la respuesta de la IA al chat
   function agregarMensajeIA(respuesta) {
     const mensajeElemento = document.createElement("div");
     mensajeElemento.innerHTML = `[Clark]:<br><br>${respuesta}`;
@@ -154,4 +156,34 @@ window.addEventListener("DOMContentLoaded", () => {
     mensajes.appendChild(mensajeElemento);
     mensajes.scrollTop = mensajes.scrollHeight;
   }
+
+  // Mostrar lista de archivos JSON
+  function mostrarListaArchivos(archivos) {
+    let listaHTML = "<ul>";
+    archivos.forEach((archivo, index) => {
+      listaHTML += `<li><button onclick="seleccionarArchivo('${archivo}')">${archivo}</button></li>`;
+    });
+    listaHTML += "</ul>";
+    agregarMensajeIA("Selecciona un archivo JSON para ver su contenido:\n" + listaHTML);
+  }
+
+  // Función para manejar la selección de un archivo JSON
+  window.seleccionarArchivo = function(archivo) {
+    fetch("/ver_datos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mensaje: archivo }), // Enviar el nombre del archivo
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.respuesta) {
+          agregarMensajeIA(data.respuesta); // Mostrar contenido del archivo
+        }
+      })
+      .catch((error) => {
+        console.error("Error al seleccionar archivo:", error);
+      });
+  };
 });
