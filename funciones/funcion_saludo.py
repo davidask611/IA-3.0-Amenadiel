@@ -1,6 +1,7 @@
+from funciones.funcion_eliminarAcentos import eliminar_acentos
 # Función para buscar un saludo
-
 def buscar_saludo(pregunta_limpia, conocimientos):
+    pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     # Obtener la lista de saludos del archivo JSON
     saludos = conocimientos.get("saludos", {})
 

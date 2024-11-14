@@ -1,6 +1,9 @@
-def huerta(consulta, conocimientos):
+from funciones.funcion_eliminarAcentos import eliminar_acentos
+
+def huerta(pregunta_limpia, conocimientos):
+    pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     # Verificar si el mensaje contiene "huerta", "plantas" o "verduras"
-    if consulta.lower() in ["huerta", "plantas", "verduras"]:
+    if pregunta_limpia.lower() in ["huerta", "plantas", "verduras"]:
         # Obtener lista de verduras disponibles
         verduras_data = conocimientos.get("verduras", {})
         if not verduras_data:
@@ -13,9 +16,9 @@ def huerta(consulta, conocimientos):
         return respuesta
 
     # Si el mensaje coincide con el nombre de una verdura específica
-    consulta_limpia = consulta.lower()
-    if consulta_limpia in conocimientos.get("verduras", {}):
-        verdura = conocimientos["verduras"][consulta_limpia]
+    pregunta_limpia = pregunta_limpia.lower()
+    if pregunta_limpia in conocimientos.get("verduras", {}):
+        verdura = conocimientos["verduras"][pregunta_limpia]
         respuesta = (
             f"Nombre: {verdura['nombre']}<br>"
             f"• Temporada de siembra: {verdura['siembra']}<br>"

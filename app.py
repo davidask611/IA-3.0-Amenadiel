@@ -1,24 +1,27 @@
 import json
 from flask import Flask, render_template, request, jsonify, session
-from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia, matematica
+from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia_data, matematica, animales_data, comida
 import os
 import pdfplumber
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
+from werkzeug.utils import secure_filename
+from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
+from funciones.funcion_eliminarAcentos import eliminar_acentos
+from funciones.funcion_geografia import geografia
+# from funciones.funcion_comida import comida
+
 app = Flask(__name__)
 
 # Configuración de clave secreta para la sesión
 app.secret_key = 'clave_secreta'  # Asegúrate de que sea única y segura
-
+# app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB para todos
 
 @app.route("/", methods=["GET"])
 def home():
     session['modo_administrador'] = False  # Restablecer a False en cada carga
     return render_template("index.html")
 
-
 # Endpoint para ver datos
-
-
 @app.route("/ver_datos", methods=["POST"])
 def ver_datos():
     if not session.get('modo_administrador', False):
@@ -34,8 +37,7 @@ def ver_datos():
         # Crear una lista numerada de archivos JSON
         lista_archivos = "\n".join(
             [f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)])
-        respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{
-            lista_archivos}"
+        respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{lista_archivos}"
         print(f"Archivos JSON encontrados: {archivos_json}")
         return jsonify({"respuesta": respuesta, "archivos": archivos_json})
     else:
@@ -68,8 +70,11 @@ def ver_contenido():
 
 # carga y proceso de archivos
 
-
 UPLOAD_FOLDER = 'uploads'
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -85,7 +90,7 @@ def subir_archivo():
         return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
 
     # Guardar el archivo en la carpeta uploads
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], archivo.filename)
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(archivo.filename))
     archivo.save(file_path)
 
     # Procesar el archivo dependiendo del tipo y obtener su contenido
@@ -105,12 +110,11 @@ def subir_archivo():
     # Respuesta para mostrar en el chat
     return jsonify({"respuesta": contenido})
 
-
-
 @app.route("/chat", methods=["POST"])
 def chat():
     # Obtener el mensaje y el estado del administrador
-    mensaje = request.json.get("mensaje")
+    pregunta_limpia = request.json.get("mensaje")
+    pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     es_administrador = request.json.get("es_administrador", False)
 
     # Activar modo administrador en la sesión si corresponde
@@ -118,27 +122,47 @@ def chat():
         session['modo_administrador'] = True
         print("Modo administrador activado en sesión.")
 
-    print(f"Mensaje recibido en Flask: '{mensaje}'")
-    print(f"Estado de administrador: {
-          session.get('modo_administrador', False)}")
+    print(f"Mensaje recibido en Flask: '{pregunta_limpia}'")
+    print(f"Estado de administrador: {session.get('modo_administrador', False)}")
+
+    # Verificar si la última pregunta fue para mostrar recetas y si se recibe un número de elección
+    if conocimientos["contexto"].get("ultimaPregunta") in ["receta", "recetas", "postres"]:
+        try:
+            # Intentar convertir la respuesta a número para seleccionar la receta
+            num_receta = int(pregunta_limpia.strip())
+            respuesta_receta = comida(pregunta_limpia, conocimientos, num_receta)
+            conocimientos["contexto"]["ultimaPregunta"] = None  # Limpiar contexto
+            print("Respuesta de elección de receta:", respuesta_receta)
+            return jsonify({"respuesta": respuesta_receta})
+        except ValueError:
+            # Mensaje para el caso en que no se ingrese un número válido
+            print("Error: No se ingresó un número para seleccionar una receta")
+            return jsonify({"respuesta": "Por favor, ingresa el número de la receta que deseas ver."})
+
+    # Verificar si el mensaje contiene las palabras clave "receta" o "postres"
+    if "receta" in pregunta_limpia or "postres" in pregunta_limpia:
+        conocimientos["contexto"]["ultimaPregunta"] = "receta"
+        respuesta_receta = comida(pregunta_limpia, conocimientos)
+        print("Respuesta de lista de recetas:", respuesta_receta)
+        return jsonify({"respuesta": respuesta_receta})
 
     # Primero, procesamos el mensaje con la función de matemáticas
-    # Llamamos a la función matematica
-    respuesta_matematica = matematica(mensaje.lower())
+    respuesta_matematica = matematica(pregunta_limpia.lower())
     if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
-        # Si la respuesta de la operación matemática es válida, la retornamos directamente
         print(f"Resultado matemático procesado: {respuesta_matematica}")
         return jsonify({"respuesta": respuesta_matematica})
 
-    # Si no es una operación matemática, procedemos con el procesamiento normal del mensaje
-    respuesta = procesar_mensaje(mensaje, conocimientos, geografia,
-                                 es_administrador=session.get('modo_administrador', False))
+    # Si está en modo administrador, intentamos buscar respuesta en `entrenando_IA`
+    if session.get('modo_administrador', False):
+        respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=True)
+        if respuesta_ia:
+            print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+            return jsonify({"respuesta": respuesta_ia})
 
-    # Imprimir la respuesta para verificar que se está procesando correctamente
+    # Si no es una operación matemática y no se encontró en `entrenando_IA`, procesar el mensaje normalmente
+    respuesta = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, es_administrador=session.get('modo_administrador', False))
     print(f"Respuesta generada: {respuesta}")
-
     return jsonify({"respuesta": respuesta})
-
 
 if __name__ == "__main__":
     app.run(debug=True)

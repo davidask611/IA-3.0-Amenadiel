@@ -30,20 +30,16 @@ def obtener_signo(signo):
         info_signo = signos_zodiacales[signo]
         # Convertir lista a cadena
         compatibilidad = ", ".join(info_signo['compatibilidad'])
-        descripcion = (f"El signo {signo.capitalize()} cubre desde {info_signo['fecha-fecha']}. "
-                       f"Su elemento es {info_signo['elemento']}. {
-                           info_signo['descripcion']} "
-                       f"Es compatible con: {compatibilidad}.")
+        descripcion = (f"El signo {signo.capitalize()} cubre desde {info_signo['fecha-fecha']}. "f"Su elemento es {info_signo['elemento']}. {info_signo['descripcion']} "f"Es compatible con: {compatibilidad}.")
         return descripcion
     else:
         return "Lo siento, no tengo información sobre ese signo."
 
 # Función para detectar signos zodiacales con 're'
 
-
-def detectar_signo(pregunta):
+def detectar_signo(pregunta_limpia):
     # Eliminar acentos y convertir a minúsculas
-    pregunta_limpia = eliminar_acentos(pregunta.lower())
+    pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
     # Crear un patrón que busque signos zodiacales
     # Crear un patrón para todos los signos (ej. 'aries|tauro|geminis')

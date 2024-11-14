@@ -61,11 +61,10 @@ def verificar_musica_animal(pregunta, conocimientos, animales):
                         return (f"{info['nombre_completo']}:<br><br>"
                                 f"{info['descripcion']}<br><br>"
                                 f"Características:<br><br>"
-                                f"Peligro: {
-                                    info['caracteristicas']['peligro']}<br>"
-                                f"Docilidad: {
-                                    info['caracteristicas']['docilidad']}<br>"
+                                f"Peligro: {info['caracteristicas']['peligro']}<br>"
+                                f"Docilidad: {info['caracteristicas']['docilidad']}<br>"
                                 f"Amabilidad: {info['caracteristicas']['amabilidad']}<br>")
+
 
                 # Respuesta cuando no se encuentra la raza
                 return f"Disculpa, no tengo información sobre esa raza de {subcategoria}. Intenta reformular la pregunta."
@@ -104,22 +103,14 @@ def verificar_musica_animal(pregunta, conocimientos, animales):
                     if nombre_cantante_limpio == nombre_detectado:
                         # Devolver toda la información del cantante
                         respuesta = (f"{nombre_cantante}:<br>"
-                                     f"Nombre completo: {
-                                         detalles['nombre_completo']}<br>"
-                                     f"Descripción: {
-                                         detalles['descripcion']}<br>"
-                                     f"Fecha de nacimiento: {
-                                         detalles['fecha_nacimiento']}<br>"
-                                     f"Nacionalidad: {
-                                         detalles['nacionalidad']}<br><br>"
-                                     f"Canciones más populares:<br>{
-                                         '<br>'.join(detalles['canciones'])}<br><br>"
-                                     f"Premios:<br>Grammy: {
-                                         detalles['premios']['grammy']},<br>"
-                                     f"Golden Globe: {
-                                         detalles['premios']['golden_globe']},<br>"
-                                     f"MTV Awards: {
-                                         detalles['premios']['mtv_awards']}<br><br>"
+                                     f"Nombre completo: {detalles['nombre_completo']}<br>"
+                                     f"Descripción: {detalles['descripcion']}<br>"
+                                     f"Fecha de nacimiento: {detalles['fecha_nacimiento']}<br>"
+                                     f"Nacionalidad: {detalles['nacionalidad']}<br><br>"
+                                     f"Canciones más populares:<br>{'<br>'.join(detalles['canciones'])}<br><br>"
+                                     f"Premios:<br>Grammy: {detalles['premios']['grammy']},<br>"
+                                     f"Golden Globe: {detalles['premios']['golden_globe']},<br>"
+                                     f"MTV Awards: {detalles['premios']['mtv_awards']}<br><br>"
                                      f"Influencias:<br>{', '.join(detalles['influencias'])}")
                         return respuesta
 

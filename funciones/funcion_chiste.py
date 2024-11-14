@@ -1,17 +1,29 @@
 from funciones.funcion_eliminarAcentos import eliminar_acentos
-import random
+import random, json
 
+def cargar_datos(nombre_archivo='conocimientos.json'):
+    try:
+        with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
+            return json.load(archivo)  # Cargar datos del archivo JSON
+    except FileNotFoundError:
+        print("Error: Archivo no encontrado.")
+        return {}  # Retorna un diccionario vacío si no se encuentra el archivo
+    except json.JSONDecodeError:
+        print("Error: Formato inválido en el archivo JSON.")
+        return {}  # Retorna un diccionario vacío si hay un error de formato
+
+
+# Cargar conocimientos
+conocimientos = cargar_datos('conocimientos.json')
 
 def obtener_chiste(conocimientos):
-    try:
+    if "chiste" in conocimientos and "lista_chistes" in conocimientos["chiste"]:
         lista_chistes = conocimientos["chiste"]["lista_chistes"]
         return random.choice(lista_chistes)
-    except KeyError:
+    else:
         return "Lo siento, no tengo chistes guardados."
 
 # Función para verificar si se ha solicitado un chiste
-
-
 def verificar_chiste(pregunta, conocimientos):
     # Convertir la pregunta a minúsculas y eliminar acentos
     pregunta_limpia = eliminar_acentos(pregunta.lower())

@@ -1,58 +1,58 @@
 {
-  "entrenamiento": {
-    "clima": [
-      "la primavera es conocida por sus lluvias y temperaturas templadas",
-      "en otono, las hojas de los arboles suelen cambiar de color y caer",
-      "durante la estacion seca, la humedad es baja y los cielos son despejados",
-      "las tormentas electricas son comunes en ciertas epocas del ano en zonas tropicales",
-      "la humedad puede hacer que el calor se sienta mas intenso",
-      "en los dias que llueve mucho es mejor llevar botas y piloto o campera con gorro y si es rompe viento mejor.",
-      "cuando hace calor es ideal para un helado"
-    ],
-    "salud": [
-      "una dieta equilibrada es clave para mantener un buen estado de salud",
-      "el ejercicio regular ayuda a mejorar la condicion fisica y mental",
-      "dormir bien es fundamental para la recuperacion y el bienestar general",
-      "la hidratacion adecuada es esencial para el funcionamiento de los organos",
-      "las frutas y verduras aportan vitaminas y minerales necesarios"
-    ],
-    "animales": [
-      "los elefantes son conocidos por su gran memoria y estructura social",
-      "las aves migran largas distancias en busca de climas mas calidos",
-      "las abejas juegan un papel crucial en la polinizacion de plantas",
-      "el lobo es un animal social que vive en manadas",
-      "las tortugas pueden vivir varios anos y son de los reptiles mas longevos"
-    ],
-    "musica": [
-      "el jazz es un genero musical que enfatiza la improvisacion y la expresion",
-      "el pop es un genero popular con melodias pegajosas y letras accesibles",
-      "la opera combina musica vocal e instrumental en una experiencia teatral",
-      "el regueton es un estilo que surgio en america latina y tiene influencia global",
-      "la musica electronica abarca varios generos y se caracteriza por su produccion digital",
-      "thalia es una cantante de pop/latino muy famosa, tambien tiene fama en el ambito de las novelas",
-      "la musica ayuda a relajarse en momentos de tension",
-      "la musica es hermosa"
-    ]
-  },
-  "publico": {
-    "clima": {
-      "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25°C.",
-      "va a llover hoy": "Si, se esperan lluvias mas tarde. Lleva un paraguas.",
-      "como es el clima en bariloche": "El clima en bariloche es frio y aveces cae nieve"
+    "entrenamiento": {
+        "clima": [
+            "la primavera es conocida por sus lluvias y temperaturas templadas",
+            "en otono, las hojas de los arboles suelen cambiar de color y caer",
+            "durante la estacion seca, la humedad es baja y los cielos son despejados",
+            "las tormentas electricas son comunes en ciertas epocas del ano en zonas tropicales",
+            "la humedad puede hacer que el calor se sienta mas intenso",
+            "en los dias que llueve mucho es mejor llevar botas y piloto o campera con gorro y si es rompe viento mejor.",
+            "cuando hace calor es ideal para un helado"
+        ],
+        "salud": [
+            "una dieta equilibrada es clave para mantener un buen estado de salud",
+            "el ejercicio regular ayuda a mejorar la condicion fisica y mental",
+            "dormir bien es fundamental para la recuperacion y el bienestar general",
+            "la hidratacion adecuada es esencial para el funcionamiento de los organos",
+            "las frutas y verduras aportan vitaminas y minerales necesarios"
+        ],
+        "animales": [
+            "los elefantes son conocidos por su gran memoria y estructura social",
+            "las aves migran largas distancias en busca de climas mas calidos",
+            "las abejas juegan un papel crucial en la polinizacion de plantas",
+            "el lobo es un animal social que vive en manadas",
+            "las tortugas pueden vivir varios a\u00f1os y son de los reptiles mas longevos"
+        ],
+        "musica": [
+            "el jazz es un genero musical que enfatiza la improvisacion y la expresion",
+            "el pop es un genero popular con melodias pegajosas y letras accesibles",
+            "la opera combina musica vocal e instrumental en una experiencia teatral",
+            "el regueton es un estilo que surgio en america latina y tiene influencia global",
+            "la musica electronica abarca varios generos y se caracteriza por su produccion digital",
+            "thalia es una cantante de pop/latino muy famosa, tambien tiene fama en el ambito de las novelas",
+            "la musica ayuda a relajarse en momentos de tension",
+            "la musica es hermosa"
+        ]
     },
-    "salud": {
-      "como se cura el dolor de cabeza": "el dolor de cabeza se puede quitar o aliviar con ibuprofeno,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico"
-    },
-    "animales": {
-      "las ballenas son mamiferas": "si asi es, son animales mamiferos"
-    },
-    "saludo": {
-      "hola": "Hola, en que puedo ayudarte",
-      "buenas tardes": "Buenas tardes, Como puedo ayudarte hoy",
-      "hola amigo": "Hola, amigo/a Que haremos hoy"
-    },
-    "musica": {
-      "que musica te gusta": "Me gusta la musica electronica"
+    "publico": {
+        "clima": {
+            "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25\u00b0C.",
+            "va a llover hoy": "Si, se esperan lluvias mas tarde. Lleva un paraguas.",
+            "como es el clima en bariloche": "El clima en bariloche es frio y aveces cae nieve"
+        },
+        "salud": {
+            "como se cura el dolor de cabeza": "el dolor de cabeza se puede quitar o aliviar con ibuprofeno,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico"
+        },
+        "animales": {
+            "las ballenas son mamiferas": "si asi es, son animales mamiferos"
+        },
+        "saludo": {
+            "hola": "Hola, en que puedo ayudarte",
+            "buenas tardes": "Buenas tardes, Como puedo ayudarte hoy",
+            "hola amigo": "Hola, amigo/a Que haremos hoy"
+        },
+        "musica": {
+            "que musica te gusta": "Me gusta la musica electronica"
+        }
     }
-  }
 }

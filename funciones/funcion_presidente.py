@@ -4,9 +4,9 @@ from funciones.funcion_eliminarAcentos import eliminar_acentos
 # Función para responder sobre presidente
 
 
-def presidente(pregunta, conocimientos):
+def presidente(pregunta_limpia, conocimientos):
     # Convertir la pregunta a minúsculas sin acentos
-    pregunta_limpia = eliminar_acentos(pregunta.lower())
+    pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
     # Dividir la pregunta en palabras
     palabras_pregunta = pregunta_limpia.split()

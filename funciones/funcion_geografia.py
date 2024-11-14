@@ -1,7 +1,23 @@
 from funciones.funcion_eliminarAcentos import eliminar_acentos
+import json
+
+def cargar_datos_geografia():
+    """
+    Carga los datos del archivo `geografia.json`.
+    Si el archivo no existe o está vacío, retorna un diccionario vacío.
+    """
+    try:
+        with open("geografia.json", "r", encoding="utf-8") as archivo:
+            return json.load(archivo)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return (
+            {}
+        )  # Si el archivo no existe o está vacío, retornamos un diccionario vacío
+
+
+geografia_data= cargar_datos_geografia()
+
 # Función para manejar las consultas sobre geografía
-
-
 def geografia(pregunta_limpia, geografia_data):
     """
     Procesa una consulta de geografía y devuelve la información solicitada.
@@ -22,8 +38,7 @@ def geografia(pregunta_limpia, geografia_data):
         respuesta += "Opciones disponibles:<br>"
         respuesta += "<br>".join(
             [
-                f"{idx + 1}. {opcion.capitalize()
-                              }"
+                f"{idx + 1}. {opcion.capitalize()}"
                 for idx, opcion in enumerate(opciones)
             ]
         )
@@ -37,12 +52,9 @@ def geografia(pregunta_limpia, geografia_data):
         respuesta = (
             f"Información del país:<br>"
             f"a. País: {pais.get('nombre', 'Desconocido')}<br>"
-            f"b. Países limítrofes: {
-                ', '.join(pais.get('paisesLimitrofes', []))}<br>"
-            f"c. Moneda oficial: {
-                pais.get('monedaOficial', 'Desconocido')}<br>"
-            f"d. Presidente actual: {
-                pais.get('presidenteActual', 'Desconocido')}<br>"
+            f"b. Países limítrofes: {', '.join(pais.get('paisesLimitrofes', []))}<br>"
+            f"c. Moneda oficial: {pais.get('monedaOficial', 'Desconocido')}<br>"
+            f"d. Presidente actual: {pais.get('presidenteActual', 'Desconocido')}<br>"
         )
         return respuesta
 
@@ -51,12 +63,7 @@ def geografia(pregunta_limpia, geografia_data):
         provincias = geografia_data.get("provincias", [])
         if provincias:
             respuesta = "Lista de provincias y sus capitales:<br>"
-            respuesta += "<br>".join(
-                [
-                    f"{idx + 1}. Provincia: {prov['provincia']}, Capital: {
-                        prov['capital']}"
-                    for idx, prov in enumerate(provincias)
-                ]
+            respuesta += "<br>".join([f"{idx + 1}. Provincia: {prov['provincia']}, Capital: {prov['capital']}"for idx, prov in enumerate(provincias)]
             )
             return respuesta
         else:
@@ -65,13 +72,7 @@ def geografia(pregunta_limpia, geografia_data):
     elif pregunta_limpia == "cultura":
         # Devuelve información cultural si el usuario elige "cultura"
         cultura = geografia_data.get("cultura", {})
-        respuesta = (
-            f"Música Popular: {
-                ', '.join(cultura.get('musicaPopular', []))}<br>"
-            f"Museos Importantes: {
-                ', '.join(cultura.get('museosImportantes', []))}<br>"
-            f"Comidas Típicas: {
-                ', '.join(cultura.get('comidasTipicas', []))}<br>"
+        respuesta = (f"Música Popular: {', '.join(cultura.get('musicaPopular', []))} <br>"f"Museos Importantes: {', '.join(cultura.get('museosImportantes', []))} <br>"f"Comidas Típicas: {', '.join(cultura.get('comidasTipicas', []))} <br>"
         )
         return respuesta
 

@@ -254,43 +254,43 @@
         ]
     },
     "contexto": {
-        "ultimaPregunta": "asjdasvbhdjkas",
+        "ultimaPregunta": "hola",
         "historialConversacion": [
             {
-                "pregunta": "buenas",
+                "pregunta": "buenas tardes",
                 "respuesta": "buenas como estas??"
             },
             {
-                "pregunta": "buenas",
+                "pregunta": "que hora es",
+                "respuesta": "La hora actual es 23:56."
+            },
+            {
+                "pregunta": "que fecha es hoy",
+                "respuesta": "La fecha de hoy es 13-11-2024."
+            },
+            {
+                "pregunta": "que dia es hoy",
+                "respuesta": "Hoy es miércoles."
+            },
+            {
+                "pregunta": "que año es",
+                "respuesta": "Estamos en el año 2024."
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "hola",
+                "respuesta": "hola, como estas??"
+            },
+            {
+                "pregunta": "buenas tardes",
                 "respuesta": "buenas como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
             },
             {
                 "pregunta": "hola",

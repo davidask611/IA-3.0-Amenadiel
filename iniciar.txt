@@ -1,0 +1,6 @@
+.\venv\Scripts\activate
+flask run
+
+.\venv\Scripts\activate
+$env:FLASK_DEBUG=1
+flask run
