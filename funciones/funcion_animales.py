@@ -25,37 +25,19 @@ def cargar_animales(nombre_archivo='animales.json'):
 animales_data = cargar_animales('animales.json')
 
 
-def verificar_musica_animal(pregunta, conocimientos, animales):
+def verificar_musica_animal(pregunta, conocimientos, animales_data):
     # Convertir la pregunta a minúsculas y eliminar acentos
     pregunta_limpia = eliminar_acentos(pregunta.lower())
 
-    # Verificar si la pregunta es sobre animales
-    if "perro" in pregunta_limpia or "perros" in pregunta_limpia or "gato" in pregunta_limpia or "gatos" in pregunta_limpia or "felino" in pregunta_limpia or "ave" in pregunta_limpia or "pajaro" in pregunta_limpia or "animal" in pregunta_limpia or "animales" in pregunta_limpia:
-        # Procesar la pregunta como una consulta sobre animales
-        # Paso 1: Buscar en animales_data
-        # Paso 1: Buscar en animales_data
-        subcategoria = None
-        if "perro" in pregunta_limpia or "perros" in pregunta_limpia:
-            subcategoria = "perro"
-        elif "gato" in pregunta_limpia or "gatos" in pregunta_limpia or "felino" in pregunta_limpia:
-            subcategoria = "gato"
-        elif "ave" in pregunta_limpia or "pajaro" in pregunta_limpia:
-            subcategoria = "ave"
+    # Iterar sobre las subcategorías de animales en el JSON
+    for subcategoria in animales_data.get("animal", {}):
+        # Verificar si el nombre de la subcategoría aparece en la pregunta
+        if subcategoria in pregunta_limpia:
+            razas = animales_data["animal"].get(subcategoria, {})
 
-        if subcategoria:
-            razas = animales_data.get("animal", {}).get(subcategoria, {})
-            if razas:
-                # Si no se menciona una raza específica en la pregunta
-                if not any(raza in pregunta_limpia for raza in razas):
-                    # Mensaje más genérico para cuando no se menciona una raza específica
-                    mensaje_subcategoria = {
-                        "perro": "Por el momento no he aprendido sobre ese animal.",
-                        "gato": "Por el momento no he aprendido sobre ese animal.",
-                        "ave": "Por el momento no he aprendido sobre ese animal."
-                    }
-                    return mensaje_subcategoria.get(subcategoria, "Por favor, especifica una raza o especie.")
-
-                # Buscar la raza mencionada en la pregunta
+            # Revisar si la pregunta menciona una raza específica
+            if any(raza in pregunta_limpia for raza in razas):
+                # Buscar la raza específica en la pregunta y devolver detalles si se encuentra
                 for raza, info in razas.items():
                     if raza in pregunta_limpia or info['nombre_completo'].lower() in pregunta_limpia:
                         return (f"{info['nombre_completo']}:<br><br>"
@@ -65,12 +47,18 @@ def verificar_musica_animal(pregunta, conocimientos, animales):
                                 f"Docilidad: {info['caracteristicas']['docilidad']}<br>"
                                 f"Amabilidad: {info['caracteristicas']['amabilidad']}<br>")
 
+            # Respuesta genérica para la subcategoría sin raza específica
+            return f"Por el momento no he aprendido sobre esa raza específica de {subcategoria}."
 
-                # Respuesta cuando no se encuentra la raza
-                return f"Disculpa, no tengo información sobre esa raza de {subcategoria}. Intenta reformular la pregunta."
+    # Verificar si la pregunta es sobre música (igual que antes)
+    if "musica" in pregunta_limpia or "cantante" in pregunta_limpia or "informacion" in pregunta_limpia or \
+       "canciones" in pregunta_limpia or "temas" in pregunta_limpia or "exitos" in pregunta_limpia or \
+       "premios" in pregunta_limpia or "influencias" in pregunta_limpia:
+        # [Código existente para la sección de música]
+        # (reemplaza esta línea por el contenido que ya tienes en la sección de música)
 
-            # Respuesta cuando no se menciona un animal válido
-            return None
+        # Respuesta genérica si no se trata de animales ni de música
+        return random.choice(respuestas_amigables)
 
     # Verificar si la pregunta es sobre música
     if "musica" in pregunta_limpia or "cantante" in pregunta_limpia or "informacion" in pregunta_limpia or "canciones" in pregunta_limpia or "temas" in pregunta_limpia or "exitos" in pregunta_limpia or "premios" in pregunta_limpia or "influencias" in pregunta_limpia:

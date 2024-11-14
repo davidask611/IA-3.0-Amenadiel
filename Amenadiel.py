@@ -270,12 +270,19 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         print("Respuesta de verificación de chiste:", respuesta_chiste)
         return respuesta_chiste
 
-    # Prioridad 3: Verificar si la pregunta es sobre animales
-    respuesta_animales = verificar_musica_animal(pregunta_limpia, conocimientos, animales_data)
-    if respuesta_animales != "No tengo suficiente información para responder esta pregunta.":
-        print("Respuesta sobre animales:", respuesta_animales)
-        return respuesta_animales
+    # Verificar primero si la pregunta menciona palabras clave de animales
+    palabras_clave_animales = ["animal", "especie", "perro", "gato", "ave", "felino", "mamífero"]  # puedes expandir esta lista
+    if any(palabra in pregunta_limpia for palabra in palabras_clave_animales):
+        respuesta_animales = verificar_musica_animal(pregunta_limpia, conocimientos, animales_data)
+        if respuesta_animales != "No tengo suficiente información para responder esta pregunta.":
+            print("Respuesta sobre animales:", respuesta_animales)
+            return respuesta_animales
 
+    # Al final del flujo, si no hay respuesta específica
+    respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=es_administrador)
+    if respuesta_ia:
+        print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+        return respuesta_ia
 
     # Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [
@@ -287,8 +294,6 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
     ]
     return random.choice(respuestas_amigables)
 
-# Si no se encuentra ninguna respuesta en el flujo actual, se usa entrenando_IA
-#entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=es_administrador)
 def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_previos, modo_administrador=False):
     # Limpiar y preparar la pregunta
     pregunta_limpia = eliminar_acentos(pregunta.lower())
@@ -343,11 +348,11 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
             "ave": "Por el momento no he aprendido sobre ese ave."
         }.get(subcategoria, "Por favor, especifica una raza o especie.")
 
-    # Paso 3: Verificar en datos_previos (si no se ha encontrado respuesta aún)
-    entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=modo_administrador)
-    #respuesta_respaldo =
-    # if respuesta_respaldo:
-    #     return respuesta_respaldo
+    # Al final del flujo, si no hay respuesta específica
+    respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=modo_administrador)
+    if respuesta_ia:
+        print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+        return respuesta_ia
 
     # Paso 4: Respuestas amigables si no se encuentra una respuesta
     respuestas_amigables = [

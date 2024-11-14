@@ -36,7 +36,7 @@
     },
     "publico": {
         "clima": {
-            "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25\u00b0C.",
+            "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25\u00aaC.",
             "va a llover hoy": "Si, se esperan lluvias mas tarde. Lleva un paraguas.",
             "como es el clima en bariloche": "El clima en bariloche es frio y aveces cae nieve"
         },

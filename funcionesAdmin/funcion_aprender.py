@@ -61,12 +61,12 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False):
         # Busca en la sección primaria
         resultados = buscar_en_seccion(seccion_primaria)
         if resultados:
-            return f"Respuesta encontrada en {seccion_primaria.capitalize()}: {resultados[0]}"
+            return f"Respuesta encontrada en {seccion_primaria.capitalize()}: <br><br>{resultados[0]}"
 
         # Si no encontró en la primaria, intenta en la secundaria
         resultados = buscar_en_seccion(seccion_secundaria)
         if resultados:
-            return f"Respuesta encontrada en {seccion_secundaria.capitalize()}: {resultados[0]}"
+            return f"Respuesta encontrada en {seccion_secundaria.capitalize()}: <br><br>{resultados[0]}"
 
         # Si modo administrador y no encuentra respuesta válida en ambos secciones
         if modo_administrador:

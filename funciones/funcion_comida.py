@@ -23,7 +23,7 @@ def comida(pregunta, conocimientos, num_receta=None):
         if not num_receta:
             respuesta = "Recetas disponibles:<br>"
             respuesta += "<br>".join([f"{idx}. {receta}" for idx, receta in enumerate(recetas, start=1)])
-            respuesta += "<br>Elige el número o nombre de la receta que quieres ver."
+            respuesta += "<br>Elige el número de la receta que quieres ver."
             return respuesta
         else:
             for receta in recetas:
