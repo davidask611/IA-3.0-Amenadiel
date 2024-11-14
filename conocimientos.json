@@ -1,506 +1,448 @@
 {
-    "saludos": {
-        "buenas": "buenas como estas??",
-        "hola": "hola, como estas??",
-        "bien y tu": "bien, gracias por preguntar",
-        "hasta mañana": "hasta mañana que descanses",
-        "bien y vos": "bien, gracias por preguntar",
-        "bien": "que bueno que estes bien",
-        "gracias": "de nada amigo/a"
+  "saludos": {
+    "gracias": "de nada amigo/a"
+  },
+  "datosdelaIA": {
+    "como te llamas": "Mi nombre es Clark",
+    "cuantos años tenes": "soy una IA, no tengo edad. tengo fecha de creacion.",
+    "eres hombre o mujer": "Mi creador David no me definio un sexo, Me llamo Clark, espero que eso responda tu pregunta.",
+    "te gusta el calor o el frio": "diria que el frio, ya que con el calor uno esta transpirado y pegote, en cambio con calor uno se abriga y puede tomar una rica chocolatada o cafecito"
+  },
+  "presidente": {
+    "Alfonsin": {
+      "periodo": "1983 - 1989",
+      "nombre_completo": "Raul Alfonsin",
+      "descripcion": "Raul Alfonsin fue el primer presidente democratico de Argentina tras la dictadura militar. Su gobierno se caracterizo por la defensa de los derechos humanos y el establecimiento de un estado democratico. Alfonsin enfrento numerosos desafios, incluyendo una economia en crisis y tensiones sociales. Su administracion es recordada por la implementacion de juicios a los lideres de la dictadura, un paso importante hacia la justicia. Sin embargo, su mandato culmino en medio de problemas economicos y presiones sociales, lo que condujo a su renuncia anticipada en 1989."
     },
-    "datosdelaIA": {
-        "como te llamas": "Mi nombre es Clark",
-        "cuantos años tenes": "soy una IA, no tengo edad. tengo fecha de creacion.",
-        "eres hombre o mujer": "Mi creador David no me definio un sexo, Me llamo Clark, espero que eso responda tu pregunta.",
-        "te gusta el calor o el frio": "diria que el frio, ya que con el calor uno esta transpirado y pegote, en cambio con calor uno se abriga y puede tomar una rica chocolatada o cafecito"
+    "Menem": {
+      "periodo": "1989 - 1999",
+      "nombre_completo": "Carlos Menem",
+      "descripcion": "Carlos Menem, presidente durante una de las etapas mas controversiales de Argentina, implemento un modelo economico de liberalizacion que incluyo privatizaciones masivas y apertura comercial. Su gobierno trajo consigo un periodo de crecimiento economico inicial, pero tambien un aumento en la desigualdad y la pobreza. Menem es recordado por su carisma y estilo populista, aunque su administracion se vio marcada por la corrupcion y escandalos. Su mandato se extiende hasta el año 1999, donde dejo un legado mixto en la politica argentina."
     },
-    "presidente": {
-        "Alfonsin": {
-            "periodo": "1983 - 1989",
-            "nombre_completo": "Raul Alfonsin",
-            "descripcion": "Raul Alfonsin fue el primer presidente democratico de Argentina tras la dictadura militar. Su gobierno se caracterizo por la defensa de los derechos humanos y el establecimiento de un estado democratico. Alfonsin enfrento numerosos desafios, incluyendo una economia en crisis y tensiones sociales. Su administracion es recordada por la implementacion de juicios a los lideres de la dictadura, un paso importante hacia la justicia. Sin embargo, su mandato culmino en medio de problemas economicos y presiones sociales, lo que condujo a su renuncia anticipada en 1989."
-        },
-        "Menem": {
-            "periodo": "1989 - 1999",
-            "nombre_completo": "Carlos Menem",
-            "descripcion": "Carlos Menem, presidente durante una de las etapas mas controversiales de Argentina, implemento un modelo economico de liberalizacion que incluyo privatizaciones masivas y apertura comercial. Su gobierno trajo consigo un periodo de crecimiento economico inicial, pero tambien un aumento en la desigualdad y la pobreza. Menem es recordado por su carisma y estilo populista, aunque su administracion se vio marcada por la corrupcion y escandalos. Su mandato se extiende hasta el año 1999, donde dejo un legado mixto en la politica argentina."
-        },
-        "Rua": {
-            "periodo": "1999 - 2001",
-            "nombre_completo": "Fernando de la Rua",
-            "descripcion": "Fernando de la Rua asumio la presidencia en un contexto de crisis economica y social. Su gobierno enfrento grandes desafios desde el inicio, incluyendo una creciente recesion y aumento del desempleo. Intento implementar politicas de austeridad para controlar el deficit fiscal, pero esto resulto en protestas masivas y descontento popular. La falta de apoyo y la incapacidad para estabilizar la economia llevaron a su renuncia en diciembre de 2001, en un momento de gran convulsion social. Su presidencia es recordada como un periodo de inestabilidad."
-        },
-        "Duhalde": {
-            "periodo": "2002 - 2003",
-            "nombre_completo": "Eduardo Duhalde",
-            "descripcion": "Eduardo Duhalde asumio la presidencia en medio de una crisis economica devastadora que afecto a Argentina. Su gestion se centro en la estabilizacion de la economia y la implementacion de politicas sociales para mitigar el impacto de la crisis en los ciudadanos. Promovio la devaluacion del peso, lo que, aunque controlo la inflacion, genero un impacto en los ahorros de la poblacion. Su periodo fue breve, pero crucial, ya que sento las bases para la recuperacion economica que vendria con la presidencia de Nestor Kirchner."
-        },
-        "Nestor": {
-            "periodo": "2003 - 2007",
-            "nombre_completo": "Nestor Kirchner",
-            "descripcion": "Nestor Kirchner asumio la presidencia en un contexto de crisis economica y politica en Argentina. Su gobierno se enfoco en la recuperacion economica, la reestructuracion de la deuda externa y la promocion de politicas de derechos humanos. Implemento programas sociales para combatir la pobreza y el desempleo. Su gestion se caracterizo por un fuerte crecimiento economico, impulsado por la recuperacion de la industria y la agricultura, asi como por el aumento de las exportaciones. Tambien fue conocido por su postura energica frente al Fondo Monetario Internacional y por su liderazgo en la region."
-        },
-        "Cristina": {
-            "periodo": "2007 - 2015",
-            "nombre_completo": "Cristina Fernandez de Kirchner",
-            "descripcion": "Cristina Fernandez de Kirchner, esposa de Nestor Kirchner, se convirtio en la primera mujer en ser reelegida como presidenta de Argentina. Su gobierno se caracterizo por un enfoque en la expansion del gasto social, la defensa de los derechos humanos y la nacionalizacion de diversas industrias. Enfrento grandes desafios, incluyendo conflictos con el campo y oposicion politica. Su gestion fue marcada por un crecimiento economico sostenido en los primeros años, pero luego enfrento problemas de inflacion y deudas externas, lo que afecto su popularidad en los ultimos años."
-        },
-        "Macri": {
-            "periodo": "2015 - 2019",
-            "nombre_completo": "Mauricio Macri",
-            "descripcion": "Mauricio Macri asumio la presidencia con la promesa de implementar reformas economicas que trajeran crecimiento y estabilidad. Su gobierno busco reducir el deficit fiscal y abrir la economia al mundo. Sin embargo, su mandato se vio afectado por una alta inflacion y una deuda creciente, lo que llevo a descontento social. Macri intento atraer inversiones extranjeras y fomentar el desarrollo, pero las dificultades economicas y la falta de apoyo politico limitaron su capacidad de implementar cambios significativos, resultando en una administracion con resultados mixtos."
-        },
-        "Alberto": {
-            "periodo": "2019 - 2023",
-            "nombre_completo": "Alberto Fernandez",
-            "descripcion": "Alberto Fernandez asumio la presidencia en un contexto de crisis economica agudizada por la pandemia de COVID-19. Su gobierno enfrento retos significativos, incluyendo la gestion de la emergencia sanitaria y la reestructuracion de la deuda externa. Implemento politicas de apoyo a sectores vulnerables y busco establecer un dialogo con diferentes actores politicos y sociales. Su administracion ha sido criticada por la inflacion y la falta de crecimiento, aunque se ha centrado en recuperar la economia tras la crisis sanitaria, trabajando en medidas para estabilizar el pais."
-        },
-        "Milei": {
-            "periodo": "2023 - 2024",
-            "nombre_completo": "Javier Gerardo Milei",
-            "descripcion": "Javier Milei es un economista y politico argentino que asumio la presidencia en 2024. Es conocido por su postura libertaria y por proponer reformas economicas radicales en un contexto de crisis economica y alta inflacion. Su enfoque se centra en reducir drasticamente el gasto publico, eliminar regulaciones y promover la libertad de mercado. Milei ha ganado notoriedad por su estilo provocador y su discurso anti-establishment, apelando a votantes que buscan un cambio en el sistema politico tradicional. Es un firme defensor de la propiedad privada y ha manifestado su intencion de cerrar el Banco Central."
-        }
+    "Rua": {
+      "periodo": "1999 - 2001",
+      "nombre_completo": "Fernando de la Rua",
+      "descripcion": "Fernando de la Rua asumio la presidencia en un contexto de crisis economica y social. Su gobierno enfrento grandes desafios desde el inicio, incluyendo una creciente recesion y aumento del desempleo. Intento implementar politicas de austeridad para controlar el deficit fiscal, pero esto resulto en protestas masivas y descontento popular. La falta de apoyo y la incapacidad para estabilizar la economia llevaron a su renuncia en diciembre de 2001, en un momento de gran convulsion social. Su presidencia es recordada como un periodo de inestabilidad."
     },
-    "signos_zodiacales": {
-        "aries": {
-            "fecha-fecha": "21-03-2024 a 19-04-2024",
-            "descripcion": "Aries, el primer signo del zodiaco, es conocido por su energía y determinación. Los arianos son aventureros y les gusta ser líderes en cualquier situación. Son audaces y no temen asumir riesgos. Su personalidad ardiente les impulsa a actuar con rapidez y a buscar nuevas experiencias.",
-            "elemento": "fuego",
-            "compatibilidad": [
-                "leo",
-                "sagitario",
-                "geminis"
-            ]
-        },
-        "tauro": {
-            "fecha-fecha": "20-04-2024 a 20-05-2024",
-            "descripcion": "Tauro, el segundo signo del zodiaco, se caracteriza por su determinación y su enfoque práctico en la vida. Su personalidad está marcada por la paciencia y la perseverancia, lo que les permite lograr sus objetivos a largo plazo. Tauro valora la estabilidad y el confort, y disfruta de los placeres sensoriales de la vida. Su naturaleza terrosa les proporciona una conexión fuerte con la realidad, lo que les permite construir una vida segura y sólida.",
-            "elemento": "tierra",
-            "compatibilidad": [
-                "virgo",
-                "capricornio",
-                "cancer"
-            ]
-        },
-        "geminis": {
-            "fecha-fecha": "21-05-2024 a 20-06-2024",
-            "descripcion": "Géminis, el tercer signo del zodiaco, es conocido por su dualidad y versatilidad. Estas personas son curiosas, comunicativas y disfrutan de aprender cosas nuevas. Su naturaleza inquieta puede hacer que a veces se sientan dispersos, pero su inteligencia y rapidez mental les permiten adaptarse a cualquier situación. Los géminis son excelentes conversadores, lo que les ayuda a hacer amistades fácilmente y a ser el alma de la fiesta.",
-            "elemento": "aire",
-            "compatibilidad": [
-                "libra",
-                "acuario",
-                "leo"
-            ]
-        },
-        "cancer": {
-            "fecha-fecha": "21-06-2024 a 22-07-2024",
-            "descripcion": "Cáncer, el cuarto signo del zodiaco, es conocido por su sensibilidad y fuerte conexión emocional. Estas personas son protectoras, empáticas y muy intuitivas. Su hogar y la familia son fundamentales para ellos, y a menudo se sienten más cómodos en entornos familiares. Cáncer también es un signo muy creativo, con una rica vida interior que les ayuda a expresar sus emociones de maneras artísticas.",
-            "elemento": "agua",
-            "compatibilidad": [
-                "escorpio",
-                "piscis",
-                "tauro"
-            ]
-        },
-        "leo": {
-            "fecha-fecha": "23-07-2024 a 22-08-2024",
-            "descripcion": "Leo, el quinto signo del zodiaco, es conocido por su confianza y carisma. Son líderes naturales y disfrutan de ser el centro de atención. Su generosidad y espíritu cálido atraen a otros hacia ellos, y son conocidos por su lealtad a amigos y seres queridos. Leo posee una gran creatividad y pasión, lo que les permite destacar en actividades artísticas y de entretenimiento.",
-            "elemento": "fuego",
-            "compatibilidad": [
-                "aries",
-                "sagitario",
-                "geminis"
-            ]
-        },
-        "virgo": {
-            "fecha-fecha": "23-08-2024 a 22-09-2024",
-            "descripcion": "Virgo, el sexto signo del zodiaco, es conocido por su enfoque analítico y atención al detalle. Estas personas son trabajadoras y perfeccionistas, lo que les ayuda a alcanzar altos estándares en todo lo que hacen. Su naturaleza práctica les permite encontrar soluciones eficaces a los problemas. Aunque a veces pueden parecer críticos, su intención es siempre mejorar las cosas y ayudar a los demás.",
-            "elemento": "tierra",
-            "compatibilidad": [
-                "tauro",
-                "capricornio",
-                "cancer"
-            ]
-        },
-        "libra": {
-            "fecha-fecha": "23-09-2024 a 22-10-2024",
-            "descripcion": "Libra, el séptimo signo del zodiaco, se caracteriza por su amor por la belleza y la armonía. Son diplomáticos, justos y valoran las relaciones interpersonales. Libra busca el equilibrio en su vida y a menudo actúa como mediador en conflictos. Su naturaleza social les permite formar conexiones fácilmente, y disfrutan de rodearse de personas creativas e inspiradoras.",
-            "elemento": "aire",
-            "compatibilidad": [
-                "geminis",
-                "acuario",
-                "leo"
-            ]
-        },
-        "escorpio": {
-            "fecha-fecha": "23-10-2024 a 21-11-2024",
-            "descripcion": "Escorpio, el octavo signo del zodiaco, es conocido por su intensidad y profundidad emocional. Estas personas son apasionadas, decididas y a menudo tienen un aura misteriosa. Escorpio es conocido por su capacidad para transformar las situaciones, y su deseo de profundizar en los aspectos ocultos de la vida. Son leales a sus seres queridos y tienen una gran capacidad para la empatía.",
-            "elemento": "agua",
-            "compatibilidad": [
-                "cancer",
-                "piscis",
-                "virgo"
-            ]
-        },
-        "sagitario": {
-            "fecha-fecha": "22-11-2024 a 21-12-2024",
-            "descripcion": "Sagitario, el noveno signo del zodiaco, es conocido por su amor por la aventura y la exploración. Estas personas son optimistas, entusiastas y disfrutan de aprender sobre diferentes culturas y filosofías. Sagitario busca la libertad y valora la honestidad en sus relaciones. Su naturaleza independiente a menudo les lleva a viajar y explorar nuevas experiencias.",
-            "elemento": "fuego",
-            "compatibilidad": [
-                "aries",
-                "leo",
-                "acuario"
-            ]
-        },
-        "capricornio": {
-            "fecha-fecha": "22-12-2024 a 19-01-2025",
-            "descripcion": "Capricornio, el décimo signo del zodiaco, es conocido por su ambición y determinación. Estas personas son trabajadoras, disciplinadas y suelen tener un enfoque serio hacia la vida. Capricornio valora la estabilidad y el éxito a largo plazo, y está dispuesto a hacer sacrificios para alcanzar sus metas. Su naturaleza pragmática les permite planificar cuidadosamente y avanzar en sus proyectos con tenacidad.",
-            "elemento": "tierra",
-            "compatibilidad": [
-                "tauro",
-                "virgo",
-                "escorpio"
-            ]
-        },
-        "acuario": {
-            "fecha-fecha": "20-01-2025 a 18-02-2025",
-            "descripcion": "Acuario, el undécimo signo del zodiaco, es conocido por su originalidad y pensamiento progresista. Estas personas son innovadoras, humanitarias y suelen tener un enfoque único hacia la vida. Acuario valora la independencia y la libertad, y es conocido por desafiar las normas establecidas. Su naturaleza visionaria les permite imaginar un futuro mejor y trabajar para lograr cambios positivos en la sociedad.",
-            "elemento": "aire",
-            "compatibilidad": [
-                "geminis",
-                "libra",
-                "sagitario"
-            ]
-        },
-        "piscis": {
-            "fecha-fecha": "19-02-2025 a 20-03-2025",
-            "descripcion": "Piscis, el último signo del zodiaco, es conocido por su sensibilidad y conexión espiritual. Estas personas son empáticas, soñadoras y suelen tener una rica vida interior. Piscis valora el arte y la creatividad, y tiende a ser muy intuitivo. Su naturaleza compasiva les permite conectar profundamente con los demás, a menudo buscando ayudar a quienes los rodean.",
-            "elemento": "agua",
-            "compatibilidad": [
-                "cancer",
-                "escorpio",
-                "tauro"
-            ]
-        }
+    "Duhalde": {
+      "periodo": "2002 - 2003",
+      "nombre_completo": "Eduardo Duhalde",
+      "descripcion": "Eduardo Duhalde asumio la presidencia en medio de una crisis economica devastadora que afecto a Argentina. Su gestion se centro en la estabilizacion de la economia y la implementacion de politicas sociales para mitigar el impacto de la crisis en los ciudadanos. Promovio la devaluacion del peso, lo que, aunque controlo la inflacion, genero un impacto en los ahorros de la poblacion. Su periodo fue breve, pero crucial, ya que sento las bases para la recuperacion economica que vendria con la presidencia de Nestor Kirchner."
     },
-    "musica": {
-        "pop": {
-            "madonna": {
-                "nombre_completo": "Madonna Louise Ciccone",
-                "descripcion": "Madonna es una de las figuras mas influyentes de la musica pop, conocida como la 'Reina del Pop'. Ha tenido una extensa carrera desde los anos 80, caracterizada por su habilidad para reinventarse y su influencia en la cultura musical.",
-                "fecha_nacimiento": "16-08-1958",
-                "nacionalidad": "Estadounidense",
-                "canciones": [
-                    "Like a Virgin",
-                    "True Blue",
-                    "Ray of Light",
-                    "Confessions on a Dance Floor"
-                ],
-                "premios": {
-                    "grammy": 7,
-                    "golden_globe": 2,
-                    "mtv_awards": 20
-                },
-                "influencias": [
-                    "David Bowie",
-                    "Michael Jackson",
-                    "Prince"
-                ]
-            }
-        }
+    "Nestor": {
+      "periodo": "2003 - 2007",
+      "nombre_completo": "Nestor Kirchner",
+      "descripcion": "Nestor Kirchner asumio la presidencia en un contexto de crisis economica y politica en Argentina. Su gobierno se enfoco en la recuperacion economica, la reestructuracion de la deuda externa y la promocion de politicas de derechos humanos. Implemento programas sociales para combatir la pobreza y el desempleo. Su gestion se caracterizo por un fuerte crecimiento economico, impulsado por la recuperacion de la industria y la agricultura, asi como por el aumento de las exportaciones. Tambien fue conocido por su postura energica frente al Fondo Monetario Internacional y por su liderazgo en la region."
     },
-    "chiste": {
-        "lista_chistes": [
-            "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
-            "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
-            "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
-            "¿Qué le dijo una impresora a otra? ¡Esa hoja es tuya o es una impresión mía!",
-            "Tengo un chiste sobre química, pero no sé si habrá una buena reacción.",
-            "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
-            "—¡Estás obsesionado con la comida! —No sé a qué te refieres croquetamente.",
-            "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
-            "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
-            "¿Qué le dice una cebolla a otra? Nos vemos en la sopa.",
-            "¿Cómo se despiden los químicos? Ácido un placer.",
-            "¿Qué hace una vaca cuando sale el sol? Sombra.",
-            "—¡Camarero! Este filete tiene muchos nervios. —Normal, es la primera vez que se lo comen.",
-            "¿Cuál es el colmo de Aladdín? Tener mal genio.",
-            "¿Qué le dice un jardinero a otro? ¡Disfruta mientras puedas, que la primavera la sangre altera!",
-            "¿Por qué los libros de matemáticas están tristes? Porque tienen muchos problemas.",
-            "¿Qué hace una computadora en la playa? ¡Nada!",
-            "¿Cómo se llama el primo de Bruce Lee? Broco Lee.",
-            "¿Cómo se llama el campeón de buceo alemán? Hans Fondo.",
-            "¿Qué hace una oreja cuando llueve? Escucha la lluvia.",
-            "¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
-            "¿Qué le dice una taza a otra? ¡Qué onda, taza!",
-            "¿Cómo se dice pañuelo en japonés? Saka-moko.",
-            "¿Qué hace una lámpara en el gimnasio? ¡Entrena su luz!",
-            "¿Cuál es el café más peligroso del mundo? El ex-preso.",
-            "¿Qué le dijo el tomate a la cebolla? ¡Nos vemos en la ensalada!",
-            "¿Qué le dice una iguana a su hija? ¡Iguanita, ve a la escuela!",
-            "¿Por qué los esqueletos no usan el móvil? Porque se les cae el hueso.",
-            "¿Cómo se despiden los químicos? ¡Ácido un placer!",
-            "¿Qué le dice una impresora a otra? ¿Esa hoja es tuya o es una impresión mía?",
-            "¿Por qué los libros de historia son siempre felices? Porque tienen muchos capítulos.",
-            "¿Qué hace una vaca en un terremoto? ¡Leche agitada!",
-            "¿Por qué el mar está tan salado? Porque los peces hacen pipí.",
-            "¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana.",
-            "¿Qué hace una taza en la escuela? ¡Toma té!",
-            "¿Por qué las estrellas no hacen fila? Porque ya tienen su propio sistema.",
-            "¿Qué hace una oreja en el gimnasio? ¡Entrena para escuchar mejor!",
-            "¿Cómo se llama el campeón de ciclismo ruso? Pedro Pedale.",
-            "¿Qué hace una lámpara en la escuela? ¡Ilumina el camino!",
-            "¿Por qué las abejas tienen pelo pegajoso? Porque usan miel."
-        ]
+    "Cristina": {
+      "periodo": "2007 - 2015",
+      "nombre_completo": "Cristina Fernandez de Kirchner",
+      "descripcion": "Cristina Fernandez de Kirchner, esposa de Nestor Kirchner, se convirtio en la primera mujer en ser reelegida como presidenta de Argentina. Su gobierno se caracterizo por un enfoque en la expansion del gasto social, la defensa de los derechos humanos y la nacionalizacion de diversas industrias. Enfrento grandes desafios, incluyendo conflictos con el campo y oposicion politica. Su gestion fue marcada por un crecimiento economico sostenido en los primeros años, pero luego enfrento problemas de inflacion y deudas externas, lo que afecto su popularidad en los ultimos años."
     },
-    "contexto": {
-        "ultimaPregunta": "hola",
-        "historialConversacion": [
-            {
-                "pregunta": "buenas tardes",
-                "respuesta": "buenas como estas??"
-            },
-            {
-                "pregunta": "que hora es",
-                "respuesta": "La hora actual es 23:56."
-            },
-            {
-                "pregunta": "que fecha es hoy",
-                "respuesta": "La fecha de hoy es 13-11-2024."
-            },
-            {
-                "pregunta": "que dia es hoy",
-                "respuesta": "Hoy es miércoles."
-            },
-            {
-                "pregunta": "que año es",
-                "respuesta": "Estamos en el año 2024."
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            },
-            {
-                "pregunta": "buenas tardes",
-                "respuesta": "buenas como estas??"
-            },
-            {
-                "pregunta": "hola",
-                "respuesta": "hola, como estas??"
-            }
-        ],
-        "recolectando_opinion": false,
-        "nombre_usuario": "",
-        "edad_usuario": ""
+    "Macri": {
+      "periodo": "2015 - 2019",
+      "nombre_completo": "Mauricio Macri",
+      "descripcion": "Mauricio Macri asumio la presidencia con la promesa de implementar reformas economicas que trajeran crecimiento y estabilidad. Su gobierno busco reducir el deficit fiscal y abrir la economia al mundo. Sin embargo, su mandato se vio afectado por una alta inflacion y una deuda creciente, lo que llevo a descontento social. Macri intento atraer inversiones extranjeras y fomentar el desarrollo, pero las dificultades economicas y la falta de apoyo politico limitaron su capacidad de implementar cambios significativos, resultando en una administracion con resultados mixtos."
     },
-    "recetario": {
-        "churros": {
-            "ingredientes": [
-                "1 taza de harina",
-                "1 taza de agua",
-                "1 cucharadita de sal",
-                "Aceite para freír",
-                "Azúcar para espolvorear"
-            ],
-            "paso_a_paso": [
-                "Hierve el agua con la sal.",
-                "Agrega la harina de golpe y mezcla bien hasta formar una masa.",
-                "Deja enfriar un poco y coloca la masa en una manga pastelera.",
-                "Calienta el aceite y fríe los churros hasta que estén dorados.",
-                "Espolvorea con azúcar y sirve."
-            ]
-        },
-        "donas": {
-            "ingredientes": [
-                "2 1/2 tazas de harina",
-                "1 taza de leche",
-                "2 huevos",
-                "1/2 taza de azúcar",
-                "1 cucharadita de sal",
-                "1 cucharada de levadura",
-                "Aceite para freír"
-            ],
-            "paso_a_paso": [
-                "Mezcla la harina, azúcar, sal y levadura.",
-                "Agrega la leche y los huevos, y amasa hasta obtener una masa suave.",
-                "Deja reposar la masa hasta que doble su tamaño.",
-                "Estira la masa y corta las donas.",
-                "Fríe en aceite caliente y deja enfriar antes de glasear."
-            ]
-        },
-        "pastaflora": {
-            "ingredientes": [
-                "2 tazas de harina",
-                "1/2 taza de azúcar",
-                "1/2 taza de manteca",
-                "1 huevo",
-                "Dulce de membrillo o batata"
-            ],
-            "paso_a_paso": [
-                "Mezcla la harina, azúcar y manteca hasta formar un arenado.",
-                "Agrega el huevo y mezcla hasta obtener una masa homogénea.",
-                "Estira la masa y colócala en un molde enmantecado.",
-                "Distribuye el dulce sobre la masa.",
-                "Hornea a 180°C durante 25-30 minutos o hasta que esté dorada."
-            ]
-        },
-        "bizcochuelo": {
-            "ingredientes": [
-                "3 huevos",
-                "1 taza de azúcar",
-                "1 taza de harina leudante",
-                "1/2 taza de leche",
-                "1 cucharadita de esencia de vainilla"
-            ],
-            "paso_a_paso": [
-                "Bate los huevos con el azúcar hasta que estén espumosos.",
-                "Agrega la harina tamizada en tres partes, alternando con la leche.",
-                "Añade la esencia de vainilla y mezcla bien.",
-                "Vierte la mezcla en un molde enmantecado.",
-                "Hornea a 180°C durante 30-35 minutos o hasta que al insertar un palillo salga limpio."
-            ]
-        },
-        "lemonpay": {
-            "ingredientes": [
-                "1 taza de harina",
-                "1/2 taza de manteca",
-                "1/2 taza de azúcar",
-                "2 huevos",
-                "1/2 taza de jugo de limón",
-                "Ralladura de limón"
-            ],
-            "paso_a_paso": [
-                "Mezcla la harina, manteca y azúcar para formar la base.",
-                "Presiona la mezcla en el fondo de un molde y hornea a 180°C durante 10 minutos.",
-                "Bate los huevos con el jugo y ralladura de limón.",
-                "Vierte la mezcla de limón sobre la base y hornea por 20 minutos más.",
-                "Deja enfriar y corta en cuadrados antes de servir."
-            ]
-        },
-        "budin": {
-            "ingredientes": [
-                "2 tazas de harina leudante",
-                "1 taza de azúcar",
-                "1/2 taza de manteca",
-                "3 huevos",
-                "1/2 taza de leche",
-                "1 cucharadita de esencia de vainilla"
-            ],
-            "paso_a_paso": [
-                "Bate la manteca con el azúcar hasta que esté cremosa.",
-                "Añade los huevos uno a uno y mezcla bien.",
-                "Incorpora la harina alternando con la leche.",
-                "Agrega la esencia de vainilla y mezcla hasta que esté homogéneo.",
-                "Vierte la mezcla en un molde enmantecado y hornea a 180°C durante 40-45 minutos."
-            ]
-        }
+    "Alberto": {
+      "periodo": "2019 - 2023",
+      "nombre_completo": "Alberto Fernandez",
+      "descripcion": "Alberto Fernandez asumio la presidencia en un contexto de crisis economica agudizada por la pandemia de COVID-19. Su gobierno enfrento retos significativos, incluyendo la gestion de la emergencia sanitaria y la reestructuracion de la deuda externa. Implemento politicas de apoyo a sectores vulnerables y busco establecer un dialogo con diferentes actores politicos y sociales. Su administracion ha sido criticada por la inflacion y la falta de crecimiento, aunque se ha centrado en recuperar la economia tras la crisis sanitaria, trabajando en medidas para estabilizar el pais."
     },
-    "verduras": {
-        "tomate": {
-            "nombre": "Tomate",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 2 días",
-            "tierra": "Tierra fértil y bien drenada, rica en materia orgánica (humo, compost)."
-        },
-        "acelga": {
-            "nombre": "Acelga",
-            "siembra": "Otoño",
-            "cosecha": "Invierno",
-            "riego": "3 veces por semana",
-            "tierra": "Tierra con buen drenaje, rica en nutrientes y materia orgánica."
-        },
-        "morron": {
-            "nombre": "Morron",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra suelta y rica en materia orgánica (humo y compost)."
-        },
-        "zanahoria": {
-            "nombre": "Zanahoria",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra suelta y arenosa, con buen drenaje."
-        },
-        "lechuga": {
-            "nombre": "Lechuga",
-            "siembra": "Primavera/Verano",
-            "cosecha": "Verano/otoño",
-            "riego": "Cada 2 días",
-            "tierra": "Tierra rica en materia orgánica y bien drenada."
-        },
-        "espinaca": {
-            "nombre": "Espinaca",
-            "siembra": "Otoño/Primavera",
-            "cosecha": "Primavera/Verano",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra rica en nutrientes, con buena retención de humedad."
-        },
-        "pepino": {
-            "nombre": "Pepino",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 2-3 días",
-            "tierra": "Tierra rica en materia orgánica y bien drenada."
-        },
-        "berenjena": {
-            "nombre": "Berenjena",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra fértil, suelta y rica en materia orgánica."
-        },
-        "rábano": {
-            "nombre": "Rábano",
-            "siembra": "Primavera/otoño",
-            "cosecha": "3-4 semanas después",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra suelta y bien drenada."
-        },
-        "papa": {
-            "nombre": "Papa",
-            "siembra": "Primavera",
-            "cosecha": "Verano/otoño",
-            "riego": "Cada 4 días",
-            "tierra": "Tierra rica en nutrientes, bien aireada y con buen drenaje."
-        },
-        "cebolla": {
-            "nombre": "Cebolla",
-            "siembra": "Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 4 días",
-            "tierra": "Tierra fértil y bien drenada, rica en materia orgánica."
-        },
-        "ajo": {
-            "nombre": "Ajo",
-            "siembra": "Otoño/Primavera",
-            "cosecha": "Verano",
-            "riego": "Cada 5 días",
-            "tierra": "Tierra suelta, bien drenada y rica en nutrientes."
-        },
-        "brócoli": {
-            "nombre": "Brócoli",
-            "siembra": "Primavera/otoño",
-            "cosecha": "Verano",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra rica en nutrientes y bien drenada."
-        },
-        "col": {
-            "nombre": "Col",
-            "siembra": "Primavera/otoño",
-            "cosecha": "Verano/invierno",
-            "riego": "Cada 3 días",
-            "tierra": "Tierra fértil y rica en materia orgánica."
-        }
+    "Milei": {
+      "periodo": "2023 - 2024",
+      "nombre_completo": "Javier Gerardo Milei",
+      "descripcion": "Javier Milei es un economista y politico argentino que asumio la presidencia en 2024. Es conocido por su postura libertaria y por proponer reformas economicas radicales en un contexto de crisis economica y alta inflacion. Su enfoque se centra en reducir drasticamente el gasto publico, eliminar regulaciones y promover la libertad de mercado. Milei ha ganado notoriedad por su estilo provocador y su discurso anti-establishment, apelando a votantes que buscan un cambio en el sistema politico tradicional. Es un firme defensor de la propiedad privada y ha manifestado su intencion de cerrar el Banco Central."
     }
+  },
+  "signos_zodiacales": {
+    "aries": {
+      "fecha-fecha": "21-03-2024 a 19-04-2024",
+      "descripcion": "Aries, el primer signo del zodiaco, es conocido por su energía y determinación. Los arianos son aventureros y les gusta ser líderes en cualquier situación. Son audaces y no temen asumir riesgos. Su personalidad ardiente les impulsa a actuar con rapidez y a buscar nuevas experiencias.",
+      "elemento": "fuego",
+      "compatibilidad": ["leo", "sagitario", "geminis"]
+    },
+    "tauro": {
+      "fecha-fecha": "20-04-2024 a 20-05-2024",
+      "descripcion": "Tauro, el segundo signo del zodiaco, se caracteriza por su determinación y su enfoque práctico en la vida. Su personalidad está marcada por la paciencia y la perseverancia, lo que les permite lograr sus objetivos a largo plazo. Tauro valora la estabilidad y el confort, y disfruta de los placeres sensoriales de la vida. Su naturaleza terrosa les proporciona una conexión fuerte con la realidad, lo que les permite construir una vida segura y sólida.",
+      "elemento": "tierra",
+      "compatibilidad": ["virgo", "capricornio", "cancer"]
+    },
+    "geminis": {
+      "fecha-fecha": "21-05-2024 a 20-06-2024",
+      "descripcion": "Géminis, el tercer signo del zodiaco, es conocido por su dualidad y versatilidad. Estas personas son curiosas, comunicativas y disfrutan de aprender cosas nuevas. Su naturaleza inquieta puede hacer que a veces se sientan dispersos, pero su inteligencia y rapidez mental les permiten adaptarse a cualquier situación. Los géminis son excelentes conversadores, lo que les ayuda a hacer amistades fácilmente y a ser el alma de la fiesta.",
+      "elemento": "aire",
+      "compatibilidad": ["libra", "acuario", "leo"]
+    },
+    "cancer": {
+      "fecha-fecha": "21-06-2024 a 22-07-2024",
+      "descripcion": "Cáncer, el cuarto signo del zodiaco, es conocido por su sensibilidad y fuerte conexión emocional. Estas personas son protectoras, empáticas y muy intuitivas. Su hogar y la familia son fundamentales para ellos, y a menudo se sienten más cómodos en entornos familiares. Cáncer también es un signo muy creativo, con una rica vida interior que les ayuda a expresar sus emociones de maneras artísticas.",
+      "elemento": "agua",
+      "compatibilidad": ["escorpio", "piscis", "tauro"]
+    },
+    "leo": {
+      "fecha-fecha": "23-07-2024 a 22-08-2024",
+      "descripcion": "Leo, el quinto signo del zodiaco, es conocido por su confianza y carisma. Son líderes naturales y disfrutan de ser el centro de atención. Su generosidad y espíritu cálido atraen a otros hacia ellos, y son conocidos por su lealtad a amigos y seres queridos. Leo posee una gran creatividad y pasión, lo que les permite destacar en actividades artísticas y de entretenimiento.",
+      "elemento": "fuego",
+      "compatibilidad": ["aries", "sagitario", "geminis"]
+    },
+    "virgo": {
+      "fecha-fecha": "23-08-2024 a 22-09-2024",
+      "descripcion": "Virgo, el sexto signo del zodiaco, es conocido por su enfoque analítico y atención al detalle. Estas personas son trabajadoras y perfeccionistas, lo que les ayuda a alcanzar altos estándares en todo lo que hacen. Su naturaleza práctica les permite encontrar soluciones eficaces a los problemas. Aunque a veces pueden parecer críticos, su intención es siempre mejorar las cosas y ayudar a los demás.",
+      "elemento": "tierra",
+      "compatibilidad": ["tauro", "capricornio", "cancer"]
+    },
+    "libra": {
+      "fecha-fecha": "23-09-2024 a 22-10-2024",
+      "descripcion": "Libra, el séptimo signo del zodiaco, se caracteriza por su amor por la belleza y la armonía. Son diplomáticos, justos y valoran las relaciones interpersonales. Libra busca el equilibrio en su vida y a menudo actúa como mediador en conflictos. Su naturaleza social les permite formar conexiones fácilmente, y disfrutan de rodearse de personas creativas e inspiradoras.",
+      "elemento": "aire",
+      "compatibilidad": ["geminis", "acuario", "leo"]
+    },
+    "escorpio": {
+      "fecha-fecha": "23-10-2024 a 21-11-2024",
+      "descripcion": "Escorpio, el octavo signo del zodiaco, es conocido por su intensidad y profundidad emocional. Estas personas son apasionadas, decididas y a menudo tienen un aura misteriosa. Escorpio es conocido por su capacidad para transformar las situaciones, y su deseo de profundizar en los aspectos ocultos de la vida. Son leales a sus seres queridos y tienen una gran capacidad para la empatía.",
+      "elemento": "agua",
+      "compatibilidad": ["cancer", "piscis", "virgo"]
+    },
+    "sagitario": {
+      "fecha-fecha": "22-11-2024 a 21-12-2024",
+      "descripcion": "Sagitario, el noveno signo del zodiaco, es conocido por su amor por la aventura y la exploración. Estas personas son optimistas, entusiastas y disfrutan de aprender sobre diferentes culturas y filosofías. Sagitario busca la libertad y valora la honestidad en sus relaciones. Su naturaleza independiente a menudo les lleva a viajar y explorar nuevas experiencias.",
+      "elemento": "fuego",
+      "compatibilidad": ["aries", "leo", "acuario"]
+    },
+    "capricornio": {
+      "fecha-fecha": "22-12-2024 a 19-01-2025",
+      "descripcion": "Capricornio, el décimo signo del zodiaco, es conocido por su ambición y determinación. Estas personas son trabajadoras, disciplinadas y suelen tener un enfoque serio hacia la vida. Capricornio valora la estabilidad y el éxito a largo plazo, y está dispuesto a hacer sacrificios para alcanzar sus metas. Su naturaleza pragmática les permite planificar cuidadosamente y avanzar en sus proyectos con tenacidad.",
+      "elemento": "tierra",
+      "compatibilidad": ["tauro", "virgo", "escorpio"]
+    },
+    "acuario": {
+      "fecha-fecha": "20-01-2025 a 18-02-2025",
+      "descripcion": "Acuario, el undécimo signo del zodiaco, es conocido por su originalidad y pensamiento progresista. Estas personas son innovadoras, humanitarias y suelen tener un enfoque único hacia la vida. Acuario valora la independencia y la libertad, y es conocido por desafiar las normas establecidas. Su naturaleza visionaria les permite imaginar un futuro mejor y trabajar para lograr cambios positivos en la sociedad.",
+      "elemento": "aire",
+      "compatibilidad": ["geminis", "libra", "sagitario"]
+    },
+    "piscis": {
+      "fecha-fecha": "19-02-2025 a 20-03-2025",
+      "descripcion": "Piscis, el último signo del zodiaco, es conocido por su sensibilidad y conexión espiritual. Estas personas son empáticas, soñadoras y suelen tener una rica vida interior. Piscis valora el arte y la creatividad, y tiende a ser muy intuitivo. Su naturaleza compasiva les permite conectar profundamente con los demás, a menudo buscando ayudar a quienes los rodean.",
+      "elemento": "agua",
+      "compatibilidad": ["cancer", "escorpio", "tauro"]
+    }
+  },
+  "musica": {
+    "pop": {
+      "madonna": {
+        "nombre_completo": "Madonna Louise Ciccone",
+        "descripcion": "Madonna es una de las figuras mas influyentes de la musica pop, conocida como la 'Reina del Pop'. Ha tenido una extensa carrera desde los anos 80, caracterizada por su habilidad para reinventarse y su influencia en la cultura musical.",
+        "fecha_nacimiento": "16-08-1958",
+        "nacionalidad": "Estadounidense",
+        "canciones": [
+          "Like a Virgin",
+          "True Blue",
+          "Ray of Light",
+          "Confessions on a Dance Floor"
+        ],
+        "premios": {
+          "grammy": 7,
+          "golden_globe": 2,
+          "mtv_awards": 20
+        },
+        "influencias": ["David Bowie", "Michael Jackson", "Prince"]
+      }
+    }
+  },
+  "chiste": {
+    "lista_chistes": [
+      "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
+      "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
+      "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
+      "¿Qué le dijo una impresora a otra? ¡Esa hoja es tuya o es una impresión mía!",
+      "Tengo un chiste sobre química, pero no sé si habrá una buena reacción.",
+      "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
+      "—¡Estás obsesionado con la comida! —No sé a qué te refieres croquetamente.",
+      "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+      "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+      "¿Qué le dice una cebolla a otra? Nos vemos en la sopa.",
+      "¿Cómo se despiden los químicos? Ácido un placer.",
+      "¿Qué hace una vaca cuando sale el sol? Sombra.",
+      "—¡Camarero! Este filete tiene muchos nervios. —Normal, es la primera vez que se lo comen.",
+      "¿Cuál es el colmo de Aladdín? Tener mal genio.",
+      "¿Qué le dice un jardinero a otro? ¡Disfruta mientras puedas, que la primavera la sangre altera!",
+      "¿Por qué los libros de matemáticas están tristes? Porque tienen muchos problemas.",
+      "¿Qué hace una computadora en la playa? ¡Nada!",
+      "¿Cómo se llama el primo de Bruce Lee? Broco Lee.",
+      "¿Cómo se llama el campeón de buceo alemán? Hans Fondo.",
+      "¿Qué hace una oreja cuando llueve? Escucha la lluvia.",
+      "¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
+      "¿Qué le dice una taza a otra? ¡Qué onda, taza!",
+      "¿Cómo se dice pañuelo en japonés? Saka-moko.",
+      "¿Qué hace una lámpara en el gimnasio? ¡Entrena su luz!",
+      "¿Cuál es el café más peligroso del mundo? El ex-preso.",
+      "¿Qué le dijo el tomate a la cebolla? ¡Nos vemos en la ensalada!",
+      "¿Qué le dice una iguana a su hija? ¡Iguanita, ve a la escuela!",
+      "¿Por qué los esqueletos no usan el móvil? Porque se les cae el hueso.",
+      "¿Cómo se despiden los químicos? ¡Ácido un placer!",
+      "¿Qué le dice una impresora a otra? ¿Esa hoja es tuya o es una impresión mía?",
+      "¿Por qué los libros de historia son siempre felices? Porque tienen muchos capítulos.",
+      "¿Qué hace una vaca en un terremoto? ¡Leche agitada!",
+      "¿Por qué el mar está tan salado? Porque los peces hacen pipí.",
+      "¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana.",
+      "¿Qué hace una taza en la escuela? ¡Toma té!",
+      "¿Por qué las estrellas no hacen fila? Porque ya tienen su propio sistema.",
+      "¿Qué hace una oreja en el gimnasio? ¡Entrena para escuchar mejor!",
+      "¿Cómo se llama el campeón de ciclismo ruso? Pedro Pedale.",
+      "¿Qué hace una lámpara en la escuela? ¡Ilumina el camino!",
+      "¿Por qué las abejas tienen pelo pegajoso? Porque usan miel."
+    ]
+  },
+  "contexto": {
+    "ultimaPregunta": "hola",
+    "historialConversacion": [
+      {
+        "pregunta": "buenas tardes",
+        "respuesta": "buenas como estas??"
+      },
+      {
+        "pregunta": "que hora es",
+        "respuesta": "La hora actual es 23:56."
+      },
+      {
+        "pregunta": "que fecha es hoy",
+        "respuesta": "La fecha de hoy es 13-11-2024."
+      },
+      {
+        "pregunta": "que dia es hoy",
+        "respuesta": "Hoy es miércoles."
+      },
+      {
+        "pregunta": "que año es",
+        "respuesta": "Estamos en el año 2024."
+      },
+      {
+        "pregunta": "hola",
+        "respuesta": "hola, como estas??"
+      },
+      {
+        "pregunta": "hola",
+        "respuesta": "hola, como estas??"
+      },
+      {
+        "pregunta": "hola",
+        "respuesta": "hola, como estas??"
+      },
+      {
+        "pregunta": "buenas tardes",
+        "respuesta": "buenas como estas??"
+      },
+      {
+        "pregunta": "hola",
+        "respuesta": "hola, como estas??"
+      }
+    ],
+    "recolectando_opinion": false,
+    "nombre_usuario": "",
+    "edad_usuario": ""
+  },
+  "recetario": {
+    "churros": {
+      "ingredientes": [
+        "1 taza de harina",
+        "1 taza de agua",
+        "1 cucharadita de sal",
+        "Aceite para freír",
+        "Azúcar para espolvorear"
+      ],
+      "paso_a_paso": [
+        "Hierve el agua con la sal.",
+        "Agrega la harina de golpe y mezcla bien hasta formar una masa.",
+        "Deja enfriar un poco y coloca la masa en una manga pastelera.",
+        "Calienta el aceite y fríe los churros hasta que estén dorados.",
+        "Espolvorea con azúcar y sirve."
+      ]
+    },
+    "donas": {
+      "ingredientes": [
+        "2 1/2 tazas de harina",
+        "1 taza de leche",
+        "2 huevos",
+        "1/2 taza de azúcar",
+        "1 cucharadita de sal",
+        "1 cucharada de levadura",
+        "Aceite para freír"
+      ],
+      "paso_a_paso": [
+        "Mezcla la harina, azúcar, sal y levadura.",
+        "Agrega la leche y los huevos, y amasa hasta obtener una masa suave.",
+        "Deja reposar la masa hasta que doble su tamaño.",
+        "Estira la masa y corta las donas.",
+        "Fríe en aceite caliente y deja enfriar antes de glasear."
+      ]
+    },
+    "pastaflora": {
+      "ingredientes": [
+        "2 tazas de harina",
+        "1/2 taza de azúcar",
+        "1/2 taza de manteca",
+        "1 huevo",
+        "Dulce de membrillo o batata"
+      ],
+      "paso_a_paso": [
+        "Mezcla la harina, azúcar y manteca hasta formar un arenado.",
+        "Agrega el huevo y mezcla hasta obtener una masa homogénea.",
+        "Estira la masa y colócala en un molde enmantecado.",
+        "Distribuye el dulce sobre la masa.",
+        "Hornea a 180°C durante 25-30 minutos o hasta que esté dorada."
+      ]
+    },
+    "bizcochuelo": {
+      "ingredientes": [
+        "3 huevos",
+        "1 taza de azúcar",
+        "1 taza de harina leudante",
+        "1/2 taza de leche",
+        "1 cucharadita de esencia de vainilla"
+      ],
+      "paso_a_paso": [
+        "Bate los huevos con el azúcar hasta que estén espumosos.",
+        "Agrega la harina tamizada en tres partes, alternando con la leche.",
+        "Añade la esencia de vainilla y mezcla bien.",
+        "Vierte la mezcla en un molde enmantecado.",
+        "Hornea a 180°C durante 30-35 minutos o hasta que al insertar un palillo salga limpio."
+      ]
+    },
+    "lemonpay": {
+      "ingredientes": [
+        "1 taza de harina",
+        "1/2 taza de manteca",
+        "1/2 taza de azúcar",
+        "2 huevos",
+        "1/2 taza de jugo de limón",
+        "Ralladura de limón"
+      ],
+      "paso_a_paso": [
+        "Mezcla la harina, manteca y azúcar para formar la base.",
+        "Presiona la mezcla en el fondo de un molde y hornea a 180°C durante 10 minutos.",
+        "Bate los huevos con el jugo y ralladura de limón.",
+        "Vierte la mezcla de limón sobre la base y hornea por 20 minutos más.",
+        "Deja enfriar y corta en cuadrados antes de servir."
+      ]
+    },
+    "budin": {
+      "ingredientes": [
+        "2 tazas de harina leudante",
+        "1 taza de azúcar",
+        "1/2 taza de manteca",
+        "3 huevos",
+        "1/2 taza de leche",
+        "1 cucharadita de esencia de vainilla"
+      ],
+      "paso_a_paso": [
+        "Bate la manteca con el azúcar hasta que esté cremosa.",
+        "Añade los huevos uno a uno y mezcla bien.",
+        "Incorpora la harina alternando con la leche.",
+        "Agrega la esencia de vainilla y mezcla hasta que esté homogéneo.",
+        "Vierte la mezcla en un molde enmantecado y hornea a 180°C durante 40-45 minutos."
+      ]
+    }
+  },
+  "verduras": {
+    "tomate": {
+      "nombre": "Tomate",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 2 días",
+      "tierra": "Tierra fértil y bien drenada, rica en materia orgánica (humo, compost)."
+    },
+    "acelga": {
+      "nombre": "Acelga",
+      "siembra": "Otoño",
+      "cosecha": "Invierno",
+      "riego": "3 veces por semana",
+      "tierra": "Tierra con buen drenaje, rica en nutrientes y materia orgánica."
+    },
+    "morron": {
+      "nombre": "Morron",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra suelta y rica en materia orgánica (humo y compost)."
+    },
+    "zanahoria": {
+      "nombre": "Zanahoria",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra suelta y arenosa, con buen drenaje."
+    },
+    "lechuga": {
+      "nombre": "Lechuga",
+      "siembra": "Primavera/Verano",
+      "cosecha": "Verano/otoño",
+      "riego": "Cada 2 días",
+      "tierra": "Tierra rica en materia orgánica y bien drenada."
+    },
+    "espinaca": {
+      "nombre": "Espinaca",
+      "siembra": "Otoño/Primavera",
+      "cosecha": "Primavera/Verano",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra rica en nutrientes, con buena retención de humedad."
+    },
+    "pepino": {
+      "nombre": "Pepino",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 2-3 días",
+      "tierra": "Tierra rica en materia orgánica y bien drenada."
+    },
+    "berenjena": {
+      "nombre": "Berenjena",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra fértil, suelta y rica en materia orgánica."
+    },
+    "rábano": {
+      "nombre": "Rábano",
+      "siembra": "Primavera/otoño",
+      "cosecha": "3-4 semanas después",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra suelta y bien drenada."
+    },
+    "papa": {
+      "nombre": "Papa",
+      "siembra": "Primavera",
+      "cosecha": "Verano/otoño",
+      "riego": "Cada 4 días",
+      "tierra": "Tierra rica en nutrientes, bien aireada y con buen drenaje."
+    },
+    "cebolla": {
+      "nombre": "Cebolla",
+      "siembra": "Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 4 días",
+      "tierra": "Tierra fértil y bien drenada, rica en materia orgánica."
+    },
+    "ajo": {
+      "nombre": "Ajo",
+      "siembra": "Otoño/Primavera",
+      "cosecha": "Verano",
+      "riego": "Cada 5 días",
+      "tierra": "Tierra suelta, bien drenada y rica en nutrientes."
+    },
+    "brócoli": {
+      "nombre": "Brócoli",
+      "siembra": "Primavera/otoño",
+      "cosecha": "Verano",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra rica en nutrientes y bien drenada."
+    },
+    "col": {
+      "nombre": "Col",
+      "siembra": "Primavera/otoño",
+      "cosecha": "Verano/invierno",
+      "riego": "Cada 3 días",
+      "tierra": "Tierra fértil y rica en materia orgánica."
+    }
+  }
 }

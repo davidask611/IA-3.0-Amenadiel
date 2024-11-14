@@ -1,47 +1,40 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
-# import os
 import json
 from difflib import get_close_matches
 from funciones.funcion_eliminarAcentos import eliminar_acentos
+import os
+# from manejo_archivos import process_json, process_txt, process_pdf
+from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 
 def cargar_datos(nombre_archivo='datos_previos.json'):
     try:
         with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
-            return json.load(archivo)  # Cargar datos del archivo JSON
+            return json.load(archivo)
     except FileNotFoundError:
         print("Error: Archivo no encontrado.")
-        return {}  # Retorna un diccionario vacío si no se encuentra el archivo
+        return {}
     except json.JSONDecodeError:
         print("Error: Formato inválido en el archivo JSON.")
-        return {}  # Retorna un diccionario vacío si hay un error de formato
-
+        return {}
 
 datos_previos = cargar_datos('datos_previos.json')
 
 def guardar_datos(datos, nombre_archivo='datos_previos.json'):
-    """Guarda los datos actualizados en el archivo JSON."""
     try:
         with open(nombre_archivo, "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=4)
     except IOError as e:
         print(f"Error al guardar el archivo {nombre_archivo}: {e}")
 
-guardar_datos(datos_previos)
-
 def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
-    """
-    Función que busca una respuesta en los datos_previos para una pregunta específica.
-    Sigue un flujo diferente para usuario y administrador.
-    """
-    seccion_primaria = "entrenamiento" if modo_administrador else "publico"
-    seccion_secundaria = "publico" if modo_administrador else "entrenamiento"
-    intentos_restantes = 3 if modo_administrador else 1
+    seccion = "entrenamiento" if modo_administrador else "publico"
 
+    # Función interna para buscar en la sección de datos previos
     def buscar_en_seccion(seccion):
         if seccion not in datos_previos:
-            return []  # Si la sección no existe, no hay resultados.
+            return []
         resultados = []
         for categoria, contenido in datos_previos.get(seccion, {}).items():
             if isinstance(contenido, dict):
@@ -57,39 +50,29 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False):
                         resultados.append(frase)
         return resultados
 
-    while intentos_restantes > 0:
-        # Busca en la sección primaria
-        resultados = buscar_en_seccion(seccion_primaria)
-        if resultados:
-            return f"Respuesta encontrada en {seccion_primaria.capitalize()}: <br><br>{resultados[0]}"
+    # Busca en la sección correspondiente (entrenamiento o público)
+    resultados = buscar_en_seccion(seccion)
+    if resultados:
+        return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
 
-        # Si no encontró en la primaria, intenta en la secundaria
-        resultados = buscar_en_seccion(seccion_secundaria)
-        if resultados:
-            return f"Respuesta encontrada en {seccion_secundaria.capitalize()}: <br><br>{resultados[0]}"
+    # En modo administrador: intenta buscar en archivos de uploads
+    if modo_administrador:
+        print("Intentando buscar respuesta en archivos de carga para el administrador...")
+        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
+        if resultados_archivos:
+            return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
 
-        # Si modo administrador y no encuentra respuesta válida en ambos secciones
-        if modo_administrador:
-            print(f"Intento {4 - intentos_restantes}/3 para generar respuesta...")
-            respuesta_generada = generar_respuesta_por_similitud(pregunta_limpia, datos_previos)
-            confirmacion = input(f"Respuesta sugerida: {respuesta_generada}\n¿Es coherente? (si/no): ")
-            if confirmacion.lower() == "si":
-                mostrar_categorias(datos_previos["publico"], pregunta_limpia, respuesta_generada)
-                return f"Respuesta confirmada: {respuesta_generada}"
-            intentos_restantes -= 1
+        # Si no encuentra en archivos, sugiere cargar archivos nuevos para el administrador
+        print("No se encontró información en las fuentes actuales.")
+        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
 
-        if not modo_administrador or intentos_restantes == 0:
-            return "No encontré una respuesta. Por favor, enséñame la respuesta correcta."
+    # Si es usuario y no encuentra respuesta, muestra un mensaje amigable
+    return None
 
-    return "No se ha encontrado información relacionada."
 
 def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
-    """
-    Genera una respuesta por similitud usando TF-IDF.
-    """
-    # Extraer las respuestas disponibles de los datos previos
     respuestas_posibles = []
     for seccion in datos_previos.values():
         if isinstance(seccion, dict):
@@ -99,49 +82,32 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
                 elif isinstance(contenido, list):
                     respuestas_posibles.extend(contenido)
 
-    # Crear un vectorizador TF-IDF
     vectorizer = TfidfVectorizer(stop_words='spanish')
-
-    # Combina las preguntas existentes y la nueva pregunta en un solo conjunto de datos
     preguntas_existentes = list(datos_previos.keys())
     preguntas_existentes.append(pregunta_limpia)
 
-    # Transforma las preguntas en vectores TF-IDF
     tfidf_matrix = vectorizer.fit_transform(preguntas_existentes)
-
-    # Calcula la similitud coseno entre la nueva pregunta y las preguntas previas
     similitudes = np.dot(tfidf_matrix[-1], tfidf_matrix[:-1].T).toarray()
 
-    # Obtiene la pregunta más similar
     indice_similitud_maxima = similitudes.argmax()
     respuesta_similar = respuestas_posibles[indice_similitud_maxima]
     guardar_datos(datos_previos)
 
     return respuesta_similar
 
-
-def mostrar_categorias(publico, pregunta_limpia, respuesta_generada):
+def buscar_en_archivos_uploads(pregunta_limpia, carpeta_uploads='uploads'):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
-
-    """Muestra categorías disponibles para agregar una nueva respuesta confirmada."""
-    print("Elige una categoría para guardar la respuesta o crea una nueva:")
-    categorias = list(publico.keys())
-    for categoria in categorias:
-        print(f"- {categoria}")
-    print("- Nueva categoría")
-
-    categoria_seleccionada = input("Selecciona una categoría o ingresa 'Nueva categoría': ").strip()
-
-    if categoria_seleccionada == "Nueva categoría":
-        categoria_seleccionada = input("Ingresa el nombre de la nueva categoría: ").strip()
-        publico[categoria_seleccionada] = {}
-
-    if categoria_seleccionada not in publico:
-        publico[categoria_seleccionada] = {}
-
-    publico[categoria_seleccionada][pregunta_limpia] = respuesta_generada
-
-    # Guardamos los datos actualizados después de la modificación
-    guardar_datos(datos_previos)
-
-    print(f"Respuesta guardada en la categoría: {categoria_seleccionada}")
+    resultados = []
+    for nombre_archivo in os.listdir(carpeta_uploads):
+        ruta_archivo = os.path.join(carpeta_uploads, nombre_archivo)
+        if nombre_archivo.endswith('.json'):
+            datos = process_json(ruta_archivo)
+            # Aquí puedes realizar una búsqueda en los datos JSON cargados
+        elif nombre_archivo.endswith('.txt'):
+            contenido = process_txt(ruta_archivo)
+            # Buscar en el contenido del archivo TXT
+        elif nombre_archivo.endswith('.pdf'):
+            contenido = process_pdf(ruta_archivo)
+            # Buscar en el contenido del archivo PDF
+        # Agregar coincidencias al arreglo resultados si se encuentran
+    return resultados

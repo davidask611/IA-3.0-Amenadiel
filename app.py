@@ -1,13 +1,16 @@
 import json
 from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia_data, matematica, animales_data, comida
-import os
 import pdfplumber
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
 from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 from funciones.funcion_geografia import geografia
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 # from funciones.funcion_comida import comida
 
 app = Flask(__name__)
