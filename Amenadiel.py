@@ -23,7 +23,7 @@ from funciones.funcion_huerta import huerta
 from funciones.funcion_geografia import geografia
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 from funcionesAdmin.funcion_ver_datos import ver_datos
-from funcionesAdmin.funcion_aprender import entrenando_IA, buscar_en_archivos_uploads
+from funcionesAdmin.funcion_aprender import entrenando_IA, buscar_en_archivos_uploads, generar_respuesta_por_similitud
 UMBRAL_SIMILITUD = 0.5
 historial_preguntas = []  # Contexto/ultima pregunta/categoria
 historial_conversacion = []
@@ -69,7 +69,7 @@ def cargar_datos_geografia():
         )  # Si el archivo no existe o está vacío, retornamos un diccionario vacío
 
 
-geografia_data= cargar_datos_geografia()
+geografia_data = cargar_datos_geografia()
 
 
 def cargar_saludos(conocimientos):
@@ -84,7 +84,8 @@ def cargar_json(archivo):
 
 def guardar_datos(datos, nombre_archivo='conocimientos.json', mostrar_mensaje=False, verificar_existencia=True):
     if verificar_existencia and not os.path.exists(nombre_archivo):
-        print(f"Advertencia: El archivo '{archivo}' no contiene datos válidos o está vacío.")
+        print(
+            f"Advertencia: El archivo '{archivo}' no contiene datos válidos o está vacío.")
 
     try:
         with open(nombre_archivo, 'w', encoding='utf-8') as archivo:
@@ -92,8 +93,8 @@ def guardar_datos(datos, nombre_archivo='conocimientos.json', mostrar_mensaje=Fa
         if mostrar_mensaje:
             print(f"Datos guardados exitosamente en '{nombre_archivo}'.")
     except IOError as e:
-        print(f"Error al guardar los datos en el archivo '{nombre_archivo}': {e}")
-
+        print(
+            f"Error al guardar los datos en el archivo '{nombre_archivo}': {e}")
 
 
 def cargar_animales(nombre_archivo='animales.json'):
@@ -110,6 +111,7 @@ def cargar_animales(nombre_archivo='animales.json'):
 
 animales_data = cargar_animales('animales.json')
 
+
 def cargar_datos_previos(nombre_archivo='datos_previos.json'):
     try:
         with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
@@ -121,9 +123,11 @@ def cargar_datos_previos(nombre_archivo='datos_previos.json'):
         print("Error: Formato inválido en el archivo JSON.")
         return {}  # Retorna un diccionario vacío si hay un error de formato
 
+
 datos_previos = cargar_datos_previos()
 
 # print(datos_previos)
+
 
 def actualizar_historial(pregunta, respuesta, conocimientos, animales_data):
     historial_conversacion.append(
@@ -166,12 +170,13 @@ def calcular_similitud_coseno(pregunta, respuestas):
 
 
 # Función principal de la IA para procesar mensajes de usuario
-def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, es_administrador=False):
+def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, modo_administrador=False):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
-    print(f"Procesando mensaje: {pregunta_limpia}, Modo administrador: {es_administrador}")
+    print(
+        f"Procesando mensaje: {pregunta_limpia}, Modo administrador: {modo_administrador}")
 
-    if es_administrador and pregunta_limpia == "ver datos":
+    if modo_administrador and pregunta_limpia == "ver datos":
         contenido = ver_datos(directorio_json='.')
         print("Contenido obtenido:", contenido)
         return contenido if contenido else "No se pudo obtener el contenido."
@@ -233,7 +238,8 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
     if conocimientos["contexto"].get("ultimaPregunta") in ["receta", "recetas", "postres"]:
         try:
             num_receta = int(pregunta_limpia.strip())
-            respuesta_receta = comida(pregunta_limpia, conocimientos, num_receta)
+            respuesta_receta = comida(
+                pregunta_limpia, conocimientos, num_receta)
             print("Respuesta de elección de receta:", respuesta_receta)
             return respuesta_receta
         except ValueError:
@@ -271,32 +277,58 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         return respuesta_chiste
 
     # Verificar primero si la pregunta menciona palabras clave de animales
-    palabras_clave_animales = ["animal", "especie", "perro", "gato", "ave", "felino", "mamífero"]  # puedes expandir esta lista
+    palabras_clave_animales = ["animal", "especie", "perro", "gato",
+                               "ave", "felino", "mamífero"]  # puedes expandir esta lista
     if any(palabra in pregunta_limpia for palabra in palabras_clave_animales):
-        respuesta_animales = verificar_musica_animal(pregunta_limpia, conocimientos, animales_data)
+        respuesta_animales = verificar_musica_animal(
+            pregunta_limpia, conocimientos, animales_data)
         if respuesta_animales != "No tengo suficiente información para responder esta pregunta.":
             print("Respuesta sobre animales:", respuesta_animales)
             return respuesta_animales
 
     # Al final del flujo, si no hay respuesta específica
-    respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=es_administrador)
-
-    if es_administrador and not respuesta_ia:  # Si en modo administrador, no se encuentra respuesta con la IA
-        # Si no se encuentra en los datos previos, buscar en archivos de carga
-        print("Buscando en archivos cargados del administrador...")
-        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
-        if resultados_archivos:
-            print(f"Respuesta encontrada en archivos de carga: {resultados_archivos[0]}")
-            return f"Respuesta encontrada en archivos de carga: {resultados_archivos[0]}"
-
-        # Si no se encuentra en los archivos, responder amigablemente o sugerir cargar archivos nuevos
-        print("No se encontró información en las fuentes actuales.")
-        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
-
+    respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos,
+                                 modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6)
     if respuesta_ia:
         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
         return respuesta_ia
 
+    # if modo_administrador:
+    #     print("Intentando buscar respuesta en archivos de carga para el administrador...")
+
+    #     # Buscar en los archivos con expresiones regulares y TF-IDF
+    #     resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
+
+    #     if resultados_archivos:
+    #         print("Respuesta encontrada en archivos de carga.")
+    #         return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
+
+    #     # Si no se encontró en archivos, intenta con similitud avanzada
+    #     print(
+    #         "No se encontró información en los archivos. Buscando por similitud avanzada...")
+    #     respuesta_similitud = generar_respuesta_por_similitud(
+    #         pregunta_limpia, datos_previos, modo_administrador)
+
+    #     if respuesta_similitud:
+    #         print("Respuesta por similitud avanzada:", respuesta_similitud)
+    #         return respuesta_similitud
+
+    #     # Si no encontró nada, intenta con `entrenando_IA`
+    #     print("Intentando obtener respuesta de entrenando_IA...")
+    #     respuesta_ia = entrenando_IA(
+    #         pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
+
+    #     if respuesta_ia:
+    #         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+    #         return respuesta_ia
+
+    #     # Si no encontró nada, notifica al administrador
+    #     print("No se encontró información en las fuentes actuales.")
+    #     return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
+
+    # if respuesta_ia:
+    #     print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+    #     return respuesta_ia
 
     # Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [
@@ -307,6 +339,7 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         "Parece que necesito un poco más de contexto."
     ]
     return random.choice(respuestas_amigables)
+
 
 def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_previos, modo_administrador=False):
     # Limpiar y preparar la pregunta
@@ -322,8 +355,10 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
 
     # Verificar si hay una coincidencia cercana en conocimientos generales
     if similitudes_conocimientos.size > 0 and similitudes_conocimientos.max() > UMBRAL_SIMILITUD:
-        respuesta_seleccionada = respuestas_conocimientos[similitudes_conocimientos.argmax()]
-        actualizar_historial(pregunta, respuesta_seleccionada, conocimientos, animales_data)
+        respuesta_seleccionada = respuestas_conocimientos[similitudes_conocimientos.argmax(
+        )]
+        actualizar_historial(pregunta, respuesta_seleccionada,
+                             conocimientos, animales_data)
         return respuesta_seleccionada
 
     # Paso 2: Categoría específica - Buscar en animales_data
@@ -341,7 +376,8 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
 
         # Extraer los nombres de las razas para comparar con similitud coseno
         nombres_razas = list(razas.keys())
-        similitudes_razas = calcular_similitud_coseno(pregunta_limpia, nombres_razas)
+        similitudes_razas = calcular_similitud_coseno(
+            pregunta_limpia, nombres_razas)
 
         # Verificar si hay una coincidencia cercana en las razas
         if similitudes_razas.size > 0 and similitudes_razas.max() > UMBRAL_SIMILITUD:
@@ -363,7 +399,8 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
         }.get(subcategoria, "Por favor, especifica una raza o especie.")
 
     # Al final del flujo, si no hay respuesta específica
-    respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=modo_administrador)
+    respuesta_ia = entrenando_IA(
+        pregunta_limpia, datos_previos, modo_administrador=modo_administrador)
     if respuesta_ia:
         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
         return respuesta_ia
@@ -377,4 +414,3 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
         "Parece que necesito un poco más de contexto."
     ]
     return random.choice(respuestas_amigables)
-

@@ -1,28 +1,90 @@
+from config import Config
 import json
+import mimetypes
 from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia_data, matematica, animales_data, comida
-import pdfplumber
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
 from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
 from funciones.funcion_eliminarAcentos import eliminar_acentos
-from funciones.funcion_geografia import geografia
 import sys
 import os
+import time
+from datetime import timedelta
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# from funciones.funcion_comida import comida
+# Importamos el archivo de configuración
 
 app = Flask(__name__)
 
-# Configuración de clave secreta para la sesión
-app.secret_key = 'clave_secreta'  # Asegúrate de que sea única y segura
-#pp.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB para todos
+# Configuración de la clave secreta para la sesión y parámetros
+app.config.from_object(Config)
+
+# Configuración para la sesión
+app.secret_key = Config.SECRET_KEY
+app.config['SESSION_PERMANENT'] = True
+app.permanent_session_lifetime = timedelta(seconds=Config.SESSION_EXPIRATION)
+
+# Función para limpiar archivos obsoletos (más de 60 días)
+
+
+def limpiar_archivos_obsoletos():
+    for filename in os.listdir(app.config['UPLOAD_FOLDER']):
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        if os.path.isfile(file_path):
+            file_age = time.time() - os.path.getmtime(file_path)
+            if file_age > 60 * 24 * 60 * 60:  # Más de 60 días
+                os.remove(file_path)
+
+# Ruta principal
+
 
 @app.route("/", methods=["GET"])
 def home():
     session['modo_administrador'] = False  # Restablecer a False en cada carga
     return render_template("index.html")
+
+# Verificación y carga de archivos
+
+
+@app.route("/subir_archivo", methods=["POST"])
+def subir_archivo():
+    archivo = request.files.get("archivo")
+    modo_administrador = session.get('modo_administrador', False)
+    max_file_size = Config.MAX_CONTENT_LENGTH  # Usamos el valor desde config
+
+    # Validar tipo MIME
+    mime_type, _ = mimetypes.guess_type(archivo.filename)
+    if mime_type not in Config.ALLOWED_MIME_TYPES:
+        return jsonify({"error": "Tipo de archivo no permitido."}), 400
+
+    # Verificar tamaño de archivo
+    if not modo_administrador and archivo.content_length > max_file_size:
+        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
+
+    # Guardar el archivo en la carpeta uploads
+    file_path = os.path.join(
+        app.config['UPLOAD_FOLDER'], secure_filename(archivo.filename))
+    archivo.save(file_path)
+
+    # Procesar el archivo dependiendo del tipo y obtener su contenido
+    if archivo.filename.endswith(".json"):
+        contenido = process_json(file_path)
+    elif archivo.filename.endswith(".txt"):
+        contenido = process_txt(file_path)
+    elif archivo.filename.endswith(".pdf"):
+        contenido = process_pdf(file_path)
+    else:
+        return jsonify({"error": "Tipo de archivo no soportado. Solo se admiten archivos JSON, TXT y PDF."}), 400
+
+    # Enviar el contenido al chat (o un mensaje de error si algo salió mal)
+    if not contenido:
+        return jsonify({"respuesta": "No se pudo leer el contenido del archivo."}), 400
+
+    # Limpiar archivos obsoletos después de cada carga
+    limpiar_archivos_obsoletos()
+
+    return jsonify({"respuesta": contenido})
 
 # Endpoint para ver datos
 @app.route("/ver_datos", methods=["POST"])
@@ -71,8 +133,8 @@ def ver_contenido():
     except Exception as e:
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
 
-# carga y proceso de archivos
 
+# Carga y proceso de archivos
 UPLOAD_FOLDER = 'uploads'
 
 if not os.path.exists(UPLOAD_FOLDER):
@@ -81,91 +143,68 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-# Ruta para manejar la subida de archivos
-@app.route("/subir_archivo", methods=["POST"])
-def subir_archivo():
-    archivo = request.files.get("archivo")
-    es_administrador = session.get('modo_administrador', False)
-    max_file_size = 10 * 1024 * 1024  # 10 MB
-
-    # Verificar si el archivo excede el límite de tamaño (solo para usuarios no administradores)
-    if not es_administrador and archivo.content_length > max_file_size:
-        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
-
-    # Guardar el archivo en la carpeta uploads
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(archivo.filename))
-    archivo.save(file_path)
-
-    # Procesar el archivo dependiendo del tipo y obtener su contenido
-    if archivo.filename.endswith(".json"):
-        contenido = process_json(file_path)
-    elif archivo.filename.endswith(".txt"):
-        contenido = process_txt(file_path)
-    elif archivo.filename.endswith(".pdf"):
-        contenido = process_pdf(file_path)
-    else:
-        return jsonify({"error": "Tipo de archivo no soportado. Solo se admiten archivos JSON, TXT y PDF."}), 400
-
-    # Enviar el contenido al chat (o un mensaje de error si algo salió mal)
-    if not contenido:
-        return jsonify({"respuesta": "No se pudo leer el contenido del archivo."}), 400
-
-    # Respuesta para mostrar en el chat
-    return jsonify({"respuesta": contenido})
 
 @app.route("/chat", methods=["POST"])
 def chat():
     # Obtener el mensaje y el estado del administrador
     pregunta_limpia = request.json.get("mensaje")
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
-    es_administrador = request.json.get("es_administrador", False)
+    modo_administrador = request.json.get("modo_administrador", False)
 
     # Activar modo administrador en la sesión si corresponde
-    if es_administrador:
+    if modo_administrador:
         session['modo_administrador'] = True
         print("Modo administrador activado en sesión.")
 
-    print(f"Mensaje recibido en Flask: '{pregunta_limpia}'")
-    print(f"Estado de administrador: {session.get('modo_administrador', False)}")
+    print(f"Mensaje recibido: '{pregunta_limpia}'")
+    print(
+        f"Estado de administrador: {session.get('modo_administrador', False)}")
 
-    # Verificar si la última pregunta fue para mostrar recetas y si se recibe un número de elección
-    if conocimientos["contexto"].get("ultimaPregunta") in ["receta", "recetas", "postres"]:
+    # Inicializar el contexto si no existe
+    conocimientos.setdefault("contexto", {}).setdefault("ultimaPregunta", None)
+
+    # Verificar si la última pregunta fue sobre recetas y procesar la elección
+    if conocimientos["contexto"]["ultimaPregunta"] in ["receta", "recetas", "postres"]:
         try:
-            # Intentar convertir la respuesta a número para seleccionar la receta
             num_receta = int(pregunta_limpia.strip())
-            respuesta_receta = comida(pregunta_limpia, conocimientos, num_receta)
-            conocimientos["contexto"]["ultimaPregunta"] = None  # Limpiar contexto
-            print("Respuesta de elección de receta:", respuesta_receta)
+            respuesta_receta = comida(
+                pregunta_limpia, conocimientos, num_receta)
+            # Limpiar contexto
+            conocimientos["contexto"]["ultimaPregunta"] = None
             return jsonify({"respuesta": respuesta_receta})
         except ValueError:
-            # Mensaje para el caso en que no se ingrese un número válido
-            print("Error: No se ingresó un número para seleccionar una receta")
             return jsonify({"respuesta": "Por favor, ingresa el número de la receta que deseas ver."})
 
-    # Verificar si el mensaje contiene las palabras clave "receta" o "postres"
+    # Detectar palabras clave de recetas
     if "receta" in pregunta_limpia or "postres" in pregunta_limpia:
         conocimientos["contexto"]["ultimaPregunta"] = "receta"
         respuesta_receta = comida(pregunta_limpia, conocimientos)
-        print("Respuesta de lista de recetas:", respuesta_receta)
         return jsonify({"respuesta": respuesta_receta})
 
-    # Primero, procesamos el mensaje con la función de matemáticas
+    # Procesar con función de matemáticas
     respuesta_matematica = matematica(pregunta_limpia.lower())
     if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
-        print(f"Resultado matemático procesado: {respuesta_matematica}")
         return jsonify({"respuesta": respuesta_matematica})
 
-    # Si está en modo administrador, intentamos buscar respuesta en `entrenando_IA`
+    # Si es administrador, buscar en `entrenando_IA`
+    print(f"Modo administrador en sesión: {session.get('modo_administrador', False)}")
     if session.get('modo_administrador', False):
-        respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=True)
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True)
         if respuesta_ia:
-            print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
             return jsonify({"respuesta": respuesta_ia})
 
-    # Si no es una operación matemática y no se encontró en `entrenando_IA`, procesar el mensaje normalmente
-    respuesta = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, es_administrador=session.get('modo_administrador', False))
-    print(f"Respuesta generada: {respuesta}")
-    return jsonify({"respuesta": respuesta})
+    # Procesar el mensaje normalmente
+    respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data,
+                                 datos_previos, modo_administrador=session.get('modo_administrador', False))
+    if respuesta_ia:
+        print(f"Respuesta de entrenando_IA: {respuesta_ia}")
+        return jsonify({"respuesta": respuesta_ia})
+
+
+    # Respuesta genérica si no se encontró nada
+    return jsonify({"respuesta": "No entendí tu consulta, ¿puedes reformularla?"})
+
 
 if __name__ == "__main__":
     app.run(debug=True)

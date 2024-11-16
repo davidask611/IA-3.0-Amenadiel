@@ -178,7 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify({
         mensaje: mensaje,
-        es_administrador: modoAdministrador,
+        modo_administrador: modoAdministrador,
       }),
     })
       .then((response) => response.json())
