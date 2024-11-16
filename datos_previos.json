@@ -21,7 +21,7 @@
             "las aves migran largas distancias en busca de climas mas calidos",
             "las abejas juegan un papel crucial en la polinizacion de plantas",
             "el lobo es un animal social que vive en manadas",
-            "las tortugas pueden vivir varios a\u00f1os y son de los reptiles mas longevos"
+            "las tortugas pueden vivir varios años y son de los reptiles mas longevos"
         ],
         "musica": [
             "el jazz es un genero musical que enfatiza la improvisacion y la expresion",
@@ -36,12 +36,13 @@
     },
     "publico": {
         "clima": {
-            "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25\u00aaC.",
+            "que clima hace hoy": "Actualmente el clima es soleado con una temperatura de 25 C.",
             "va a llover hoy": "Si, se esperan lluvias mas tarde. Lleva un paraguas.",
             "como es el clima en bariloche": "El clima en bariloche es frio y aveces cae nieve"
         },
         "salud": {
-            "como se cura el dolor de cabeza": "el dolor de cabeza se puede quitar o aliviar con ibuprofeno,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico"
+            "como se cura el dolor de cabeza": "el dolor de cabeza se puede quitar o aliviar con ibuprofeno,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico",
+            "como se cura el dolor de cintura": "el dolor de cintura se puede quitar o aliviar con actron,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico"
         },
         "animales": {
             "las ballenas son mamiferas": "si asi es, son animales mamiferos"

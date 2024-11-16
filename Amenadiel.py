@@ -23,8 +23,8 @@ from funciones.funcion_huerta import huerta
 from funciones.funcion_geografia import geografia
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 from funcionesAdmin.funcion_ver_datos import ver_datos
-from funcionesAdmin.funcion_aprender import entrenando_IA
-UMBRAL_SIMILITUD = 0.6
+from funcionesAdmin.funcion_aprender import entrenando_IA, buscar_en_archivos_uploads
+UMBRAL_SIMILITUD = 0.5
 historial_preguntas = []  # Contexto/ultima pregunta/categoria
 historial_conversacion = []
 MAX_HISTORIAL = 10  # Limitar el historial a los últimos 10 mensajes
@@ -280,9 +280,23 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
 
     # Al final del flujo, si no hay respuesta específica
     respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=es_administrador)
+
+    if es_administrador and not respuesta_ia:  # Si en modo administrador, no se encuentra respuesta con la IA
+        # Si no se encuentra en los datos previos, buscar en archivos de carga
+        print("Buscando en archivos cargados del administrador...")
+        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
+        if resultados_archivos:
+            print(f"Respuesta encontrada en archivos de carga: {resultados_archivos[0]}")
+            return f"Respuesta encontrada en archivos de carga: {resultados_archivos[0]}"
+
+        # Si no se encuentra en los archivos, responder amigablemente o sugerir cargar archivos nuevos
+        print("No se encontró información en las fuentes actuales.")
+        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
+
     if respuesta_ia:
         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
         return respuesta_ia
+
 
     # Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [

@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 # Configuración de clave secreta para la sesión
 app.secret_key = 'clave_secreta'  # Asegúrate de que sea única y segura
-# app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB para todos
+#pp.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10 MB para todos
 
 @app.route("/", methods=["GET"])
 def home():
