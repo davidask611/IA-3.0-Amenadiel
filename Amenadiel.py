@@ -148,22 +148,22 @@ def actualizar_historial(pregunta, respuesta, conocimientos, animales_data):
     guardar_datos(conocimientos, 'conocimientos.json')
 
 
-def calcular_similitud_coseno(pregunta, respuestas):
-    # Verificar que haya al menos un elemento en respuestas
-    if not respuestas:
-        return np.array([])  # Retorna un array vacío si no hay respuestas
+# def calcular_similitud_coseno(pregunta, respuestas):
+#     # Verificar que haya al menos un elemento en respuestas
+#     if not respuestas:
+#         return np.array([])  # Retorna un array vacío si no hay respuestas
 
-    # Crear los vectores con TF-IDF
-    vectorizer = TfidfVectorizer().fit_transform([pregunta] + respuestas)
+#     # Crear los vectores con TF-IDF
+#     vectorizer = TfidfVectorizer().fit_transform([pregunta] + respuestas)
 
-    # Verificar que el vectorizer haya generado más de un vector
-    if vectorizer.shape[0] < 2:
-        # Retorna un array vacío si solo tiene el vector de la pregunta
-        return np.array([])
+#     # Verificar que el vectorizer haya generado más de un vector
+#     if vectorizer.shape[0] < 2:
+#         # Retorna un array vacío si solo tiene el vector de la pregunta
+#         return np.array([])
 
-    # Calcular las similitudes de coseno
-    similitudes = cosine_similarity(vectorizer[0:1], vectorizer[1:])
-    return similitudes.flatten()
+#     # Calcular las similitudes de coseno
+#     similitudes = cosine_similarity(vectorizer[0:1], vectorizer[1:])
+#     return similitudes.flatten()
 
 
 # TODO zona funciones
@@ -246,7 +246,7 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
             print("Error: No se ingresó un número para seleccionar una receta")
             return "Por favor, ingresa el número de la receta que deseas ver."
 
-    # Verificar si el mensaje contiene las palabras clave "receta" o "postres"
+    # Verificar si la pregunta contiene las palabras clave "receta" o "postres"
     if "receta" in pregunta_limpia or "postres" in pregunta_limpia:
         respuesta_receta = comida(pregunta_limpia, conocimientos)
         print("Respuesta de lista de recetas:", respuesta_receta)
@@ -290,45 +290,46 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
     respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos,
                                  modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6)
     if respuesta_ia:
-        print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+        print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
         return respuesta_ia
 
-    # if modo_administrador:
-    #     print("Intentando buscar respuesta en archivos de carga para el administrador...")
+    # Sector administrador
+    if modo_administrador:
+        print("Intentando buscar respuesta en archivos de carga para el administrador...")
 
-    #     # Buscar en los archivos con expresiones regulares y TF-IDF
-    #     resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
+        # Buscar en los archivos con expresiones regulares y TF-IDF
+        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
 
-    #     if resultados_archivos:
-    #         print("Respuesta encontrada en archivos de carga.")
-    #         return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
+        if resultados_archivos:
+            print("Respuesta encontrada en archivos de carga.")
+            return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
 
-    #     # Si no se encontró en archivos, intenta con similitud avanzada
-    #     print(
-    #         "No se encontró información en los archivos. Buscando por similitud avanzada...")
-    #     respuesta_similitud = generar_respuesta_por_similitud(
-    #         pregunta_limpia, datos_previos, modo_administrador)
+        # Si no se encontró en archivos, intenta con similitud avanzada
+        print(
+            "No se encontró información en los archivos. Buscando por similitud avanzada...")
+        respuesta_similitud = generar_respuesta_por_similitud(
+            pregunta_limpia, datos_previos, modo_administrador)
 
-    #     if respuesta_similitud:
-    #         print("Respuesta por similitud avanzada:", respuesta_similitud)
-    #         return respuesta_similitud
+        if respuesta_similitud:
+            print("Respuesta por similitud avanzada:", respuesta_similitud)
+            return respuesta_similitud
 
-    #     # Si no encontró nada, intenta con `entrenando_IA`
-    #     print("Intentando obtener respuesta de entrenando_IA...")
-    #     respuesta_ia = entrenando_IA(
-    #         pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
+        # Si no encontró nada, intenta con `entrenando_IA`
+        print("Intentando obtener respuesta de entrenando_IA...")
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
 
-    #     if respuesta_ia:
-    #         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
-    #         return respuesta_ia
+        if respuesta_ia:
+            print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+            return respuesta_ia
 
-    #     # Si no encontró nada, notifica al administrador
-    #     print("No se encontró información en las fuentes actuales.")
-    #     return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
+        # Si no encontró nada, notifica al administrador
+        print("No se encontró información en las fuentes actuales.")
+        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
 
-    # if respuesta_ia:
-    #     print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
-    #     return respuesta_ia
+    if respuesta_ia:
+        print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+        return respuesta_ia
 
     # Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [
@@ -350,7 +351,7 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
         conocimientos.get("preguntas_respuestas", {}).values())
     claves_conocimientos = list(conocimientos.get(
         "preguntas_respuestas", {}).keys())
-    similitudes_conocimientos = calcular_similitud_coseno(
+    similitudes_conocimientos = generar_respuesta_por_similitud(
         pregunta_limpia, claves_conocimientos)
 
     # Verificar si hay una coincidencia cercana en conocimientos generales
@@ -376,7 +377,7 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
 
         # Extraer los nombres de las razas para comparar con similitud coseno
         nombres_razas = list(razas.keys())
-        similitudes_razas = calcular_similitud_coseno(
+        similitudes_razas = generar_respuesta_por_similitud(
             pregunta_limpia, nombres_razas)
 
         # Verificar si hay una coincidencia cercana en las razas
@@ -400,10 +401,44 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
 
     # Al final del flujo, si no hay respuesta específica
     respuesta_ia = entrenando_IA(
-        pregunta_limpia, datos_previos, modo_administrador=modo_administrador)
+        pregunta_limpia, datos_previos, modo_administrador=False)
     if respuesta_ia:
-        print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+        print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
         return respuesta_ia
+
+        # Sector administrador
+    if modo_administrador:
+        print("Intentando buscar respuesta en archivos de carga para el administrador...")
+
+        # Buscar en los archivos con expresiones regulares y TF-IDF
+        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
+
+        if resultados_archivos:
+            print("Respuesta encontrada en archivos de carga.")
+            return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
+
+        # Si no se encontró en archivos, intenta con similitud avanzada
+        print(
+            "No se encontró información en los archivos. Buscando por similitud avanzada...")
+        respuesta_similitud = generar_respuesta_por_similitud(
+            pregunta_limpia, datos_previos, modo_administrador)
+
+        if respuesta_similitud:
+            print("Respuesta por similitud avanzada:", respuesta_similitud)
+            return respuesta_similitud
+
+        # Si no encontró nada, intenta con `entrenando_IA`
+        print("Intentando obtener respuesta de entrenando_IA...")
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
+
+        if respuesta_ia:
+            print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
+            return respuesta_ia
+
+        # Si no encontró nada, notifica al administrador
+        print("No se encontró información en las fuentes actuales.")
+        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
 
     # Paso 4: Respuestas amigables si no se encuentra una respuesta
     respuestas_amigables = [
