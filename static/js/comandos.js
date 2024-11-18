@@ -3,6 +3,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const botonEnviar = document.getElementById("botonEnviar");
   const inputMensaje = document.getElementById("inputMensaje");
   const mensajes = document.getElementById("mensajes");
+  const modo_administrador = window.modo_administrador;
+  const maxFileSize = modo_administrador ? Infinity : 10 * 1024 * 1024; // No hay límite para admin, 10 MB para usuarios
+  const botonSubirArchivo = document.getElementById("botonSubirArchivo");
+  const archivoInput = document.getElementById("archivoInput");
+
+  // Verifica si el elemento archivoInput está disponible
+  if (!archivoInput) {
+    console.error("Elemento de archivo no encontrado.");
+    return;
+  }
 
   let esperandoClaveAdmin = false;
   let modoAdministrador = false;
@@ -190,7 +200,64 @@ window.addEventListener("DOMContentLoaded", () => {
         console.error("Error al contactar con la IA:", error);
       });
   }
+  //
+  // funcion subir archivo
+  botonSubirArchivo.addEventListener("click", async function () {
+    const archivo = archivoInput.files[0]; // Aquí intentamos capturar el archivo
+  
+    // Validación: Si no hay un archivo seleccionado, mostrar mensaje de error.
+    if (!archivo) {
+      console.error("No se seleccionó ningún archivo.");
+      alert("Por favor, selecciona un archivo.");
+      return;
+    }
+  
+    // Depuración: Confirmar los datos del archivo después de validarlo
+    console.log("Archivo seleccionado:", archivo.name, "Tamaño:", archivo.size);
+  
+    // Verificar tamaño del archivo dinámicamente según el modo actual
+    const esAdministrador = window.modo_administrador || modoAdministrador; // Validación para el modo administrador
+    const limiteTamano = esAdministrador ? Infinity : 10 * 1024 * 1024;
+  
+    if (archivo.size > limiteTamano) {
+      alert(
+        `El archivo es demasiado grande. ${
+          esAdministrador
+            ? "No deberías estar viendo esto. Contacta al administrador."
+            : "Máximo permitido: 10 MB para usuarios."
+        }`
+      );
+      return; // Detener el proceso de carga
+    }
+  
+    // Proceso de subida
+    const formData = new FormData();
+    formData.append("archivo", archivo);
+  
+    try {
+      const response = await fetch("/subir_archivo", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+  
+      let contenido = data.respuesta || "No se pudo leer el contenido.";
+      if (typeof contenido === "object") {
+        contenido = JSON.stringify(contenido, null, 2);
+      }
+      agregarMensajeIA(
+        `Archivo subido [${archivo.name}]:<br><br> ${contenido}`
+      );
+    } catch (error) {
+      console.error("Error al subir el archivo:", error);
+    }
+  });
+  
+  // console.log("Modo administrador (JS):", window.modo_administrador);
+  // console.log("Límite de tamaño:", limiteTamano);
 
+
+  //
   function manejarConfirmacion(respuesta) {
     if (respuesta === "sí") {
       agregarMensajeIA("Confirmación recibida. Continuando...");

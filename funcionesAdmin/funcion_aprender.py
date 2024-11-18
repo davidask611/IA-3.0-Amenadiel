@@ -41,6 +41,7 @@ def cargar_stopwords(ruta='stopwords.txt'):
         print(f"Error al cargar stopwords: {e}")
         return set()
 
+
 # Cargar las stopwords desde el archivo en la carpeta actual
 stopwords_spanish = cargar_stopwords('stopwords.txt')
 
@@ -72,7 +73,7 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
         print(f"Error al guardar el archivo {nombre_archivo}: {e}")
 
 
-def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6, esperando_confirmacion=None, intentos=0):
+def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6, esperando_confirmacion=None):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
 
@@ -82,16 +83,18 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
             datos_previos["publico"].setdefault("respuestas", {})[esperando_confirmacion["pregunta"]] = esperando_confirmacion["respuesta"]
             guardar_datos(datos_previos)
             print("Respuesta confirmada y guardada en la sección 'publico'.")
-            return f"Respuesta confirmada: {esperando_confirmacion['respuesta']}", None, intentos
+            return f"Respuesta confirmada: {esperando_confirmacion['respuesta']}", None
         elif pregunta_limpia == "no":
-            print(f"Intento {intentos + 1} fallido.")
-            intentos += 1
-            if intentos >= 7:
-                print("Se alcanzaron 7 intentos fallidos. Esperando una corrección del administrador...")
-                return "Se alcanzaron 7 intentos fallidos. El administrador debe corregir la respuesta.", None, intentos
-            return "La propuesta fue rechazada. Intenta preguntar de otra manera.", esperando_confirmacion, intentos
+            esperando_confirmacion["intentos"] += 1
+            if esperando_confirmacion["intentos"] >= 7:
+                return (
+                    "Has rechazado la respuesta 7 veces. Por favor, escribe la respuesta correcta para guardar.",
+                    esperando_confirmacion
+                )
+            print(f"Intentos actuales: {esperando_confirmacion['intentos']}")
+            return "La propuesta fue rechazada. Intenta preguntar de otra manera.", esperando_confirmacion
         else:
-            return "Por favor, responde con 'sí' o 'no'.", esperando_confirmacion, intentos
+            return "Por favor, responde con 'sí' o 'no'.", esperando_confirmacion
 
     # Selección de la sección según el rol (modo_administrador)
     seccion = "entrenamiento" if modo_administrador else "publico"
@@ -129,7 +132,6 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
         archivos_en_uploads = os.listdir('uploads')
         resultados_archivos = []
         for nombre_archivo in archivos_en_uploads:
-            print(f"Revisando archivo: {nombre_archivo}")
             ruta_archivo = os.path.join('uploads', nombre_archivo)
             if nombre_archivo.endswith('.json'):
                 datos = process_json(ruta_archivo)
@@ -152,7 +154,8 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
         if resultados_archivos:
             return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
 
-    respuesta_similar = generar_respuesta_por_similitud(pregunta_limpia, datos_previos)
+    respuesta_similar = generar_respuesta_por_similitud(
+        pregunta_limpia, datos_previos)
     if respuesta_similar:
         return f"Respuesta basada en similitud: <br><br>{respuesta_similar}"
 
@@ -160,13 +163,10 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
         respuesta_propuesta = f"Respuesta sugerida para confirmar: '{pregunta_limpia}'"
         print("Esperando confirmación de respuesta...")
         return (
-            f"¿Tiene coherencia mi respuesta? {respuesta_propuesta}. Responde con 'sí' o 'no'.",
-            {"pregunta": pregunta_limpia, "respuesta": respuesta_propuesta},
-            intentos
+            f"¿Tiene coherencia mi respuesta? {respuesta_propuesta}. Responde con 'sí' o 'no'."
         )
 
     return None
-
 
 
 def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
@@ -196,9 +196,6 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     # Añadir la pregunta limpia para compararla
     preguntas_existentes.append(pregunta_limpia)
 
-    # Crear la matriz TF-IDF
-    # vectorizer = TfidfVectorizer(stop_words=stopwords_spanish)
-    # Convertimos stopwords_spanish (set) a una lista
     vectorizer = TfidfVectorizer(stop_words=list(stopwords_spanish))
 
     tfidf_matrix = vectorizer.fit_transform(preguntas_existentes)
@@ -214,8 +211,8 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     umbral_similitud = 0.5
     if puntaje_similitud < umbral_similitud:
         return None
-    #"No se encontró una respuesta relevante."
-    
+    # "No se encontró una respuesta relevante."
+
     # Devolver la respuesta más similar
     respuesta_similar = respuestas_posibles[indice_similitud_maxima]
     return respuesta_similar

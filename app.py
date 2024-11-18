@@ -13,8 +13,6 @@ import time
 from datetime import timedelta
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Importamos el archivo de configuración
-
 app = Flask(__name__)
 
 # Configuración de la clave secreta para la sesión y parámetros
@@ -29,45 +27,62 @@ app.permanent_session_lifetime = timedelta(seconds=Config.SESSION_EXPIRATION)
 
 
 def limpiar_archivos_obsoletos():
-    for filename in os.listdir(app.config['UPLOAD_FOLDER']):
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    # Verificar si la carpeta de subida existe
+    upload_folder = app.config.get('UPLOAD_FOLDER', './uploads')
+    if not os.path.exists(upload_folder):
+        print(f"La carpeta {upload_folder} no existe.")
+        return
+
+    for filename in os.listdir(upload_folder):
+        file_path = os.path.join(upload_folder, filename)
         if os.path.isfile(file_path):
             file_age = time.time() - os.path.getmtime(file_path)
             if file_age > 60 * 24 * 60 * 60:  # Más de 60 días
-                os.remove(file_path)
+                try:
+                    os.remove(file_path)
+                    print(f"Archivo eliminado: {file_path}")
+                except OSError as e:
+                    print(f"Error eliminando {file_path}: {str(e)}")
+
 
 # Ruta principal
-
 
 @app.route("/", methods=["GET"])
 def home():
     session['modo_administrador'] = False  # Restablecer a False en cada carga
+    # limpiar_archivos_obsoletos()  # Limpia archivos obsoletos al cargar la página principal
     return render_template("index.html")
-
-# Verificación y carga de archivos
 
 
 @app.route("/subir_archivo", methods=["POST"])
 def subir_archivo():
     archivo = request.files.get("archivo")
     modo_administrador = session.get('modo_administrador', False)
-    max_file_size = Config.MAX_CONTENT_LENGTH  # Usamos el valor desde config
+
+    if not archivo:
+        print("No se recibió ningún archivo.")
+        return jsonify({"error": "No se recibió ningún archivo."}), 400
+
+    # Validar tamaño del archivo (solo para usuarios)
+    if not modo_administrador and archivo.content_length > 10 * 1024 * 1024:  # 10 MB
+        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
 
     # Validar tipo MIME
     mime_type, _ = mimetypes.guess_type(archivo.filename)
-    if mime_type not in Config.ALLOWED_MIME_TYPES:
+    allowed_mime_types = ["application/json", "text/plain", "application/pdf"]
+    if mime_type not in allowed_mime_types:
+        print("Tipo de archivo no permitido.")
         return jsonify({"error": "Tipo de archivo no permitido."}), 400
 
-    # Verificar tamaño de archivo
-    if not modo_administrador and archivo.content_length > max_file_size:
-        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
-
-    # Guardar el archivo en la carpeta uploads
-    file_path = os.path.join(
-        app.config['UPLOAD_FOLDER'], secure_filename(archivo.filename))
+    # Guardar archivo en 'uploads'
+    upload_folder = os.path.join(os.getcwd(), "uploads")
+    os.makedirs(upload_folder, exist_ok=True)
+    file_path = os.path.join(upload_folder, secure_filename(archivo.filename))
     archivo.save(file_path)
 
-    # Procesar el archivo dependiendo del tipo y obtener su contenido
+    print(f"Archivo guardado exitosamente en: {file_path}")
+
+    # Procesar el archivo según su extensión
     if archivo.filename.endswith(".json"):
         contenido = process_json(file_path)
     elif archivo.filename.endswith(".txt"):
@@ -75,16 +90,14 @@ def subir_archivo():
     elif archivo.filename.endswith(".pdf"):
         contenido = process_pdf(file_path)
     else:
-        return jsonify({"error": "Tipo de archivo no soportado. Solo se admiten archivos JSON, TXT y PDF."}), 400
+        return jsonify({"error": "Tipo de archivo no soportado. Solo JSON, TXT y PDF."}), 400
 
-    # Enviar el contenido al chat (o un mensaje de error si algo salió mal)
+    # Respuesta final
     if not contenido:
         return jsonify({"respuesta": "No se pudo leer el contenido del archivo."}), 400
 
-    # Limpiar archivos obsoletos después de cada carga
-    limpiar_archivos_obsoletos()
-
     return jsonify({"respuesta": contenido})
+
 
 # Endpoint para ver datos
 @app.route("/ver_datos", methods=["POST"])
@@ -134,16 +147,6 @@ def ver_contenido():
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
 
 
-# Carga y proceso de archivos
-UPLOAD_FOLDER = 'uploads'
-
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-
 @app.route("/chat", methods=["POST"])
 def chat():
     # Obtener el mensaje y el estado del administrador
@@ -187,7 +190,8 @@ def chat():
         return jsonify({"respuesta": respuesta_matematica})
 
     # Si es administrador, buscar en `entrenando_IA`
-    print(f"Modo administrador en sesión: {session.get('modo_administrador', False)}")
+    print(
+        f"Modo administrador en sesión: {session.get('modo_administrador', False)}")
     if session.get('modo_administrador', False):
         respuesta_ia = entrenando_IA(
             pregunta_limpia, datos_previos, modo_administrador=True)
@@ -196,11 +200,10 @@ def chat():
 
     # Procesar el mensaje normalmente
     respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data,
-                                 datos_previos, modo_administrador=session.get('modo_administrador', False))
+                                    datos_previos, modo_administrador=session.get('modo_administrador', False))
     if respuesta_ia:
         print(f"Respuesta de entrenando_IA: {respuesta_ia}")
         return jsonify({"respuesta": respuesta_ia})
-
 
     # Respuesta genérica si no se encontró nada
     return jsonify({"respuesta": "No entendí tu consulta, ¿puedes reformularla?"})
