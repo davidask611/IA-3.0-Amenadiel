@@ -245,7 +245,7 @@ window.addEventListener("DOMContentLoaded", () => {
         `El archivo es demasiado grande. ${
           esAdministrador
             ? "No deberías estar viendo esto. Contacta al administrador."
-            : "Máximo permitido: 10 MB para usuarios."
+            : "Máximo permitido: 5 MB para usuarios."
         }`
       );
       return; // Detener el proceso de carga

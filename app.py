@@ -22,7 +22,7 @@ app.config.from_object(Config)
 # Configuración para la sesión
 app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
-app.permanent_session_lifetime = timedelta(seconds=Config.SESSION_EXPIRATION)
+# app.permanent_session_lifetime = timedelta(seconds=Config.SESSION_EXPIRATION)
 
 # Función para limpiar archivos obsoletos (más de 60 días)
 
@@ -53,7 +53,6 @@ def home():
     session['modo_administrador'] = False  # Restablecer a False en cada carga
     # limpiar_archivos_obsoletos()  # Limpia archivos obsoletos al cargar la página principal
     return render_template("index.html")
-
 
 @app.route("/subir_archivo", methods=["POST"])
 def subir_archivo():
