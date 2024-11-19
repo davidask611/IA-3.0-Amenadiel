@@ -3,7 +3,6 @@ import json
 import mimetypes
 from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, conocimientos, geografia_data, matematica, animales_data, comida
-# from funcionesAdmin.funcion_ver_datos import ver_datos as obtener_datos
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
 from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
@@ -22,11 +21,8 @@ app.config.from_object(Config)
 # Configuración para la sesión
 app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
-# app.permanent_session_lifetime = timedelta(seconds=Config.SESSION_EXPIRATION)
 
 # Función para limpiar archivos obsoletos (más de 60 días)
-
-
 def limpiar_archivos_obsoletos():
     # Verificar si la carpeta de subida existe
     upload_folder = app.config.get('UPLOAD_FOLDER', './uploads')
@@ -164,9 +160,6 @@ def chat():
     print(f"Mensaje recibido: '{pregunta_limpia}'")
     print(
         f"Estado de administrador: {session.get('modo_administrador', False)}")
-
-    # # Inicializar el contexto si no existe
-    # conocimientos.setdefault("contexto", {}).setdefault("ultimaPregunta", None)
 
     #Primero, verificar si la pregunta es sobre "ver datos"
     if "ver datos" in pregunta_limpia:

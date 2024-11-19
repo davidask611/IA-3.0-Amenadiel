@@ -15,12 +15,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   let esperandoClaveAdmin = false;
-  // let modo_administrador = false;
   let nombreUsuario = "";
   let usuarioAdmin = "";
   let esperandoSeleccionArchivo = false;
   let archivoSeleccionado = [];
-  // let listaMostrada = false;
   let esperandoConfirmacion = false;
 
   function actualizarFechaHora() {
@@ -273,9 +271,6 @@ window.addEventListener("DOMContentLoaded", () => {
       console.error("Error al subir el archivo:", error);
     }
   });
-
-  // console.log("Modo administrador (JS):", window.modo_administrador);
-  // console.log("Límite de tamaño:", limiteTamano);
 
   //
   function manejarConfirmacion(respuesta) {

@@ -9,27 +9,6 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-
-# def cargar_stopwords(ruta='stopwords.txt'):
-#     try:
-#         with open(ruta, 'r', encoding='utf-8') as archivo:
-#             # Carga las palabras en un set
-#             return set(archivo.read().splitlines())
-#     except Exception as e:
-#         print(f"Error al cargar stopwords: {e}")
-#         return set()
-
-
-# # Cargar las stopwords desde el archivo
-# stopwords_spanish = cargar_stopwords('stopwords.txt')
-
-# # Convertimos stopwords_spanish (set) a una lista
-# vectorizer = TfidfVectorizer(stop_words=list(stopwords_spanish))
-
-# print("Stopwords cargadas:", stopwords_spanish)
-# import os
-# print("Directorio actual:", os.getcwd())
-
 def cargar_stopwords(ruta='stopwords.txt'):
     try:
         # Calcula la ruta basada en la ubicación del script actual
@@ -44,11 +23,6 @@ def cargar_stopwords(ruta='stopwords.txt'):
 
 # Cargar las stopwords desde el archivo en la carpeta actual
 stopwords_spanish = cargar_stopwords('stopwords.txt')
-
-# Convertimos stopwords_spanish (set) a una lista
-# print("Stopwords cargadas:", stopwords_spanish)
-# print("Directorio actual:", os.getcwd())
-
 
 def cargar_datos(nombre_archivo='datos_previos.json'):
     try:
@@ -73,7 +47,7 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
         print(f"Error al guardar el archivo {nombre_archivo}: {e}")
 
 
-def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6, esperando_confirmacion=None):
+def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=None):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
 
