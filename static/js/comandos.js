@@ -3,8 +3,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const botonEnviar = document.getElementById("botonEnviar");
   const inputMensaje = document.getElementById("inputMensaje");
   const mensajes = document.getElementById("mensajes");
-  const modo_administrador = window.modo_administrador;
-  const maxFileSize = modo_administrador ? Infinity : 10 * 1024 * 1024; // No hay límite para admin, 10 MB para usuarios
+  let modo_administrador = window.modo_administrador || false;
+  const maxFileSize = modo_administrador ? Infinity : 5 * 1024 * 1024; // No hay límite para admin, 10 MB para usuarios
   const botonSubirArchivo = document.getElementById("botonSubirArchivo");
   const archivoInput = document.getElementById("archivoInput");
 
@@ -15,12 +15,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   let esperandoClaveAdmin = false;
-  let modoAdministrador = false;
+  // let modo_administrador = false;
   let nombreUsuario = "";
   let usuarioAdmin = "";
-  let archivoSeleccionado = [];
-  let listaMostrada = false;
   let esperandoSeleccionArchivo = false;
+  let archivoSeleccionado = [];
+  // let listaMostrada = false;
   let esperandoConfirmacion = false;
 
   function actualizarFechaHora() {
@@ -50,8 +50,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const botonUsuario = document.querySelector(".boton-usuario");
 
   botonUsuario.addEventListener("click", () => {
-    if (modoAdministrador) {
-      modoAdministrador = false;
+    if (modo_administrador) {
+      modo_administrador = false;
       console.log("Modo administrador desactivado");
       agregarMensajeIA("Modo usuario activado");
     }
@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (esperandoClaveAdmin) {
         const claveAdminCorrecta = "silvestre";
         if (mensaje === claveAdminCorrecta && usuarioAdmin === "abuelo") {
-          modoAdministrador = true;
+          modo_administrador = true;
           esperandoClaveAdmin = false;
           console.log("Modo administrador activado");
           agregarMensajeIA("¡Modo administrador activado!");
@@ -114,9 +114,17 @@ window.addEventListener("DOMContentLoaded", () => {
         usuarioAdmin = "";
         return;
       }
+      // Ver datos
+      if (mensaje.toLowerCase() === "ver datos") {
+        if (!modo_administrador) {
+          console.log("Error: Usuario no tiene permisos de administrador.");
+          agregarMensajeIA("No tienes acceso para ver los datos.");
+          return;
+        }
 
-      if (mensaje.toLowerCase() === "ver datos" && modoAdministrador) {
-        console.log("Solicitando lista de archivos JSON...");
+        console.log(
+          "Modo administrador activado. Mostrando lista de archivos..."
+        );
         fetch("/ver_datos", {
           method: "POST",
           headers: {
@@ -130,39 +138,18 @@ window.addEventListener("DOMContentLoaded", () => {
               archivoSeleccionado = data.archivos;
               mostrarListaArchivos(data.archivos);
               listaMostrada = true;
-              esperandoSeleccionArchivo = true;
+              esperandoSeleccionArchivo = true; // Bloquear cualquier otro flujo
+              agregarMensajeIA(
+                "Por favor, selecciona un número de archivo para ver su contenido."
+              );
+              console.log("Lista de archivos mostrada. Esperando selección...");
             } else {
               agregarMensajeIA(data.respuesta);
+              console.log(
+                "Error al obtener lista de archivos:",
+                data.respuesta
+              );
             }
-          })
-          .catch((error) => {
-            console.error("Error al contactar con la IA:", error);
-          });
-        return;
-      }
-
-      const numeroSeleccionado = parseInt(mensaje);
-      if (
-        esperandoSeleccionArchivo &&
-        archivoSeleccionado &&
-        !isNaN(numeroSeleccionado) &&
-        numeroSeleccionado > 0 &&
-        numeroSeleccionado <= archivoSeleccionado.length
-      ) {
-        const archivo = archivoSeleccionado[numeroSeleccionado - 1];
-        console.log(`Archivo seleccionado: ${archivo}`);
-
-        fetch("/ver_contenido", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ archivo: archivo }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            agregarMensajeIA(data.respuesta);
-            esperandoSeleccionArchivo = false;
           })
           .catch((error) => {
             console.error("Error al contactar con el backend:", error);
@@ -170,13 +157,47 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Verificar si se está esperando una selección de archivo
       if (esperandoSeleccionArchivo) {
-        agregarMensajeIA(
-          "Por favor, selecciona un número de archivo para ver su contenido."
-        );
+        const numeroSeleccionado = parseInt(mensaje);
+        if (
+          archivoSeleccionado &&
+          !isNaN(numeroSeleccionado) &&
+          numeroSeleccionado > 0 &&
+          numeroSeleccionado <= archivoSeleccionado.length
+        ) {
+          const archivo = archivoSeleccionado[numeroSeleccionado - 1];
+          console.log(`Archivo seleccionado: ${archivo}`);
+          fetch("/ver_contenido", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ archivo: archivo }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              agregarMensajeIA(data.respuesta);
+              esperandoSeleccionArchivo = false; // Desbloquear flujo
+              console.log(
+                "Contenido del archivo mostrado. Listo para nuevas interacciones."
+              );
+            })
+            .catch((error) => {
+              console.error("Error al contactar con el backend:", error);
+            });
+        } else {
+          agregarMensajeIA(
+            "Por favor, selecciona un número válido de la lista para continuar."
+          );
+          console.log("Selección inválida:", mensaje);
+        }
+        return;
       }
-    }
 
+      // Si el mensaje no corresponde a "ver datos" ni a una selección, procesarlo como normal
+      console.log("Procesando mensaje como interacción normal...");
+    }
     fetch("/chat", {
       method: "POST",
       headers: {
@@ -184,7 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify({
         mensaje: mensaje,
-        modo_administrador: modoAdministrador,
+        modo_administrador: modo_administrador,
       }),
     })
       .then((response) => response.json())
@@ -204,21 +225,21 @@ window.addEventListener("DOMContentLoaded", () => {
   // funcion subir archivo
   botonSubirArchivo.addEventListener("click", async function () {
     const archivo = archivoInput.files[0]; // Aquí intentamos capturar el archivo
-  
+
     // Validación: Si no hay un archivo seleccionado, mostrar mensaje de error.
     if (!archivo) {
       console.error("No se seleccionó ningún archivo.");
       alert("Por favor, selecciona un archivo.");
       return;
     }
-  
+
     // Depuración: Confirmar los datos del archivo después de validarlo
     console.log("Archivo seleccionado:", archivo.name, "Tamaño:", archivo.size);
-  
+
     // Verificar tamaño del archivo dinámicamente según el modo actual
-    const esAdministrador = window.modo_administrador || modoAdministrador; // Validación para el modo administrador
-    const limiteTamano = esAdministrador ? Infinity : 10 * 1024 * 1024;
-  
+    const esAdministrador = window.modo_administrador || modo_administrador; // Validación para el modo administrador
+    const limiteTamano = esAdministrador ? Infinity : 5 * 1024 * 1024;
+
     if (archivo.size > limiteTamano) {
       alert(
         `El archivo es demasiado grande. ${
@@ -229,18 +250,18 @@ window.addEventListener("DOMContentLoaded", () => {
       );
       return; // Detener el proceso de carga
     }
-  
+
     // Proceso de subida
     const formData = new FormData();
     formData.append("archivo", archivo);
-  
+
     try {
       const response = await fetch("/subir_archivo", {
         method: "POST",
         body: formData,
       });
       const data = await response.json();
-  
+
       let contenido = data.respuesta || "No se pudo leer el contenido.";
       if (typeof contenido === "object") {
         contenido = JSON.stringify(contenido, null, 2);
@@ -252,10 +273,9 @@ window.addEventListener("DOMContentLoaded", () => {
       console.error("Error al subir el archivo:", error);
     }
   });
-  
+
   // console.log("Modo administrador (JS):", window.modo_administrador);
   // console.log("Límite de tamaño:", limiteTamano);
-
 
   //
   function manejarConfirmacion(respuesta) {

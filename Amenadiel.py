@@ -148,23 +148,6 @@ def actualizar_historial(pregunta, respuesta, conocimientos, animales_data):
     guardar_datos(conocimientos, 'conocimientos.json')
 
 
-# def calcular_similitud_coseno(pregunta, respuestas):
-#     # Verificar que haya al menos un elemento en respuestas
-#     if not respuestas:
-#         return np.array([])  # Retorna un array vacío si no hay respuestas
-
-#     # Crear los vectores con TF-IDF
-#     vectorizer = TfidfVectorizer().fit_transform([pregunta] + respuestas)
-
-#     # Verificar que el vectorizer haya generado más de un vector
-#     if vectorizer.shape[0] < 2:
-#         # Retorna un array vacío si solo tiene el vector de la pregunta
-#         return np.array([])
-
-#     # Calcular las similitudes de coseno
-#     similitudes = cosine_similarity(vectorizer[0:1], vectorizer[1:])
-#     return similitudes.flatten()
-
 
 # TODO zona funciones
 

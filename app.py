@@ -2,7 +2,8 @@ from config import Config
 import json
 import mimetypes
 from flask import Flask, render_template, request, jsonify, session
-from Amenadiel import procesar_mensaje, ver_datos as obtener_datos, conocimientos, geografia_data, matematica, animales_data, comida
+from Amenadiel import procesar_mensaje, conocimientos, geografia_data, matematica, animales_data, comida
+# from funcionesAdmin.funcion_ver_datos import ver_datos as obtener_datos
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
 from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
@@ -64,8 +65,8 @@ def subir_archivo():
         return jsonify({"error": "No se recibió ningún archivo."}), 400
 
     # Validar tamaño del archivo (solo para usuarios)
-    if not modo_administrador and archivo.content_length > 10 * 1024 * 1024:  # 10 MB
-        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 10 MB para usuarios."}), 400
+    if not modo_administrador and archivo.content_length > 5 * 1024 * 1024:  # 5 MB
+        return jsonify({"error": "El archivo es demasiado grande. Solo se permiten archivos de hasta 5 MB para usuarios."}), 400
 
     # Validar tipo MIME
     mime_type, _ = mimetypes.guess_type(archivo.filename)
@@ -103,23 +104,20 @@ def subir_archivo():
 @app.route("/ver_datos", methods=["POST"])
 def ver_datos():
     if not session.get('modo_administrador', False):
-        print("Intento de acceso sin privilegios de administrador")
         return jsonify({"respuesta": "No tienes acceso para ver los datos."})
 
-    # Obtener lista de archivos JSON en el directorio
-    directorio_json = '.'  # Cambiar a la ruta que desees
+    # Buscar archivos JSON en la raíz del proyecto
+    directorio_json = '.'  # Raíz del proyecto
     archivos_json = [f for f in os.listdir(
         directorio_json) if f.endswith('.json')]
 
     if archivos_json:
-        # Crear una lista numerada de archivos JSON
         lista_archivos = "\n".join(
-            [f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)])
+            [f"{i+1}. {archivo}" for i, archivo in enumerate(archivos_json)]
+        )
         respuesta = f"Selecciona un archivo JSON para ver su contenido:\n{lista_archivos}"
-        print(f"Archivos JSON encontrados: {archivos_json}")
         return jsonify({"respuesta": respuesta, "archivos": archivos_json})
     else:
-        print("No se encontraron archivos JSON en el directorio.")
         return jsonify({"respuesta": "No se encontraron archivos JSON en el directorio."})
 
 
@@ -128,21 +126,26 @@ def ver_contenido():
     if not session.get('modo_administrador', False):
         return jsonify({"respuesta": "No tienes acceso para ver los datos."})
 
-    # Obtener el nombre del archivo seleccionado
+    # Obtener el nombre del archivo desde el JSON enviado
     archivo_seleccionado = request.json.get("archivo")
-
     if not archivo_seleccionado:
         return jsonify({"respuesta": "No se especificó un archivo."})
 
+    # Sanitizar el nombre del archivo para evitar vulnerabilidades
+    archivo_seleccionado = secure_filename(archivo_seleccionado)
+    ruta_archivo = os.path.join('.', archivo_seleccionado)  # Raíz del proyecto
+
     # Verificar si el archivo existe
-    if not os.path.isfile(archivo_seleccionado):
+    if not os.path.isfile(ruta_archivo):
         return jsonify({"respuesta": f"El archivo {archivo_seleccionado} no existe."})
 
-    # Leer el contenido del archivo JSON
+    # Leer el contenido del archivo JSON seleccionado y mostrarlo en el chat
     try:
-        with open(archivo_seleccionado, "r", encoding="utf-8") as f:
+        with open(ruta_archivo, "r", encoding="utf-8") as f:
             contenido = json.load(f)
-        return jsonify({"respuesta": f"Contenido de {archivo_seleccionado}: {json.dumps(contenido, indent=2)}"})
+        return jsonify({"respuesta": f"Contenido de {archivo_seleccionado}:", "contenido": contenido})
+    except json.JSONDecodeError as e:
+        return jsonify({"respuesta": f"El archivo {archivo_seleccionado} no contiene un JSON válido. Error: {str(e)}"})
     except Exception as e:
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
 
@@ -163,8 +166,13 @@ def chat():
     print(
         f"Estado de administrador: {session.get('modo_administrador', False)}")
 
-    # Inicializar el contexto si no existe
-    conocimientos.setdefault("contexto", {}).setdefault("ultimaPregunta", None)
+    # # Inicializar el contexto si no existe
+    # conocimientos.setdefault("contexto", {}).setdefault("ultimaPregunta", None)
+
+    #Primero, verificar si la pregunta es sobre "ver datos"
+    if "ver datos" in pregunta_limpia:
+        # Delegar completamente a `ver_datos()`
+        return ver_datos()
 
     # Verificar si la última pregunta fue sobre recetas y procesar la elección
     if conocimientos["contexto"]["ultimaPregunta"] in ["receta", "recetas", "postres"]:
