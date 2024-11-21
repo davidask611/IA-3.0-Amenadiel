@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, conocimientos, geografia_data, matematica, animales_data, comida
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
-from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos
+from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos, guardar_datos
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 import sys
 import os
@@ -116,8 +116,10 @@ def ver_datos():
         return jsonify({"respuesta": "No se encontraron archivos JSON en el directorio."})
 
 
+# Endpoint para ver contenido de un archivo JSON
 @app.route("/ver_contenido", methods=["POST"])
 def ver_contenido():
+    # Verificar si el usuario tiene permisos de administrador
     if not session.get('modo_administrador', False):
         return jsonify({"respuesta": "No tienes acceso para ver los datos."})
 
@@ -134,16 +136,62 @@ def ver_contenido():
     if not os.path.isfile(ruta_archivo):
         return jsonify({"respuesta": f"El archivo {archivo_seleccionado} no existe."})
 
-    # Leer el contenido del archivo JSON seleccionado y mostrarlo en el chat
+    # Leer el contenido del archivo JSON seleccionado
     try:
         with open(ruta_archivo, "r", encoding="utf-8") as f:
-            contenido = json.load(f)
-        return jsonify({"respuesta": f"Contenido de {archivo_seleccionado}:", "contenido": contenido})
+            contenido = json.load(f)  # Convertir JSON a diccionario
+        return jsonify({
+            "respuesta": f"Contenido del archivo {archivo_seleccionado}:",
+            "contenido": contenido  # Enviar contenido del archivo
+        })
     except json.JSONDecodeError as e:
         return jsonify({"respuesta": f"El archivo {archivo_seleccionado} no contiene un JSON válido. Error: {str(e)}"})
     except Exception as e:
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
+#
+# Datos en memoria simulando `entrenando_IA`
+estado_confirmacion = {}
 
+@app.route("/confirmar_respuesta", methods=["POST"])
+def confirmar_respuesta():
+    global estado_confirmacion
+    if not estado_confirmacion.get("confirmacion_pendiente"):
+        return jsonify({"respuesta": "No hay confirmaciones pendientes."}), 400
+
+    data = request.json
+    categoria = data.get("categoria")
+
+    # Validar si la categoría fue proporcionada
+    categorias_disponibles = estado_confirmacion.get("categorias", [])
+    if not categoria or categoria not in categorias_disponibles:
+        return jsonify({
+            "respuesta": f"Por favor, selecciona una categoría válida: {', '.join(categorias_disponibles)}"
+        }), 400
+
+    # Guardar la respuesta en la categoría seleccionada
+    pregunta = estado_confirmacion["pregunta"]
+    respuesta = estado_confirmacion["respuesta"]
+    datos_previos["publico"].setdefault(categoria, {})[pregunta] = respuesta
+    guardar_datos(datos_previos)  # Guardar datos actualizados en el archivo
+
+    # Limpiar estado de confirmación
+    estado_confirmacion.clear()
+
+    return jsonify({"respuesta": f"La respuesta se guardó correctamente en la categoría '{categoria}'."}), 200
+
+
+@app.route("/rechazar_respuesta", methods=["POST"])
+def rechazar_respuesta():
+    global estado_confirmacion
+    if not estado_confirmacion.get("confirmacion_pendiente"):
+        return jsonify({"respuesta": "No hay confirmaciones pendientes."}), 400
+
+    # Limpiar estado de confirmación
+    estado_confirmacion.clear()
+
+    return jsonify({"respuesta": "La respuesta fue rechazada."}), 200
+
+#
 
 @app.route("/chat", methods=["POST"])
 def chat():

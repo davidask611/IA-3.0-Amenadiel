@@ -8,6 +8,16 @@ import re
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import spacy
+
+# Cargar el modelo de español
+nlp = spacy.load('es_core_news_sm')
+
+# Probar el modelo con una frase
+# doc = nlp("Hola, este es un ejemplo de procesamiento de texto con spaCy.")
+# for token in doc:
+#     print(f"{token.text} -> {token.pos_}")
+
 
 def cargar_stopwords(ruta='stopwords.txt'):
     try:
@@ -23,6 +33,7 @@ def cargar_stopwords(ruta='stopwords.txt'):
 
 # Cargar las stopwords desde el archivo en la carpeta actual
 stopwords_spanish = cargar_stopwords('stopwords.txt')
+
 
 def cargar_datos(nombre_archivo='datos_previos.json'):
     try:
@@ -47,28 +58,40 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
         print(f"Error al guardar el archivo {nombre_archivo}: {e}")
 
 
+estado_confirmacion = {}
+
+
 def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=None):
+
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
+
+    global estado_confirmacion
+
+    # Verifica si ya hay una confirmación pendiente
+    if estado_confirmacion.get("confirmacion_pendiente"):
+        return None  # Deja que el flujo de Flask maneje la confirmación
 
     # Verifica si ya se está esperando una confirmación
     if esperando_confirmacion:
         if pregunta_limpia == "sí":
-            datos_previos["publico"].setdefault("respuestas", {})[esperando_confirmacion["pregunta"]] = esperando_confirmacion["respuesta"]
+            # Mostrar categorías disponibles para guardar
+            categorias = list(datos_previos["publico"].keys())
+            print("Categorías disponibles:", categorias)
+            return f"Selecciona una categoría para guardar: {', '.join(categorias)}", esperando_confirmacion
+
+        elif pregunta_limpia in datos_previos["publico"]:
+            # Guardar la respuesta en la categoría seleccionada
+            datos_previos["publico"][pregunta_limpia][esperando_confirmacion["pregunta"]
+                                                      ] = esperando_confirmacion["respuesta"]
             guardar_datos(datos_previos)
-            print("Respuesta confirmada y guardada en la sección 'publico'.")
-            return f"Respuesta confirmada: {esperando_confirmacion['respuesta']}", None
+            print("Respuesta confirmada y guardada en la categoría:", pregunta_limpia)
+            return f"Respuesta guardada en la categoría '{pregunta_limpia}'.", None
+
         elif pregunta_limpia == "no":
-            esperando_confirmacion["intentos"] += 1
-            if esperando_confirmacion["intentos"] >= 7:
-                return (
-                    "Has rechazado la respuesta 7 veces. Por favor, escribe la respuesta correcta para guardar.",
-                    esperando_confirmacion
-                )
+            # Rechazo de la respuesta
             print(f"Intentos actuales: {esperando_confirmacion['intentos']}")
-            return "La propuesta fue rechazada. Intenta preguntar de otra manera.", esperando_confirmacion
-        else:
-            return "Por favor, responde con 'sí' o 'no'.", esperando_confirmacion
+            return f"La propuesta fue rechazada. Intenta preguntar de otra manera o carga datos relacionados con '{esperando_confirmacion['pregunta']}'.", None
 
     # Selección de la sección según el rol (modo_administrador)
     seccion = "entrenamiento" if modo_administrador else "publico"
@@ -103,47 +126,63 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
         return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
 
     if modo_administrador:
+        print("Modo administrador activo. Buscando en archivos...")
         archivos_en_uploads = os.listdir('uploads')
+        print("Archivos detectados en 'uploads':", archivos_en_uploads)
         resultados_archivos = []
+        nlp = spacy.load('es_core_news_sm')
+
         for nombre_archivo in archivos_en_uploads:
             ruta_archivo = os.path.join('uploads', nombre_archivo)
+            # Aquí estamos mostrando el archivo que se está procesando.
+            print(f"Procesando archivo: {nombre_archivo}")
+
             if nombre_archivo.endswith('.json'):
                 datos = process_json(ruta_archivo)
                 if isinstance(datos, dict):
                     for clave, valor in datos.items():
                         if pregunta_limpia in str(clave).lower() or pregunta_limpia in str(valor).lower():
-                            resultados_archivos.append(
-                                f"Coincidencia en {nombre_archivo}: {valor}")
+                            # Aquí mostramos la coincidencia encontrada.
+                            print(f"Coincidencia encontrada en JSON: {valor}")
+                            resultados_archivos.append(valor)
             elif nombre_archivo.endswith('.txt'):
                 contenido = process_txt(ruta_archivo)
-                if isinstance(contenido, str) and pregunta_limpia in contenido.lower():
-                    resultados_archivos.append(
-                        f"Coincidencia en {nombre_archivo}: {contenido.strip()}")
+                frases = contenido.split('.')
+                for frase in frases:
+                    if pregunta_limpia in frase.lower():
+                        # Aquí mostramos la coincidencia encontrada.
+                        print(
+                            f"Coincidencia encontrada en TXT: {frase.strip()}")
+                        resultados_archivos.append(frase.strip())
             elif nombre_archivo.endswith('.pdf'):
                 contenido = process_pdf(ruta_archivo)
-                if isinstance(contenido, str) and pregunta_limpia in contenido.lower():
-                    resultados_archivos.append(
-                        f"Coincidencia en {nombre_archivo}: {contenido[:200]}...")
+                frases = contenido.split('.')
+                for frase in frases:
+                    if pregunta_limpia in frase.lower():
+                        # Aquí mostramos la coincidencia encontrada.
+                        print(
+                            f"Coincidencia encontrada en PDF: {frase.strip()}")
+                        resultados_archivos.append(frase.strip())
 
         if resultados_archivos:
-            return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
+            mejor_respuesta = sorted(
+                resultados_archivos, key=lambda x: len(x))[0][:500]
+            print(f"Mejor respuesta encontrada en archivos: {mejor_respuesta}")
 
-    respuesta_similar = generar_respuesta_por_similitud(
-        pregunta_limpia, datos_previos)
-    if respuesta_similar:
-        return f"Respuesta basada en similitud: <br><br>{respuesta_similar}"
-
-    if modo_administrador:
-        respuesta_propuesta = f"Respuesta sugerida para confirmar: '{pregunta_limpia}'"
-        print("Esperando confirmación de respuesta...")
-        return (
-            f"¿Tiene coherencia mi respuesta? {respuesta_propuesta}. Responde con 'sí' o 'no'."
-        )
-
+            # Preparar confirmación
+            estado_confirmacion = {
+                "confirmacion_pendiente": True,
+                "pregunta": pregunta_limpia,
+                "respuesta": mejor_respuesta,
+                "categorias": list(datos_previos["publico"].keys())
+            }
+            return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'sí' o 'no'."
+    print("No se encontró información relevante.")
     return None
 
 
 def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
+    # Asegurarse que la pregunta esté en minúsculas y limpia de acentos
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
     respuestas_posibles = []
@@ -170,11 +209,11 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     # Añadir la pregunta limpia para compararla
     preguntas_existentes.append(pregunta_limpia)
 
-    vectorizer = TfidfVectorizer(stop_words=list(stopwords_spanish))
-
+    # Configuramos el vectorizador para las palabras de parada en español
+    vectorizer = TfidfVectorizer(stop_words=stopwords_spanish)
     tfidf_matrix = vectorizer.fit_transform(preguntas_existentes)
 
-    # Calcular las similitudes de coseno
+    # Calcular las similitudes de coseno entre la última pregunta (pregunta_limpia) y las anteriores
     similitudes = np.dot(tfidf_matrix[-1], tfidf_matrix[:-1].T).toarray()
 
     # Obtener el índice de la máxima similitud
@@ -184,8 +223,7 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     # Establecer un umbral mínimo de similitud (opcional)
     umbral_similitud = 0.5
     if puntaje_similitud < umbral_similitud:
-        return None
-    # "No se encontró una respuesta relevante."
+        return "No se encontró una respuesta relevante."
 
     # Devolver la respuesta más similar
     respuesta_similar = respuestas_posibles[indice_similitud_maxima]
@@ -235,7 +273,6 @@ def buscar_en_archivos_uploads(pregunta_limpia, carpeta_uploads='uploads'):
             if resultados:
                 textos_resultados = [resultado.split(
                     ": ", 1)[1] for resultado in resultados]
-                # vectorizer = TfidfVectorizer(stop_words=stopwords_spanish)
                 # Convertimos stopwords_spanish (set) a una lista
                 vectorizer = TfidfVectorizer(
                     stop_words=list(stopwords_spanish))
@@ -247,8 +284,15 @@ def buscar_en_archivos_uploads(pregunta_limpia, carpeta_uploads='uploads'):
 
                 # Encuentra el índice con la mayor similitud
                 indice_similitud_maxima = similitudes.argmax()
-                resultados.append(
-                    f"Coincidencia más relevante en {nombre_archivo}: {textos_resultados[indice_similitud_maxima]}")
+
+                # Establecer un umbral mínimo de similitud (opcional)
+                umbral_similitud = 0.5
+                if similitudes[indice_similitud_maxima] < umbral_similitud:
+                    resultados.append(
+                        "No se encontró una coincidencia relevante.")
+                else:
+                    resultados.append(
+                        f"Coincidencia más relevante en {nombre_archivo}: {textos_resultados[indice_similitud_maxima]}")
 
         except Exception as e:
             print(f"Error al procesar el archivo {nombre_archivo}: {e}")

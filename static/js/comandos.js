@@ -64,8 +64,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     if (mensaje) {
+      // Si estamos esperando una confirmación
       if (esperandoConfirmacion) {
-        manejarConfirmacion(mensaje.toLowerCase());
+        manejarConfirmacion(mensaje.toLowerCase()); // Manejar como confirmación
+        inputMensaje.value = ""; // Limpiar el campo de texto
         return;
       }
 
@@ -134,7 +136,7 @@ window.addEventListener("DOMContentLoaded", () => {
           .then((data) => {
             if (data.archivos) {
               archivoSeleccionado = data.archivos;
-              mostrarListaArchivos(data.archivos);
+              mostrarListaArchivos(data.archivos); // Muestra la lista en la interfaz
               listaMostrada = true;
               esperandoSeleccionArchivo = true; // Bloquear cualquier otro flujo
               agregarMensajeIA(
@@ -175,7 +177,15 @@ window.addEventListener("DOMContentLoaded", () => {
           })
             .then((response) => response.json())
             .then((data) => {
-              agregarMensajeIA(data.respuesta);
+              if (data.contenido) {
+                // Mostrar el contenido del archivo si está disponible
+                agregarMensajeIA(
+                  `Contenido del archivo ${archivo}:\n` +
+                    JSON.stringify(data.contenido, null, 2) // Formatea el JSON
+                );
+              } else {
+                agregarMensajeIA(data.respuesta); // Mensaje de error si algo falla
+              }
               esperandoSeleccionArchivo = false; // Desbloquear flujo
               console.log(
                 "Contenido del archivo mostrado. Listo para nuevas interacciones."
@@ -208,83 +218,182 @@ window.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        agregarMensajeIA(data.respuesta);
+
+        // Si la respuesta requiere confirmación
         if (data.solicita_confirmacion) {
-          esperandoConfirmacion = true;
-          agregarMensajeIA(data.respuesta);
-        } else {
-          agregarMensajeIA(data.respuesta);
+          esperandoConfirmacion = true; // Activar modo de confirmación
+          datosEsperandoConfirmacion = data.datos_confirmacion; // Guardar datos necesarios para confirmar
+          agregarMensajeIA(
+            "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
+          );
         }
       })
       .catch((error) => {
         console.error("Error al contactar con la IA:", error);
       });
-  }
-  //
-  // funcion subir archivo
-  botonSubirArchivo.addEventListener("click", async function () {
-    const archivo = archivoInput.files[0]; // Aquí intentamos capturar el archivo
 
-    // Validación: Si no hay un archivo seleccionado, mostrar mensaje de error.
-    if (!archivo) {
-      console.error("No se seleccionó ningún archivo.");
-      alert("Por favor, selecciona un archivo.");
-      return;
-    }
-
-    // Depuración: Confirmar los datos del archivo después de validarlo
-    console.log("Archivo seleccionado:", archivo.name, "Tamaño:", archivo.size);
-
-    // Verificar tamaño del archivo dinámicamente según el modo actual
-    const esAdministrador = window.modo_administrador || modo_administrador; // Validación para el modo administrador
-    const limiteTamano = esAdministrador ? Infinity : 5 * 1024 * 1024;
-
-    if (archivo.size > limiteTamano) {
-      alert(
-        `El archivo es demasiado grande. ${
-          esAdministrador
-            ? "No deberías estar viendo esto. Contacta al administrador."
-            : "Máximo permitido: 5 MB para usuarios."
-        }`
-      );
-      return; // Detener el proceso de carga
-    }
-
-    // Proceso de subida
-    const formData = new FormData();
-    formData.append("archivo", archivo);
-
-    try {
-      const response = await fetch("/subir_archivo", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-
-      let contenido = data.respuesta || "No se pudo leer el contenido.";
-      if (typeof contenido === "object") {
-        contenido = JSON.stringify(contenido, null, 2);
+    function manejarConfirmacion(respuesta) {
+      if (respuesta.toLowerCase() === "sí") {
+        // Enviar datos al servidor para confirmar la respuesta
+        fetch("/confirmar_respuesta", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categoria: prompt(
+              "Escribe la categoría donde deseas guardar la respuesta:"
+            ),
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            agregarMensajeIA(data.respuesta);
+            esperandoConfirmacion = false; // Salir del modo de confirmación
+          })
+          .catch((error) => {
+            console.error("Error al confirmar la respuesta:", error);
+            agregarMensajeIA("Hubo un error al confirmar la respuesta.");
+          });
+      } else if (respuesta.toLowerCase() === "no") {
+        // Enviar datos al servidor para rechazar la respuesta
+        fetch("/rechazar_respuesta", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            agregarMensajeIA(data.respuesta);
+            esperandoConfirmacion = false; // Finalizar el proceso
+          })
+          .catch((error) => {
+            console.error("Error al rechazar la respuesta:", error);
+            agregarMensajeIA("Hubo un error al rechazar la respuesta.");
+          });
+      } else {
+        agregarMensajeIA(
+          "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
+        );
       }
-      agregarMensajeIA(
-        `Archivo subido [${archivo.name}]:<br><br> ${contenido}`
-      );
-    } catch (error) {
-      console.error("Error al subir el archivo:", error);
     }
-  });
 
-  //
-  function manejarConfirmacion(respuesta) {
-    if (respuesta === "sí") {
-      agregarMensajeIA("Confirmación recibida. Continuando...");
-    } else if (respuesta === "no") {
-      agregarMensajeIA("Confirmación negativa. Acción cancelada.");
-    } else {
-      agregarMensajeIA(
-        "No entendí tu respuesta. Por favor, responde 'sí' o 'no'."
+    // funcion subir archivo
+    botonSubirArchivo.addEventListener("click", async function () {
+      const archivo = archivoInput.files[0]; // Aquí intentamos capturar el archivo
+
+      // Validación: Si no hay un archivo seleccionado, mostrar mensaje de error.
+      if (!archivo) {
+        console.error("No se seleccionó ningún archivo.");
+        alert("Por favor, selecciona un archivo.");
+        return;
+      }
+
+      // Depuración: Confirmar los datos del archivo después de validarlo
+      console.log(
+        "Archivo seleccionado:",
+        archivo.name,
+        "Tamaño:",
+        archivo.size
       );
+
+      // Verificar tamaño del archivo dinámicamente según el modo actual
+      const esAdministrador = window.modo_administrador || modo_administrador; // Validación para el modo administrador
+      const limiteTamano = esAdministrador ? Infinity : 5 * 1024 * 1024;
+
+      if (archivo.size > limiteTamano) {
+        alert(
+          `El archivo es demasiado grande. ${
+            esAdministrador
+              ? "No deberías estar viendo esto. Contacta al administrador."
+              : "Máximo permitido: 5 MB para usuarios."
+          }`
+        );
+        return; // Detener el proceso de carga
+      }
+
+      // Proceso de subida
+      const formData = new FormData();
+      formData.append("archivo", archivo);
+
+      try {
+        const response = await fetch("/subir_archivo", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+
+        let contenido = data.respuesta || "No se pudo leer el contenido.";
+        if (typeof contenido === "object") {
+          contenido = JSON.stringify(contenido, null, 2);
+        }
+        agregarMensajeIA(
+          `Archivo subido [${archivo.name}]:<br><br> ${contenido}`
+        );
+      } catch (error) {
+        console.error("Error al subir el archivo:", error);
+      }
+    });
+    //
+    // Código para manejar la confirmación o rechazo de respuestas generadas por la IA
+    // - Este código permite al usuario responder con "sí" o "no" para confirmar o rechazar respuestas.
+    // - Si se confirma, se envía una solicitud al servidor para guardar la respuesta en la categoría correspondiente.
+    // - Si se rechaza, se reitera la solicitud o se solicita corrección manual tras varios intentos.
+
+    let datosEsperandoConfirmacion = null; // Guarda datos para la confirmación actual
+
+    // Si estamos en proceso de confirmación
+    if (esperandoConfirmacion) {
+      manejarConfirmacion(mensaje.toLowerCase());
       return;
     }
-    esperandoConfirmacion = false;
+
+    // Función para manejar confirmación de respuestas
+    function manejarConfirmacion(respuesta) {
+      if (respuesta === "sí") {
+        // Enviar confirmación positiva al servidor
+        fetch("/confirmar_respuesta", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(datosEsperandoConfirmacion),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            agregarMensajeIA(data.mensaje);
+            esperandoConfirmacion = false; // Finalizar el proceso de confirmación
+            datosEsperandoConfirmacion = null;
+          })
+          .catch((error) => {
+            console.error("Error al confirmar la respuesta:", error);
+          });
+      } else if (respuesta === "no") {
+        // Notificar rechazo y pedir corrección o más intentos
+        fetch("/rechazar_respuesta", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(datosEsperandoConfirmacion),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            agregarMensajeIA(data.mensaje);
+            esperandoConfirmacion = data.intentos_pendientes > 0; // Continuar si quedan intentos
+            if (!esperandoConfirmacion) datosEsperandoConfirmacion = null;
+          })
+          .catch((error) => {
+            console.error("Error al rechazar la respuesta:", error);
+          });
+      } else {
+        agregarMensajeIA(
+          "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
+        );
+      }
+    }
   }
 
   function agregarMensajeUsuario(mensaje) {
