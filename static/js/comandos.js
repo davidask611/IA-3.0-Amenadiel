@@ -7,6 +7,25 @@ window.addEventListener("DOMContentLoaded", () => {
   const maxFileSize = modo_administrador ? Infinity : 5 * 1024 * 1024; // No hay límite para admin, 10 MB para usuarios
   const botonSubirArchivo = document.getElementById("botonSubirArchivo");
   const archivoInput = document.getElementById("archivoInput");
+  //funcion registrar acciones
+  function registrarAccion(accion) {
+    fetch("/registrar_accion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ accion: accion }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.respuesta) {
+          console.log("Registro de acción:", data.respuesta);
+        }
+      })
+      .catch((error) => {
+        console.error("Error al registrar la acción:", error);
+      });
+  }
 
   // Verifica si el elemento archivoInput está disponible
   if (!archivoInput) {
@@ -51,8 +70,10 @@ window.addEventListener("DOMContentLoaded", () => {
   botonUsuario.addEventListener("click", () => {
     if (modo_administrador) {
       modo_administrador = false;
+      registrarAccion("Modo administrador desactivado");
       console.log("Modo administrador desactivado");
       agregarMensajeIA("Modo usuario activado");
+      registrarAccion(`Modo usuario activado: ${modo_administrador}`);
     }
   });
 
@@ -105,6 +126,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (mensaje === claveAdminCorrecta && usuarioAdmin === "abuelo") {
           modo_administrador = true;
           esperandoClaveAdmin = false;
+          registrarAccion(`Modo Administrador activado: ${modo_administrador}`);
           console.log("Modo administrador activado");
           agregarMensajeIA("¡Modo administrador activado!");
         } else {
@@ -217,47 +239,58 @@ window.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        registrarAccion("Respuesta recibida del servidor.");
         console.log("Respuesta recibida del servidor:", data);
 
-        // Verificar si estamos en modo de confirmación
-        if (esperandoConfirmacion === true) {
-          console.log("Procesando confirmación... Respuesta actual:", mensaje);
-          manejarConfirmacion(mensaje); // Pasar mensaje del usuario
-        } else {
-          console.log("Procesando mensaje como interacción normal...");
-          agregarMensajeIA(data.respuesta); // Mostrar respuesta en el chat
+        // Verificar si la respuesta requiere confirmación
+        if (data.solicita_confirmacion === true) {
+          esperandoConfirmacion = true; // Bloquear flujo hasta confirmación
+          registrarAccion("Se requiere confirmación del usuario.");
 
-          // Verificar si la respuesta requiere confirmación
-          if (data.solicita_confirmacion === true) {
-            console.log("Activando modo de confirmación.");
-            esperandoConfirmacion = true; // Cambiar estado de confirmación
-            datosEsperandoConfirmacion = data.datos_confirmacion; // Guardar datos relevantes
-            agregarMensajeIA(
-              "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
-            );
-          }
+          // Guardar datos relevantes
+          datosEsperandoConfirmacion = data.datos_confirmacion;
+          registrarAccion(
+            `Datos de confirmación almacenados: ${JSON.stringify(
+              datosEsperandoConfirmacion
+            )}`
+          );
+
+          // Agregar mensaje para la interacción del usuario
+          agregarMensajeIA(
+            "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
+          );
+          registrarAccion(
+            "Mensaje enviado al usuario solicitando confirmación."
+          );
+        } else {
+          // Enviar la respuesta de la IA al usuario
+          agregarMensajeIA(data.respuesta);
+          registrarAccion(`Respuesta enviada al usuario: ${data.respuesta}`);
         }
       })
       .catch((error) => {
         console.error("Error al contactar con la IA:", error);
+        registrarAccion(`Error al contactar con la IA: ${error.message}`);
+        agregarMensajeIA(
+          "Hubo un problema al procesar tu solicitud. Intenta de nuevo."
+        );
       });
 
     // Función para manejar la confirmación del usuario
     function manejarConfirmacion(respuesta) {
+      registrarAccion(
+        `Modo confirmación activado. Respuesta del usuario: ${respuesta}`
+      );
       console.log(
         "Modo confirmación: Respuesta del usuario recibida:",
         respuesta
       );
 
       if (respuesta.toLowerCase() === "sí") {
-        console.log(
-          "Confirmación afirmativa. Solicitando categoría al usuario..."
-        );
         const categoria = prompt(
           "Escribe la categoría donde deseas guardar la respuesta:"
         );
         if (categoria) {
-          console.log("Categoría proporcionada por el usuario:", categoria);
           fetch("/confirmar_respuesta", {
             method: "POST",
             headers: {
@@ -269,22 +302,24 @@ window.addEventListener("DOMContentLoaded", () => {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log("Respuesta del servidor tras confirmar:", data);
-              agregarMensajeIA(data.respuesta); // Mostrar respuesta del backend
+              agregarMensajeIA(data.respuesta);
+              registrarAccion("Respuesta confirmada y procesada.");
               esperandoConfirmacion = false; // Salir de modo de confirmación
             })
             .catch((error) => {
               console.error("Error al confirmar la respuesta:", error);
+              registrarAccion(
+                `Error al confirmar la respuesta: ${error.message}`
+              );
               agregarMensajeIA("Hubo un error al confirmar la respuesta.");
             });
         } else {
-          console.log("No se proporcionó una categoría. Pidiendo de nuevo.");
           agregarMensajeIA(
             "Por favor, escribe una categoría válida para guardar la respuesta."
           );
+          registrarAccion("El usuario no proporcionó una categoría.");
         }
       } else if (respuesta.toLowerCase() === "no") {
-        console.log("Confirmación negativa. Informando al backend...");
         fetch("/rechazar_respuesta", {
           method: "POST",
           headers: {
@@ -293,19 +328,20 @@ window.addEventListener("DOMContentLoaded", () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log("Respuesta del servidor tras rechazar:", data);
-            agregarMensajeIA(data.respuesta); // Mostrar respuesta del backend
+            agregarMensajeIA(data.respuesta);
+            registrarAccion("Respuesta rechazada correctamente.");
             esperandoConfirmacion = false; // Finalizar el proceso
           })
           .catch((error) => {
             console.error("Error al rechazar la respuesta:", error);
+            registrarAccion(`Error al rechazar la respuesta: ${error.message}`);
             agregarMensajeIA("Hubo un error al rechazar la respuesta.");
           });
       } else {
-        console.log("Respuesta inválida. Solicitando corrección...");
         agregarMensajeIA(
           "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
         );
+        registrarAccion("El usuario proporcionó una respuesta inválida.");
       }
     }
 

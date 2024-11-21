@@ -1,3 +1,4 @@
+import datetime
 from config import Config
 import json
 import mimetypes
@@ -22,8 +23,48 @@ app.config.from_object(Config)
 app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
 
-# Función para limpiar archivos obsoletos (más de 60 días)
+# # Función para registrar acciones en un archivo de log
 
+
+def registrar_accion(accion):
+    """
+    Registra una acción en el archivo registro.log.
+    Si el archivo no existe, se crea automáticamente.
+    """
+    try:
+        # Verificar si el archivo existe (opcional, no es estrictamente necesario con "a")
+        if not os.path.exists("registro.log"):
+            with open("registro.log", "w") as archivo:
+                archivo.write("Registro de acciones iniciado.\n")
+
+        # Obtener la fecha y hora actual
+        ahora = datetime.datetime.now()
+        fecha_hora = ahora.strftime("%Y-%m-%d %H:%M:%S")
+
+        # Registrar la acción en el archivo
+        with open("registro.log", "a", encoding="utf-8") as archivo:
+            archivo.write(f"{fecha_hora} - {accion}\n")
+    except Exception as e:
+        print(f"Error al registrar la acción: {str(e)}")
+
+
+@app.route("/registrar_accion", methods=["POST"])
+def registrar_accion_api():
+    """
+    Endpoint para registrar una acción desde el frontend.
+    """
+    accion = request.json.get("accion")
+    if not accion:
+        return jsonify({"respuesta": "No se proporcionó ninguna acción para registrar."}), 400
+
+    try:
+        registrar_accion(accion)
+        return jsonify({"respuesta": "Acción registrada correctamente."}), 200
+    except Exception as e:
+        return jsonify({"respuesta": f"Error al registrar la acción: {str(e)}"}), 500
+
+
+# Función para limpiar archivos obsoletos (más de 60 días)
 
 def limpiar_archivos_obsoletos():
     # Verificar si la carpeta de subida existe
@@ -153,25 +194,25 @@ def ver_contenido():
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
 
 
-#
 # Datos en memoria simulando `entrenando_IA`
 estado_confirmacion = {}
 
+
 # Confirmación de respuesta
-
-
 @app.route("/confirmar_respuesta", methods=["POST"])
 def confirmar_respuesta():
     global estado_confirmacion
     if not estado_confirmacion.get("confirmacion_pendiente"):
+        registrar_accion("Intento de confirmar sin confirmación pendiente")
         return jsonify({"respuesta": "No hay confirmaciones pendientes."}), 400
 
     data = request.json
     categoria = data.get("categoria")
+    registrar_accion(f"Confirmación recibida para categoría: {categoria}")
 
-    # Validar si la categoría fue proporcionada
     categorias_disponibles = estado_confirmacion.get("categorias", [])
     if not categoria or categoria not in categorias_disponibles:
+        registrar_accion(f"Categoría inválida seleccionada: {categoria}")
         return jsonify({
             "respuesta": f"Por favor, selecciona una categoría válida: {', '.join(categorias_disponibles)}"
         }), 400
@@ -180,22 +221,29 @@ def confirmar_respuesta():
     pregunta = estado_confirmacion["pregunta"]
     respuesta = estado_confirmacion["respuesta"]
     datos_previos["publico"].setdefault(categoria, {})[pregunta] = respuesta
-    guardar_datos(datos_previos)  # Guardar datos actualizados en el archivo
+    guardar_datos(datos_previos)  # Guardar datos actualizados
+    registrar_accion(
+        f"Respuesta guardada en la categoría '{categoria}' para la pregunta '{pregunta}'")
 
-    # Limpiar estado de confirmación
     estado_confirmacion.clear()
-
     return jsonify({"respuesta": f"La respuesta se guardó correctamente en la categoría '{categoria}'."}), 200
 
 
 @app.route("/rechazar_respuesta", methods=["POST"])
 def rechazar_respuesta():
+    """
+    Maneja el rechazo de una respuesta confirmada.
+    Registra la acción y devuelve un mensaje correspondiente.
+    """
     global estado_confirmacion
+
     if not estado_confirmacion.get("confirmacion_pendiente"):
+        registrar_accion("Intento de rechazo sin confirmación pendiente")
         return jsonify({"respuesta": "No hay confirmaciones pendientes."}), 400
 
     # Limpiar estado de confirmación
     estado_confirmacion.clear()
+    registrar_accion("Respuesta rechazada correctamente")
 
     return jsonify({"respuesta": "La respuesta fue rechazada."}), 200
 
@@ -219,14 +267,19 @@ def chat():
     # Si ya hay una confirmación pendiente, manejarla directamente
     if estado_confirmacion.get("confirmacion_pendiente"):
         if pregunta_limpia == "sí":
+            registrar_accion(
+                "Usuario aceptó confirmar y seleccionará una categoría")
             return jsonify({
                 "respuesta": "Por favor, selecciona una categoría para guardar: " + ', '.join(estado_confirmacion['categorias']),
                 "categorias": estado_confirmacion['categorias']
             })
         elif pregunta_limpia == "no":
+            registrar_accion("Usuario rechazó la confirmación pendiente")
             estado_confirmacion.clear()
             return jsonify({"respuesta": "La propuesta fue rechazada. Puedes hacer otra pregunta."})
         else:
+            registrar_accion(
+                "Usuario respondió con una entrada inválida durante la confirmación")
             return jsonify({"respuesta": "Por favor responde con 'sí' o 'no'."})
 
     # Procesar normalmente si no hay confirmación pendiente
@@ -272,7 +325,7 @@ def chat():
         print(f"Respuesta de entrenando_IA: {respuesta_ia}")
         return jsonify({"respuesta": respuesta_ia})
 
-    #Respuesta genérica si no se encontró nada
+    # Respuesta genérica si no se encontró nada
     return jsonify({"respuesta": "No entendí tu consulta, ¿puedes reformularla?"})
 
 
