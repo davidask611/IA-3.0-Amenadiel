@@ -61,8 +61,8 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
 estado_confirmacion = {}
 
 
-def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=None):
-
+def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=False,
+                  ):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
 
@@ -70,31 +70,39 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
 
     # Verifica si ya hay una confirmación pendiente
     if estado_confirmacion.get("confirmacion_pendiente"):
+        print("Confirmación pendiente detectada. Esperando respuesta del administrador...")
         return None  # Deja que el flujo de Flask maneje la confirmación
 
     # Verifica si ya se está esperando una confirmación
     if esperando_confirmacion:
+        print("Esperando confirmación de la respuesta.")
         if pregunta_limpia == "sí":
+            print("Confirmación recibida: 'sí'. Procediendo con la lista de categorías.")
             # Mostrar categorías disponibles para guardar
             categorias = list(datos_previos["publico"].keys())
             print("Categorías disponibles:", categorias)
-            return f"Selecciona una categoría para guardar: {', '.join(categorias)}", esperando_confirmacion
+            estado_confirmacion["confirmacion_pendiente"] = False
+            return f"Selecciona una categoría para guardar: {', '.join(categorias)}", True
 
         elif pregunta_limpia in datos_previos["publico"]:
             # Guardar la respuesta en la categoría seleccionada
-            datos_previos["publico"][pregunta_limpia][esperando_confirmacion["pregunta"]
-                                                      ] = esperando_confirmacion["respuesta"]
+            datos_previos["publico"][pregunta_limpia][estado_confirmacion["pregunta"]] = estado_confirmacion[
+                "respuesta"
+            ]
             guardar_datos(datos_previos)
-            print("Respuesta confirmada y guardada en la categoría:", pregunta_limpia)
-            return f"Respuesta guardada en la categoría '{pregunta_limpia}'.", None
+            print(
+                f"Respuesta confirmada y guardada en la categoría: {pregunta_limpia}")
+            estado_confirmacion["confirmacion_pendiente"] = False
+            return f"Respuesta guardada en la categoría '{pregunta_limpia}'.", False
 
         elif pregunta_limpia == "no":
             # Rechazo de la respuesta
-            print(f"Intentos actuales: {esperando_confirmacion['intentos']}")
-            return f"La propuesta fue rechazada. Intenta preguntar de otra manera o carga datos relacionados con '{esperando_confirmacion['pregunta']}'.", None
+            print("Confirmación rechazada: 'no'. Rechazo procesado.")
+            estado_confirmacion["confirmacion_pendiente"] = False
+            return f"La propuesta fue rechazada. Intenta preguntar de otra manera o carga datos relacionados con '{estado_confirmacion['pregunta']}'.", False
 
-    # Selección de la sección según el rol (modo_administrador)
-    seccion = "entrenamiento" if modo_administrador else "publico"
+    # Selección de la sección según el rol
+    seccion = "publico"
     cutoff = cutoff_admin if modo_administrador else cutoff_usuario
 
     # Función interna para buscar en la sección de datos previos
@@ -112,7 +120,8 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
                     print(f"Respuesta exacta encontrada: {respuesta_exacta}")
                     return [respuesta_exacta]
                 mejor_coincidencia = get_close_matches(
-                    pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff)
+                    pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff
+                )
                 if mejor_coincidencia:
                     resultados.append(contenido[mejor_coincidencia[0]])
             elif isinstance(contenido, list):
@@ -125,41 +134,38 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
     if resultados:
         return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
 
+    # Si el administrador busca en archivos
     if modo_administrador:
         print("Modo administrador activo. Buscando en archivos...")
-        archivos_en_uploads = os.listdir('uploads')
+        archivos_en_uploads = os.listdir("uploads")
         print("Archivos detectados en 'uploads':", archivos_en_uploads)
         resultados_archivos = []
-        nlp = spacy.load('es_core_news_sm')
+        nlp = spacy.load("es_core_news_sm")
 
         for nombre_archivo in archivos_en_uploads:
-            ruta_archivo = os.path.join('uploads', nombre_archivo)
-            # Aquí estamos mostrando el archivo que se está procesando.
+            ruta_archivo = os.path.join("uploads", nombre_archivo)
             print(f"Procesando archivo: {nombre_archivo}")
 
-            if nombre_archivo.endswith('.json'):
+            if nombre_archivo.endswith(".json"):
                 datos = process_json(ruta_archivo)
                 if isinstance(datos, dict):
                     for clave, valor in datos.items():
                         if pregunta_limpia in str(clave).lower() or pregunta_limpia in str(valor).lower():
-                            # Aquí mostramos la coincidencia encontrada.
                             print(f"Coincidencia encontrada en JSON: {valor}")
                             resultados_archivos.append(valor)
-            elif nombre_archivo.endswith('.txt'):
+            elif nombre_archivo.endswith(".txt"):
                 contenido = process_txt(ruta_archivo)
-                frases = contenido.split('.')
+                frases = contenido.split(".")
                 for frase in frases:
                     if pregunta_limpia in frase.lower():
-                        # Aquí mostramos la coincidencia encontrada.
                         print(
                             f"Coincidencia encontrada en TXT: {frase.strip()}")
                         resultados_archivos.append(frase.strip())
-            elif nombre_archivo.endswith('.pdf'):
+            elif nombre_archivo.endswith(".pdf"):
                 contenido = process_pdf(ruta_archivo)
-                frases = contenido.split('.')
+                frases = contenido.split(".")
                 for frase in frases:
                     if pregunta_limpia in frase.lower():
-                        # Aquí mostramos la coincidencia encontrada.
                         print(
                             f"Coincidencia encontrada en PDF: {frase.strip()}")
                         resultados_archivos.append(frase.strip())
@@ -174,9 +180,11 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
                 "confirmacion_pendiente": True,
                 "pregunta": pregunta_limpia,
                 "respuesta": mejor_respuesta,
-                "categorias": list(datos_previos["publico"].keys())
+                "categorias": list(datos_previos["publico"].keys()),
             }
+            print("Esperando confirmación para guardar la respuesta.")
             return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'sí' o 'no'."
+
     print("No se encontró información relevante.")
     return None
 

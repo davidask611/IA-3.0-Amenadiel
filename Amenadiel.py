@@ -23,7 +23,7 @@ from funciones.funcion_huerta import huerta
 from funciones.funcion_geografia import geografia
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 from funcionesAdmin.funcion_ver_datos import ver_datos
-from funcionesAdmin.funcion_aprender import entrenando_IA, buscar_en_archivos_uploads, generar_respuesta_por_similitud
+from funcionesAdmin.funcion_aprender import entrenando_IA, generar_respuesta_por_similitud
 UMBRAL_SIMILITUD = 0.5
 historial_preguntas = []  # Contexto/ultima pregunta/categoria
 historial_conversacion = []
@@ -152,11 +152,11 @@ def actualizar_historial(pregunta, respuesta, conocimientos, animales_data):
 
 # Función principal de la IA para procesar mensajes de usuario
 def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, modo_administrador=False):
-    global estado_confirmacion  # Añadir esta línea para que la variable global se reconozca
 
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
-    print(f"Procesando mensaje: {pregunta_limpia}, Modo administrador: {modo_administrador}")
+    print(
+        f"Procesando mensaje: {pregunta_limpia}, Modo administrador: {modo_administrador}")
 
     if modo_administrador and pregunta_limpia == "ver datos":
         contenido = ver_datos(directorio_json='.')
@@ -270,47 +270,12 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
 
     # Al final del flujo, si no hay respuesta específica
     respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos,
-                                 modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.6)
+                                 modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7)
     if respuesta_ia:
         print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
         return respuesta_ia
 
-    # Sector administrador
-    if modo_administrador:
-        print("Intentando buscar respuesta en archivos de carga para el administrador...")
-
-        # Buscar en los archivos con expresiones regulares y TF-IDF
-        resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
-
-        if resultados_archivos:
-            print("Respuesta encontrada en archivos de carga.")
-            return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
-
-        # Si no se encontró en archivos, intenta con similitud avanzada
-        print(
-            "No se encontró información en los archivos. Buscando por similitud avanzada...")
-
-        respuesta_similitud = generar_respuesta_por_similitud(
-            pregunta_limpia, datos_previos, modo_administrador)
-
-        if respuesta_similitud:
-            print("Respuesta por similitud avanzada:", respuesta_similitud)
-            return respuesta_similitud
-
-        # Si no encontró nada, intenta con `entrenando_IA`
-        print("Intentando obtener respuesta de entrenando_IA...")
-        respuesta_ia = entrenando_IA(
-            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
-
-        if respuesta_ia:
-            print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
-            return respuesta_ia
-
-        # Si no encontró nada, notifica al administrador
-        print("No se encontró información en las fuentes actuales.")
-        return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
-
-    # Si no se encuentra ninguna respuesta, responde de manera amigable
+    #Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [
         "¡Vaya! No estoy seguro de cómo responder a eso.",
         "Hmm, parece que no tengo una respuesta para eso.",
@@ -321,7 +286,7 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
     return random.choice(respuestas_amigables)
 
 
-def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_previos, modo_administrador=False):
+def verificar_procesar_mensaje(pregunta, conocimientos, animales_data):
     # Limpiar y preparar la pregunta
     pregunta_limpia = eliminar_acentos(pregunta.lower())
 
@@ -377,47 +342,6 @@ def verificar_procesar_mensaje(pregunta, conocimientos, animales_data, datos_pre
             "gato": "Por el momento no he aprendido sobre ese gato.",
             "ave": "Por el momento no he aprendido sobre ese ave."
         }.get(subcategoria, "Por favor, especifica una raza o especie.")
-
-    # Al final del flujo, si no hay respuesta específica
-    respuesta_ia = entrenando_IA(
-        pregunta_limpia, datos_previos, modo_administrador=False)
-    if respuesta_ia:
-        print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
-        return respuesta_ia
-
-    # # Sector administrador
-    # if modo_administrador:
-    #     print("Intentando buscar respuesta en archivos de carga para el administrador...")
-
-    #     # Buscar en los archivos con expresiones regulares y TF-IDF
-    #     resultados_archivos = buscar_en_archivos_uploads(pregunta_limpia)
-
-    #     if resultados_archivos:
-    #         print("Respuesta encontrada en archivos de carga.")
-    #         return f"Respuesta encontrada en archivos de carga: <br><br>{resultados_archivos[0]}"
-
-    #     # Si no se encontró en archivos, intenta con similitud avanzada
-    #     print(
-    #         "No se encontró información en los archivos. Buscando por similitud avanzada...")
-    #     respuesta_similitud = generar_respuesta_por_similitud(
-    #         pregunta_limpia, datos_previos, modo_administrador)
-
-    #     if respuesta_similitud:
-    #         print("Respuesta por similitud avanzada:", respuesta_similitud)
-    #         return respuesta_similitud
-
-    #     # Si no encontró nada, intenta con `entrenando_IA`
-    #     print("Intentando obtener respuesta de entrenando_IA...")
-    #     respuesta_ia = entrenando_IA(
-    #         pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.6)
-
-    #     if respuesta_ia:
-    #         print(f"Respuesta generada por entrenando_IA: {respuesta_ia}")
-    #         return respuesta_ia
-
-    #     # Si no encontró nada, notifica al administrador
-    #     print("No se encontró información en las fuentes actuales.")
-    #     return "No se ha encontrado una respuesta en entrenamiento ni en los archivos de carga. Por favor, carga archivos relacionados o agrega la respuesta en el entrenamiento para que esté disponible para futuras consultas."
 
     # Respuestas amigables si no se encuentra una respuesta
     respuestas_amigables = [

@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let esperandoSeleccionArchivo = false;
   let archivoSeleccionado = [];
   let esperandoConfirmacion = false;
+  let listaMostrada = false;
 
   function actualizarFechaHora() {
     const fecha = new Date();
@@ -74,7 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (!nombreUsuario) {
         nombreUsuario = mensaje;
         agregarMensajeIA(
-          `¡Un placer, ${nombreUsuario}! Puedes preguntarme algo o decirme 'activar modo administrador' para ingresar al modo administrador.`
+          `¡Un placer, ${nombreUsuario}! Puedes preguntarme algo e intentare ayudarte.`
         );
         inputMensaje.value = "";
         return;
@@ -202,10 +203,8 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         return;
       }
-
-      // Si el mensaje no corresponde a "ver datos" ni a una selección, procesarlo como normal
-      console.log("Procesando mensaje como interacción normal...");
     }
+    // Código ajustado para confirmar o rechazar respuestas
     fetch("/chat", {
       method: "POST",
       headers: {
@@ -218,46 +217,74 @@ window.addEventListener("DOMContentLoaded", () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        agregarMensajeIA(data.respuesta);
+        console.log("Respuesta recibida del servidor:", data);
 
-        // Si la respuesta requiere confirmación
-        if (data.solicita_confirmacion) {
-          esperandoConfirmacion = true; // Activar modo de confirmación
-          datosEsperandoConfirmacion = data.datos_confirmacion; // Guardar datos necesarios para confirmar
-          agregarMensajeIA(
-            "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
-          );
+        // Verificar si estamos en modo de confirmación
+        if (esperandoConfirmacion === true) {
+          console.log("Procesando confirmación... Respuesta actual:", mensaje);
+          manejarConfirmacion(mensaje); // Pasar mensaje del usuario
+        } else {
+          console.log("Procesando mensaje como interacción normal...");
+          agregarMensajeIA(data.respuesta); // Mostrar respuesta en el chat
+
+          // Verificar si la respuesta requiere confirmación
+          if (data.solicita_confirmacion === true) {
+            console.log("Activando modo de confirmación.");
+            esperandoConfirmacion = true; // Cambiar estado de confirmación
+            datosEsperandoConfirmacion = data.datos_confirmacion; // Guardar datos relevantes
+            agregarMensajeIA(
+              "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
+            );
+          }
         }
       })
       .catch((error) => {
         console.error("Error al contactar con la IA:", error);
       });
 
+    // Función para manejar la confirmación del usuario
     function manejarConfirmacion(respuesta) {
+      console.log(
+        "Modo confirmación: Respuesta del usuario recibida:",
+        respuesta
+      );
+
       if (respuesta.toLowerCase() === "sí") {
-        // Enviar datos al servidor para confirmar la respuesta
-        fetch("/confirmar_respuesta", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            categoria: prompt(
-              "Escribe la categoría donde deseas guardar la respuesta:"
-            ),
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            agregarMensajeIA(data.respuesta);
-            esperandoConfirmacion = false; // Salir del modo de confirmación
+        console.log(
+          "Confirmación afirmativa. Solicitando categoría al usuario..."
+        );
+        const categoria = prompt(
+          "Escribe la categoría donde deseas guardar la respuesta:"
+        );
+        if (categoria) {
+          console.log("Categoría proporcionada por el usuario:", categoria);
+          fetch("/confirmar_respuesta", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              categoria: categoria.trim(),
+            }),
           })
-          .catch((error) => {
-            console.error("Error al confirmar la respuesta:", error);
-            agregarMensajeIA("Hubo un error al confirmar la respuesta.");
-          });
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Respuesta del servidor tras confirmar:", data);
+              agregarMensajeIA(data.respuesta); // Mostrar respuesta del backend
+              esperandoConfirmacion = false; // Salir de modo de confirmación
+            })
+            .catch((error) => {
+              console.error("Error al confirmar la respuesta:", error);
+              agregarMensajeIA("Hubo un error al confirmar la respuesta.");
+            });
+        } else {
+          console.log("No se proporcionó una categoría. Pidiendo de nuevo.");
+          agregarMensajeIA(
+            "Por favor, escribe una categoría válida para guardar la respuesta."
+          );
+        }
       } else if (respuesta.toLowerCase() === "no") {
-        // Enviar datos al servidor para rechazar la respuesta
+        console.log("Confirmación negativa. Informando al backend...");
         fetch("/rechazar_respuesta", {
           method: "POST",
           headers: {
@@ -266,7 +293,8 @@ window.addEventListener("DOMContentLoaded", () => {
         })
           .then((response) => response.json())
           .then((data) => {
-            agregarMensajeIA(data.respuesta);
+            console.log("Respuesta del servidor tras rechazar:", data);
+            agregarMensajeIA(data.respuesta); // Mostrar respuesta del backend
             esperandoConfirmacion = false; // Finalizar el proceso
           })
           .catch((error) => {
@@ -274,6 +302,7 @@ window.addEventListener("DOMContentLoaded", () => {
             agregarMensajeIA("Hubo un error al rechazar la respuesta.");
           });
       } else {
+        console.log("Respuesta inválida. Solicitando corrección...");
         agregarMensajeIA(
           "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
         );

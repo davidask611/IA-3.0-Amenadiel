@@ -23,6 +23,8 @@ app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
 
 # Función para limpiar archivos obsoletos (más de 60 días)
+
+
 def limpiar_archivos_obsoletos():
     # Verificar si la carpeta de subida existe
     upload_folder = app.config.get('UPLOAD_FOLDER', './uploads')
@@ -49,6 +51,7 @@ def home():
     session['modo_administrador'] = False  # Restablecer a False en cada carga
     # limpiar_archivos_obsoletos()  # Limpia archivos obsoletos al cargar la página principal
     return render_template("index.html")
+
 
 @app.route("/subir_archivo", methods=["POST"])
 def subir_archivo():
@@ -148,9 +151,14 @@ def ver_contenido():
         return jsonify({"respuesta": f"El archivo {archivo_seleccionado} no contiene un JSON válido. Error: {str(e)}"})
     except Exception as e:
         return jsonify({"respuesta": f"Error al leer el archivo: {str(e)}"})
+
+
 #
 # Datos en memoria simulando `entrenando_IA`
 estado_confirmacion = {}
+
+# Confirmación de respuesta
+
 
 @app.route("/confirmar_respuesta", methods=["POST"])
 def confirmar_respuesta():
@@ -191,7 +199,6 @@ def rechazar_respuesta():
 
     return jsonify({"respuesta": "La respuesta fue rechazada."}), 200
 
-#
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -209,7 +216,27 @@ def chat():
     print(
         f"Estado de administrador: {session.get('modo_administrador', False)}")
 
-    #Primero, verificar si la pregunta es sobre "ver datos"
+    # Si ya hay una confirmación pendiente, manejarla directamente
+    if estado_confirmacion.get("confirmacion_pendiente"):
+        if pregunta_limpia == "sí":
+            return jsonify({
+                "respuesta": "Por favor, selecciona una categoría para guardar: " + ', '.join(estado_confirmacion['categorias']),
+                "categorias": estado_confirmacion['categorias']
+            })
+        elif pregunta_limpia == "no":
+            estado_confirmacion.clear()
+            return jsonify({"respuesta": "La propuesta fue rechazada. Puedes hacer otra pregunta."})
+        else:
+            return jsonify({"respuesta": "Por favor responde con 'sí' o 'no'."})
+
+    # Procesar normalmente si no hay confirmación pendiente
+    if session.get('modo_administrador', False):
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True)
+        if respuesta_ia:
+            return jsonify({"respuesta": respuesta_ia})
+
+    # Primero, verificar si la pregunta es sobre "ver datos"
     if "ver datos" in pregunta_limpia:
         # Delegar completamente a `ver_datos()`
         return ver_datos()
@@ -237,23 +264,15 @@ def chat():
     if respuesta_matematica and "No pude entender la operación" not in respuesta_matematica:
         return jsonify({"respuesta": respuesta_matematica})
 
-    # Si es administrador, buscar en `entrenando_IA`
-    print(
-        f"Modo administrador en sesión: {session.get('modo_administrador', False)}")
-    if session.get('modo_administrador', False):
-        respuesta_ia = entrenando_IA(
-            pregunta_limpia, datos_previos, modo_administrador=True)
-        if respuesta_ia:
-            return jsonify({"respuesta": respuesta_ia})
-
     # Procesar el mensaje normalmente
-    respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data,
-                                    datos_previos, modo_administrador=session.get('modo_administrador', False))
+    respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, session.get('modo_administrador', False)
+                                    )
+
     if respuesta_ia:
         print(f"Respuesta de entrenando_IA: {respuesta_ia}")
         return jsonify({"respuesta": respuesta_ia})
 
-    # Respuesta genérica si no se encontró nada
+    #Respuesta genérica si no se encontró nada
     return jsonify({"respuesta": "No entendí tu consulta, ¿puedes reformularla?"})
 
 
