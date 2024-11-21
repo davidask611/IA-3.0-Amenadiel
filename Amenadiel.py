@@ -273,7 +273,7 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
 
     # Al final del flujo, si no hay respuesta específica
     respuesta_ia = entrenando_IA(pregunta_limpia, datos_previos,
-                                 modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7)
+                                 modo_administrador=False, cutoff_usuario=0.5)
     if respuesta_ia:
         print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
         return respuesta_ia
@@ -288,8 +288,7 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         registrar_accion(
             "Llamando a entrenando_IA con modo_administrador=True...")
         respuesta_ia = entrenando_IA(
-            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.7
-        )
+            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5)
 
         if respuesta_ia:
             registrar_accion(

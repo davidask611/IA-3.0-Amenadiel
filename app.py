@@ -1,4 +1,4 @@
-import datetime
+# import datetime
 from config import Config
 import json
 import mimetypes
@@ -11,7 +11,7 @@ from funciones.funcion_eliminarAcentos import eliminar_acentos
 import sys
 import os
 import time
-from datetime import timedelta
+# from datetime import timedelta
 from registro_acciones import registrar_accion
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 

@@ -62,7 +62,7 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
 estado_confirmacion = {}
 
 
-def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=False):
+def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
     registrar_accion(f"Pregunta procesada: {pregunta_limpia}")
@@ -111,8 +111,8 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
         return "Por favor, responde con 'si' para confirmar o 'no' para rechazar.", True
 
     # Continuar flujo normal si no hay confirmación pendiente
-    seccion = "publico"
-    cutoff = cutoff_admin if modo_administrador else cutoff_usuario
+    seccion = "publico"  # Mantener 'publico' siempre para el usuario
+    cutoff = cutoff_usuario  # Solo usar cutoff del usuario
 
     def buscar_en_seccion(seccion, cutoff):
         print(f"Buscando en la sección '{seccion}' con cutoff {cutoff}")

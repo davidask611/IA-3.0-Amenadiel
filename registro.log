@@ -80,3 +80,17 @@
 2024-11-21 14:03:54 - Confirmación rechazada. Liberando estado.
 2024-11-21 14:03:54 - Respuesta recibida del servidor.
 2024-11-21 14:03:54 - Respuesta enviada al usuario: La propuesta fue rechazada. Puedes hacer otra consulta.,false
+2024-11-21 15:24:32 - Pregunta procesada: hola
+2024-11-21 15:24:32 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-21 15:24:32 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
+2024-11-21 15:24:32 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
+2024-11-21 15:24:32 - Respuesta recibida del servidor.
+2024-11-21 15:24:32 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
+2024-11-21 15:24:38 - Respuesta recibida del servidor.
+2024-11-21 15:24:38 - Respuesta enviada al usuario: Mi nombre es Clark
+2024-11-21 16:18:39 - Pregunta procesada: hola
+2024-11-21 16:18:39 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-21 16:18:39 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
+2024-11-21 16:18:39 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
+2024-11-21 16:18:39 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
+2024-11-21 16:18:39 - Respuesta recibida del servidor.
