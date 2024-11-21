@@ -6,12 +6,13 @@ from flask import Flask, render_template, request, jsonify, session
 from Amenadiel import procesar_mensaje, conocimientos, geografia_data, matematica, animales_data, comida
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
-from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos, guardar_datos
+from funcionesAdmin.funcion_aprender import entrenando_IA, datos_previos, guardar_datos, generar_respuesta_por_similitud, buscar_en_archivos_uploads
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 import sys
 import os
 import time
 from datetime import timedelta
+from registro_acciones import registrar_accion
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = Flask(__name__)
@@ -24,28 +25,6 @@ app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
 
 # # Función para registrar acciones en un archivo de log
-
-
-def registrar_accion(accion):
-    """
-    Registra una acción en el archivo registro.log.
-    Si el archivo no existe, se crea automáticamente.
-    """
-    try:
-        # Verificar si el archivo existe (opcional, no es estrictamente necesario con "a")
-        if not os.path.exists("registro.log"):
-            with open("registro.log", "w") as archivo:
-                archivo.write("Registro de acciones iniciado.\n")
-
-        # Obtener la fecha y hora actual
-        ahora = datetime.datetime.now()
-        fecha_hora = ahora.strftime("%Y-%m-%d %H:%M:%S")
-
-        # Registrar la acción en el archivo
-        with open("registro.log", "a", encoding="utf-8") as archivo:
-            archivo.write(f"{fecha_hora} - {accion}\n")
-    except Exception as e:
-        print(f"Error al registrar la acción: {str(e)}")
 
 
 @app.route("/registrar_accion", methods=["POST"])
@@ -248,25 +227,45 @@ def rechazar_respuesta():
     return jsonify({"respuesta": "La respuesta fue rechazada."}), 200
 
 
+estado_confirmacion = {}  # Definición global
+
+
 @app.route("/chat", methods=["POST"])
 def chat():
-    # Obtener el mensaje y el estado del administrador
     pregunta_limpia = request.json.get("mensaje")
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     modo_administrador = request.json.get("modo_administrador", False)
-
-    # Activar modo administrador en la sesión si corresponde
-    if modo_administrador:
-        session['modo_administrador'] = True
-        print("Modo administrador activado en sesión.")
+    global estado_confirmacion  # Indica que estás usando la variable global
 
     print(f"Mensaje recibido: '{pregunta_limpia}'")
     print(
         f"Estado de administrador: {session.get('modo_administrador', False)}")
+    # modo administrador
+    if modo_administrador:
+        print("Modo administrador activado para la pregunta:", pregunta_limpia)
+        registrar_accion(
+            f"Modo administrador activado para la pregunta: {pregunta_limpia}")
 
-    # Si ya hay una confirmación pendiente, manejarla directamente
+        # Llamada a entrenando_IA con modo_administrador=True
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True)
+        if respuesta_ia:
+            return jsonify({"respuesta": respuesta_ia})
+
+        # Llamada a generar respuesta por similitud
+        respuesta_ia = generar_respuesta_por_similitud(
+            pregunta_limpia, datos_previos)
+        if respuesta_ia:
+            return jsonify({"respuesta": respuesta_ia})
+
+        # Si el administrador busca en archivos
+        respuesta_ia = buscar_en_archivos_uploads(pregunta_limpia)
+        if respuesta_ia:
+            return jsonify({"respuesta": respuesta_ia})
+
+    # Si hay confirmación pendiente, manejarla primero
     if estado_confirmacion.get("confirmacion_pendiente"):
-        if pregunta_limpia == "sí":
+        if pregunta_limpia == "si":
             registrar_accion(
                 "Usuario aceptó confirmar y seleccionará una categoría")
             return jsonify({
@@ -280,18 +279,11 @@ def chat():
         else:
             registrar_accion(
                 "Usuario respondió con una entrada inválida durante la confirmación")
-            return jsonify({"respuesta": "Por favor responde con 'sí' o 'no'."})
+            return jsonify({"respuesta": "Por favor responde con 'si' o 'no'."})
 
     # Procesar normalmente si no hay confirmación pendiente
-    if session.get('modo_administrador', False):
-        respuesta_ia = entrenando_IA(
-            pregunta_limpia, datos_previos, modo_administrador=True)
-        if respuesta_ia:
-            return jsonify({"respuesta": respuesta_ia})
-
     # Primero, verificar si la pregunta es sobre "ver datos"
     if "ver datos" in pregunta_limpia:
-        # Delegar completamente a `ver_datos()`
         return ver_datos()
 
     # Verificar si la última pregunta fue sobre recetas y procesar la elección
@@ -300,7 +292,6 @@ def chat():
             num_receta = int(pregunta_limpia.strip())
             respuesta_receta = comida(
                 pregunta_limpia, conocimientos, num_receta)
-            # Limpiar contexto
             conocimientos["contexto"]["ultimaPregunta"] = None
             return jsonify({"respuesta": respuesta_receta})
         except ValueError:
@@ -318,14 +309,12 @@ def chat():
         return jsonify({"respuesta": respuesta_matematica})
 
     # Procesar el mensaje normalmente
-    respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, session.get('modo_administrador', False)
-                                    )
-
+    respuesta_ia = procesar_mensaje(pregunta_limpia, conocimientos, geografia_data,
+                                    animales_data, datos_previos, session.get('modo_administrador', False))
     if respuesta_ia:
-        print(f"Respuesta de entrenando_IA: {respuesta_ia}")
         return jsonify({"respuesta": respuesta_ia})
 
-    # Respuesta genérica si no se encontró nada
+    # Respuesta genérica si no se encuentra nada
     return jsonify({"respuesta": "No entendí tu consulta, ¿puedes reformularla?"})
 
 

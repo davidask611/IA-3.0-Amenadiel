@@ -1,13 +1,82 @@
-2024-11-20 23:46:46 - Respuesta recibida del servidor.
-
-2024-11-21 00:25:18 - Respuesta recibida del servidor.
-2024-11-21 00:25:18 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
-2024-11-21 00:25:41 - Respuesta recibida del servidor.
-2024-11-21 00:25:41 - Respuesta enviada al usuario: Mi nombre es Clark
-2024-11-21 00:26:00 - Modo Administrador activado: true
-2024-11-21 00:26:22 - Respuesta recibida del servidor.
-2024-11-21 00:26:22 - Respuesta enviada al usuario: El resultado de 5+5 es 10.
-2024-11-21 00:27:05 - Respuesta recibida del servidor.
-2024-11-21 00:27:05 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'El ojo del avestruz es más grande que su cerebro'. Responde con 'sí' o 'no'.
-2024-11-21 00:27:11 - Respuesta recibida del servidor.
-2024-11-21 00:27:11 - Respuesta enviada al usuario: ¡Vaya! No estoy seguro de cómo responder a eso.
+2024-11-21 13:58:06 - Pregunta procesada: hola
+2024-11-21 13:58:06 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-21 13:58:06 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
+2024-11-21 13:58:06 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
+2024-11-21 13:58:06 - Respuesta recibida del servidor.
+2024-11-21 13:58:06 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
+2024-11-21 13:58:30 - Modo administrador activado para la pregunta: el ojo del avestruz
+2024-11-21 13:58:30 - Pregunta procesada: el ojo del avestruz
+2024-11-21 13:58:30 - Buscando en la sección 'publico' con cutoff 0.7
+2024-11-21 13:58:30 - Modo administrador activo. Buscando en archivos.
+2024-11-21 13:58:30 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-21 13:58:31 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-21 13:58:32 - Procesando archivo: 109-Poemas-escogidos.pdf
+2024-11-21 13:58:36 - Mejor respuesta encontrada en archivos: El ojo del avestruz es más grande que su cerebro
+2024-11-21 13:58:37 - Respuesta recibida del servidor.
+2024-11-21 13:58:37 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'El ojo del avestruz es más grande que su cerebro'. Responde con 'si' o 'no.'
+2024-11-21 13:58:41 - Modo administrador activado para la pregunta: si
+2024-11-21 13:58:41 - Pregunta procesada: si
+2024-11-21 13:58:41 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-21 13:58:41 - Confirmación afirmativa. Categorías disponibles: ['clima', 'salud', 'animales', 'saludo', 'musica']
+2024-11-21 13:58:41 - Respuesta recibida del servidor.
+2024-11-21 13:58:41 - Respuesta enviada al usuario: Selecciona una categoría para guardar: clima, salud, animales, saludo, musica,true
+2024-11-21 13:58:54 - Modo administrador activado para la pregunta: animales
+2024-11-21 13:58:54 - Pregunta procesada: animales
+2024-11-21 13:58:54 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-21 13:58:54 - Respuesta guardada en la categoría: animales
+2024-11-21 13:58:54 - Respuesta recibida del servidor.
+2024-11-21 13:58:54 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'animales'.,false
+2024-11-21 14:02:03 - Pregunta procesada: hola
+2024-11-21 14:02:03 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-21 14:02:03 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
+2024-11-21 14:02:03 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
+2024-11-21 14:02:03 - Respuesta recibida del servidor.
+2024-11-21 14:02:03 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
+2024-11-21 14:02:07 - Respuesta recibida del servidor.
+2024-11-21 14:02:07 - Respuesta enviada al usuario: Mi nombre es Clark
+2024-11-21 14:02:28 - Modo administrador activado para la pregunta: como te llamas
+2024-11-21 14:02:28 - Pregunta procesada: como te llamas
+2024-11-21 14:02:28 - Buscando en la sección 'publico' con cutoff 0.7
+2024-11-21 14:02:28 - Modo administrador activo. Buscando en archivos.
+2024-11-21 14:02:28 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-21 14:02:29 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-21 14:02:30 - Procesando archivo: 109-Poemas-escogidos.pdf
+2024-11-21 14:02:35 - No se encontró información relevante.
+2024-11-21 14:02:35 - Respuesta recibida del servidor.
+2024-11-21 14:02:35 - Respuesta enviada al usuario: No se encontró información relevante.
+2024-11-21 14:03:04 - Modo administrador activado para la pregunta: cual es el ave mas rapida
+2024-11-21 14:03:04 - Pregunta procesada: cual es el ave mas rapida
+2024-11-21 14:03:04 - Buscando en la sección 'publico' con cutoff 0.7
+2024-11-21 14:03:04 - Modo administrador activo. Buscando en archivos.
+2024-11-21 14:03:04 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-21 14:03:05 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-21 14:03:06 - Procesando archivo: 109-Poemas-escogidos.pdf
+2024-11-21 14:03:11 - No se encontró información relevante.
+2024-11-21 14:03:11 - Respuesta recibida del servidor.
+2024-11-21 14:03:11 - Respuesta enviada al usuario: No se encontró información relevante.
+2024-11-21 14:03:22 - Modo administrador activado para la pregunta: el ave mas rapida
+2024-11-21 14:03:22 - Pregunta procesada: el ave mas rapida
+2024-11-21 14:03:22 - Buscando en la sección 'publico' con cutoff 0.7
+2024-11-21 14:03:22 - Modo administrador activo. Buscando en archivos.
+2024-11-21 14:03:22 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-21 14:03:23 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-21 14:03:23 - Procesando archivo: 109-Poemas-escogidos.pdf
+2024-11-21 14:03:28 - No se encontró información relevante.
+2024-11-21 14:03:28 - Respuesta recibida del servidor.
+2024-11-21 14:03:28 - Respuesta enviada al usuario: No se encontró información relevante.
+2024-11-21 14:03:37 - Modo administrador activado para la pregunta: el ave
+2024-11-21 14:03:37 - Pregunta procesada: el ave
+2024-11-21 14:03:37 - Buscando en la sección 'publico' con cutoff 0.7
+2024-11-21 14:03:37 - Modo administrador activo. Buscando en archivos.
+2024-11-21 14:03:37 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-21 14:03:38 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-21 14:03:39 - Procesando archivo: 109-Poemas-escogidos.pdf
+2024-11-21 14:03:44 - Mejor respuesta encontrada en archivos: El ojo del avestruz es más grande que su cerebro
+2024-11-21 14:03:44 - Respuesta recibida del servidor.
+2024-11-21 14:03:44 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'El ojo del avestruz es más grande que su cerebro'. Responde con 'si' o 'no.'
+2024-11-21 14:03:54 - Modo administrador activado para la pregunta: no
+2024-11-21 14:03:54 - Pregunta procesada: no
+2024-11-21 14:03:54 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-21 14:03:54 - Confirmación rechazada. Liberando estado.
+2024-11-21 14:03:54 - Respuesta recibida del servidor.
+2024-11-21 14:03:54 - Respuesta enviada al usuario: La propuesta fue rechazada. Puedes hacer otra consulta.,false

@@ -1,14 +1,14 @@
 import json
-import unicodedata
+# import unicodedata
 import random
 import os
 from datetime import datetime
-import re
-import math
-import numpy as np
+# import re
+# import math
+# import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from difflib import get_close_matches
+# from sklearn.metrics.pairwise import cosine_similarity
+# from difflib import get_close_matches
 # Y así sucesivamente para cada función
 from funciones.funcion_saludo import buscar_saludo
 from funciones.funcion_sobreIA import responder_sobre_ia
@@ -17,13 +17,14 @@ from funciones.funcion_signo import detectar_signo
 from funciones.funcion_animales import verificar_musica_animal
 from funciones.funcion_comida import comida
 from funciones.funcion_chiste import verificar_chiste
-from funciones.funcion_chiste import obtener_chiste
+# from funciones.funcion_chiste import obtener_chiste
 from funciones.funcion_matematica import matematica
 from funciones.funcion_huerta import huerta
 from funciones.funcion_geografia import geografia
 from funciones.funcion_eliminarAcentos import eliminar_acentos
 from funcionesAdmin.funcion_ver_datos import ver_datos
-from funcionesAdmin.funcion_aprender import entrenando_IA, generar_respuesta_por_similitud
+from funcionesAdmin.funcion_aprender import entrenando_IA, generar_respuesta_por_similitud, buscar_en_archivos_uploads
+from registro_acciones import registrar_accion
 UMBRAL_SIMILITUD = 0.5
 historial_preguntas = []  # Contexto/ultima pregunta/categoria
 historial_conversacion = []
@@ -148,11 +149,13 @@ def actualizar_historial(pregunta, respuesta, conocimientos, animales_data):
     guardar_datos(conocimientos, 'conocimientos.json')
 
 
+estado_confirmacion = {}  # Definición global
 # TODO zona funciones
-
 # Función principal de la IA para procesar mensajes de usuario
-def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, modo_administrador=False):
 
+
+def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_data, datos_previos, modo_administrador=False):
+    global estado_confirmacion  # Indica que estás usando la variable global
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
     print(
@@ -275,7 +278,56 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         print(f"Respuesta generada por entrenando_IA(publico): {respuesta_ia}")
         return respuesta_ia
 
-    #Si no se encuentra ninguna respuesta, responde de manera amigable
+    # sector administrador
+    if modo_administrador:
+        # Registrar la activación del modo administrador
+        registrar_accion(
+            f"Modo administrador activado para la pregunta: {pregunta_limpia}")
+
+        # Llamada a entrenando_IA en modo administrador
+        registrar_accion(
+            "Llamando a entrenando_IA con modo_administrador=True...")
+        respuesta_ia = entrenando_IA(
+            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5, cutoff_admin=0.7
+        )
+
+        if respuesta_ia:
+            registrar_accion(
+                f"Respuesta generada por entrenando_IA (modo administrador): {respuesta_ia}")
+            print(
+                f"Respuesta generada por entrenando_IA (modo administrador): {respuesta_ia}")
+            return respuesta_ia
+
+        if estado_confirmacion.get("confirmacion_pendiente"):
+            # Bloquear flujo hasta que se resuelva la confirmación
+            registrar_accion(
+                "Confirmación pendiente detectada. Deteniendo flujo.")
+            return None  # Detener cualquier procesamiento adicional
+
+        # Intentar generar una respuesta por similitud
+        registrar_accion("Llamando a generar_respuesta_por_similitud...")
+        respuesta_ia = generar_respuesta_por_similitud(
+            pregunta_limpia, datos_previos)
+
+        if respuesta_ia:
+            registrar_accion(
+                f"Respuesta generada por similitud: {respuesta_ia}")
+            print(f"Respuesta generada por similitud: {respuesta_ia}")
+            return respuesta_ia
+
+        # Llamada a la función para buscar en archivos de uploads
+        registrar_accion("Llamando a buscar_en_archivos_uploads...")
+        respuesta_ia = buscar_en_archivos_uploads(pregunta_limpia)
+
+        if respuesta_ia:
+            registrar_accion(
+                f"Resultados de búsqueda en archivos: {respuesta_ia}")
+            print(f"Resultados de búsqueda en archivos: {respuesta_ia}")
+            return respuesta_ia
+
+    registrar_accion(
+        "Modo administrador: No se encontraron resultados relevantes.")
+    # Si no se encuentra ninguna respuesta, responde de manera amigable
     respuestas_amigables = [
         "¡Vaya! No estoy seguro de cómo responder a eso.",
         "Hmm, parece que no tengo una respuesta para eso.",

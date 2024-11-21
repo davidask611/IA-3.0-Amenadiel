@@ -1,4 +1,3 @@
-# from stopwords import stopwords_spanish
 import json
 from difflib import get_close_matches
 from funciones.funcion_eliminarAcentos import eliminar_acentos
@@ -9,6 +8,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import spacy
+from registro_acciones import registrar_accion
 
 # Cargar el modelo de español
 nlp = spacy.load('es_core_news_sm')
@@ -32,7 +32,8 @@ def cargar_stopwords(ruta='stopwords.txt'):
 
 
 # Cargar las stopwords desde el archivo en la carpeta actual
-stopwords_spanish = cargar_stopwords('stopwords.txt')
+# stopwords_spanish = cargar_stopwords('stopwords.txt')
+stopwords_spanish = list(cargar_stopwords('stopwords.txt'))
 
 
 def cargar_datos(nombre_archivo='datos_previos.json'):
@@ -61,55 +62,65 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
 estado_confirmacion = {}
 
 
-def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=False,
-                  ):
+def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5, cutoff_admin=0.7, esperando_confirmacion=False):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
     print(f"Pregunta procesada: {pregunta_limpia}")
+    registrar_accion(f"Pregunta procesada: {pregunta_limpia}")
 
     global estado_confirmacion
 
-    # Verifica si ya hay una confirmación pendiente
+    # Procesar confirmación si está activa
     if estado_confirmacion.get("confirmacion_pendiente"):
-        print("Confirmación pendiente detectada. Esperando respuesta del administrador...")
-        return None  # Deja que el flujo de Flask maneje la confirmación
+        print("Confirmación pendiente detectada. Procesando respuesta...")
+        registrar_accion(
+            "Confirmación pendiente detectada. Procesando respuesta...")
 
-    # Verifica si ya se está esperando una confirmación
-    if esperando_confirmacion:
-        print("Esperando confirmación de la respuesta.")
-        if pregunta_limpia == "sí":
-            print("Confirmación recibida: 'sí'. Procediendo con la lista de categorías.")
-            # Mostrar categorías disponibles para guardar
+        if pregunta_limpia == "si":
             categorias = list(datos_previos["publico"].keys())
-            print("Categorías disponibles:", categorias)
-            estado_confirmacion["confirmacion_pendiente"] = False
-            return f"Selecciona una categoría para guardar: {', '.join(categorias)}", True
+            if categorias:
+                print("Categorías disponibles para guardar:", categorias)
+                registrar_accion(
+                    f"Confirmación afirmativa. Categorías disponibles: {categorias}")
+                return f"Selecciona una categoría para guardar: {', '.join(categorias)}", True
+            else:
+                print("Error: No se encontraron categorías disponibles.")
+                registrar_accion(
+                    "Error: No se encontraron categorías disponibles.")
+                estado_confirmacion["confirmacion_pendiente"] = False
+                return "No se encontraron categorías disponibles para guardar.", False
 
         elif pregunta_limpia in datos_previos["publico"]:
-            # Guardar la respuesta en la categoría seleccionada
-            datos_previos["publico"][pregunta_limpia][estado_confirmacion["pregunta"]] = estado_confirmacion[
-                "respuesta"
-            ]
+            datos_previos["publico"][pregunta_limpia][estado_confirmacion["pregunta"]
+                                                      ] = estado_confirmacion["respuesta"]
             guardar_datos(datos_previos)
-            print(
-                f"Respuesta confirmada y guardada en la categoría: {pregunta_limpia}")
+            print(f"Respuesta guardada en la categoría: {pregunta_limpia}")
+            registrar_accion(
+                f"Respuesta guardada en la categoría: {pregunta_limpia}")
             estado_confirmacion["confirmacion_pendiente"] = False
             return f"Respuesta guardada en la categoría '{pregunta_limpia}'.", False
 
         elif pregunta_limpia == "no":
-            # Rechazo de la respuesta
-            print("Confirmación rechazada: 'no'. Rechazo procesado.")
+            print("Confirmación rechazada por el usuario.")
+            registrar_accion("Confirmación rechazada. Liberando estado.")
             estado_confirmacion["confirmacion_pendiente"] = False
-            return f"La propuesta fue rechazada. Intenta preguntar de otra manera o carga datos relacionados con '{estado_confirmacion['pregunta']}'.", False
+            return f"La propuesta fue rechazada. Puedes hacer otra consulta.", False
 
-    # Selección de la sección según el rol
+        # Respuesta inválida durante confirmación
+        print("Respuesta no válida recibida durante confirmación.")
+        registrar_accion("Respuesta inválida recibida durante confirmación.")
+        return "Por favor, responde con 'si' para confirmar o 'no' para rechazar.", True
+
+    # Continuar flujo normal si no hay confirmación pendiente
     seccion = "publico"
     cutoff = cutoff_admin if modo_administrador else cutoff_usuario
 
-    # Función interna para buscar en la sección de datos previos
     def buscar_en_seccion(seccion, cutoff):
         print(f"Buscando en la sección '{seccion}' con cutoff {cutoff}")
+        registrar_accion(
+            f"Buscando en la sección '{seccion}' con cutoff {cutoff}")
         if seccion not in datos_previos:
             print(f"Sección '{seccion}' no encontrada en datos_previos.")
+            registrar_accion(f"Sección '{seccion}' no encontrada.")
             return []
 
         resultados = []
@@ -118,10 +129,11 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
                 respuesta_exacta = contenido.get(pregunta_limpia)
                 if respuesta_exacta:
                     print(f"Respuesta exacta encontrada: {respuesta_exacta}")
+                    registrar_accion(
+                        f"Respuesta exacta encontrada: {respuesta_exacta}")
                     return [respuesta_exacta]
                 mejor_coincidencia = get_close_matches(
-                    pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff
-                )
+                    pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff)
                 if mejor_coincidencia:
                     resultados.append(contenido[mejor_coincidencia[0]])
             elif isinstance(contenido, list):
@@ -132,61 +144,56 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
 
     resultados = buscar_en_seccion(seccion, cutoff)
     if resultados:
+        registrar_accion(
+            f"Respuesta encontrada en '{seccion}': {resultados[0]}")
         return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
 
-    # Si el administrador busca en archivos
     if modo_administrador:
         print("Modo administrador activo. Buscando en archivos...")
+        registrar_accion("Modo administrador activo. Buscando en archivos.")
         archivos_en_uploads = os.listdir("uploads")
-        print("Archivos detectados en 'uploads':", archivos_en_uploads)
-        resultados_archivos = []
-        nlp = spacy.load("es_core_news_sm")
+        print("Archivos detectados:", archivos_en_uploads)
 
+        resultados_archivos = []
         for nombre_archivo in archivos_en_uploads:
             ruta_archivo = os.path.join("uploads", nombre_archivo)
             print(f"Procesando archivo: {nombre_archivo}")
+            registrar_accion(f"Procesando archivo: {nombre_archivo}")
 
             if nombre_archivo.endswith(".json"):
                 datos = process_json(ruta_archivo)
                 if isinstance(datos, dict):
                     for clave, valor in datos.items():
                         if pregunta_limpia in str(clave).lower() or pregunta_limpia in str(valor).lower():
-                            print(f"Coincidencia encontrada en JSON: {valor}")
                             resultados_archivos.append(valor)
             elif nombre_archivo.endswith(".txt"):
                 contenido = process_txt(ruta_archivo)
                 frases = contenido.split(".")
                 for frase in frases:
                     if pregunta_limpia in frase.lower():
-                        print(
-                            f"Coincidencia encontrada en TXT: {frase.strip()}")
                         resultados_archivos.append(frase.strip())
             elif nombre_archivo.endswith(".pdf"):
                 contenido = process_pdf(ruta_archivo)
                 frases = contenido.split(".")
                 for frase in frases:
                     if pregunta_limpia in frase.lower():
-                        print(
-                            f"Coincidencia encontrada en PDF: {frase.strip()}")
                         resultados_archivos.append(frase.strip())
 
         if resultados_archivos:
             mejor_respuesta = sorted(
                 resultados_archivos, key=lambda x: len(x))[0][:500]
-            print(f"Mejor respuesta encontrada en archivos: {mejor_respuesta}")
-
-            # Preparar confirmación
+            registrar_accion(
+                f"Mejor respuesta encontrada en archivos: {mejor_respuesta}")
             estado_confirmacion = {
                 "confirmacion_pendiente": True,
                 "pregunta": pregunta_limpia,
                 "respuesta": mejor_respuesta,
                 "categorias": list(datos_previos["publico"].keys()),
             }
-            print("Esperando confirmación para guardar la respuesta.")
-            return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'sí' o 'no'."
+            return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'si' o 'no.'"
 
-    print("No se encontró información relevante.")
-    return None
+    registrar_accion("No se encontró información relevante.")
+    return "No se encontró información relevante."
 
 
 def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):

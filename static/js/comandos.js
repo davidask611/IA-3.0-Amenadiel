@@ -70,10 +70,10 @@ window.addEventListener("DOMContentLoaded", () => {
   botonUsuario.addEventListener("click", () => {
     if (modo_administrador) {
       modo_administrador = false;
-      registrarAccion("Modo administrador desactivado");
+      // registrarAccion("Modo administrador desactivado");
       console.log("Modo administrador desactivado");
       agregarMensajeIA("Modo usuario activado");
-      registrarAccion(`Modo usuario activado: ${modo_administrador}`);
+      // registrarAccion(`Modo usuario activado: ${modo_administrador}`);
     }
   });
 
@@ -126,7 +126,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (mensaje === claveAdminCorrecta && usuarioAdmin === "abuelo") {
           modo_administrador = true;
           esperandoClaveAdmin = false;
-          registrarAccion(`Modo Administrador activado: ${modo_administrador}`);
+          // registrarAccion(`Modo Administrador activado: ${modo_administrador}`);
           console.log("Modo administrador activado");
           agregarMensajeIA("¡Modo administrador activado!");
         } else {
@@ -257,7 +257,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
           // Agregar mensaje para la interacción del usuario
           agregarMensajeIA(
-            "¿Tiene coherencia mi respuesta? Responde con 'sí' para confirmar o 'no' para rechazar."
+            "¿Tiene coherencia mi respuesta? Responde con 'si' para confirmar o 'no' para rechazar."
           );
           registrarAccion(
             "Mensaje enviado al usuario solicitando confirmación."
@@ -286,7 +286,7 @@ window.addEventListener("DOMContentLoaded", () => {
         respuesta
       );
 
-      if (respuesta.toLowerCase() === "sí") {
+      if (respuesta.toLowerCase() === "si") {
         const categoria = prompt(
           "Escribe la categoría donde deseas guardar la respuesta:"
         );
@@ -339,7 +339,7 @@ window.addEventListener("DOMContentLoaded", () => {
           });
       } else {
         agregarMensajeIA(
-          "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
+          "Por favor, responde con 'si' para confirmar o 'no' para rechazar."
         );
         registrarAccion("El usuario proporcionó una respuesta inválida.");
       }
@@ -403,11 +403,12 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     //
     // Código para manejar la confirmación o rechazo de respuestas generadas por la IA
-    // - Este código permite al usuario responder con "sí" o "no" para confirmar o rechazar respuestas.
+    // - Este código permite al usuario responder con "si" o "no" para confirmar o rechazar respuestas.
     // - Si se confirma, se envía una solicitud al servidor para guardar la respuesta en la categoría correspondiente.
     // - Si se rechaza, se reitera la solicitud o se solicita corrección manual tras varios intentos.
 
     let datosEsperandoConfirmacion = null; // Guarda datos para la confirmación actual
+    // let esperandoConfirmacion = false;
 
     // Si estamos en proceso de confirmación
     if (esperandoConfirmacion) {
@@ -417,7 +418,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Función para manejar confirmación de respuestas
     function manejarConfirmacion(respuesta) {
-      if (respuesta === "sí") {
+      if (respuesta === "si") {
         // Enviar confirmación positiva al servidor
         fetch("/confirmar_respuesta", {
           method: "POST",
@@ -455,7 +456,7 @@ window.addEventListener("DOMContentLoaded", () => {
           });
       } else {
         agregarMensajeIA(
-          "Por favor, responde con 'sí' para confirmar o 'no' para rechazar."
+          "Por favor, responde con 'si' para confirmar o 'no' para rechazar."
         );
       }
     }
