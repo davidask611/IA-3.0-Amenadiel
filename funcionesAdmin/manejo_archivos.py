@@ -44,7 +44,7 @@ def process_pdf(file_path, output_dir='uploads'):
         with open(output_txt_path, 'w', encoding='utf-8') as txt_file:
             txt_file.write(content)
 
-        print(f"PDF convertido y guardado en: {output_txt_path}")
+        # print(f"PDF convertido y guardado en: {output_txt_path}")
         return content
 
     except Exception as e:

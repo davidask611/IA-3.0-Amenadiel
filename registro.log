@@ -1,65 +1,502 @@
-2024-11-22 10:51:24 - Modo Administrador se activo??: false
-2024-11-22 10:51:24 - Modo administrador actualizado en sesión: False
-2024-11-22 10:51:24 - Mensaje recibido: 'hola amigo'
-2024-11-22 10:51:24 - Estado de administrador desde sesión: False
-2024-11-22 10:51:24 - Procesando mensaje: hola amigo, Modo administrador: False
-2024-11-22 10:51:24 - Pregunta procesada: hola amigo
-2024-11-22 10:51:24 - Pregunta procesada: hola amigo
-2024-11-22 10:51:24 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-22 10:51:24 - Respuesta exacta encontrada: hola amigo/a todo bien, que hacemos hoy
-2024-11-22 10:51:24 - Respuesta encontrada en 'publico': hola amigo/a todo bien, que hacemos hoy
-2024-11-22 10:51:24 - Respuesta recibida del servidor.
-2024-11-22 10:51:24 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a todo bien, que hacemos hoy
-2024-11-22 11:22:37 - Modo Administrador se activo??: false
-2024-11-22 11:22:37 - Modo administrador actualizado en sesión: False
-2024-11-22 11:22:37 - Mensaje recibido: 'como te llamas'
-2024-11-22 11:22:37 - Estado de administrador desde sesión: False
-2024-11-22 11:22:37 - Procesando mensaje: como te llamas, Modo administrador: False
-2024-11-22 11:22:37 - Respuesta recibida del servidor.
-2024-11-22 11:22:37 - Respuesta enviada al usuario: Mi nombre es Clark
-2024-11-22 11:22:53 - Modo Administrador se activo??: false
-2024-11-22 11:22:53 - Modo administrador actualizado en sesión: False
-2024-11-22 11:22:53 - Mensaje recibido: 'huerta'
-2024-11-22 11:22:53 - Estado de administrador desde sesión: False
-2024-11-22 11:22:53 - Procesando mensaje: huerta, Modo administrador: False
-2024-11-22 11:22:53 - Respuesta recibida del servidor.
-2024-11-22 11:22:53 - Respuesta enviada al usuario: Verduras disponibles:<br>1. Tomate<br>2. Acelga<br>3. Morron<br>4. Zanahoria<br>5. Lechuga<br>6. Espinaca<br>7. Pepino<br>8. Berenjena<br>9. Rábano<br>10. Papa<br>11. Cebolla<br>12. Ajo<br>13. Brócoli<br>14. Col<br><br>Escribe un nombre para obtener mas detalles.
-2024-11-22 11:22:56 - Modo Administrador se activo??: false
-2024-11-22 11:22:56 - Modo administrador actualizado en sesión: False
-2024-11-22 11:22:56 - Mensaje recibido: 'papa'
-2024-11-22 11:22:56 - Estado de administrador desde sesión: False
-2024-11-22 11:22:56 - Procesando mensaje: papa, Modo administrador: False
-2024-11-22 11:22:56 - Respuesta recibida del servidor.
-2024-11-22 11:22:56 - Respuesta enviada al usuario: Nombre: Papa<br>• Temporada de siembra: Primavera<br>• Temporada de cosecha: Verano/otoño<br>• Frecuencia de riego: Cada 4 días<br>• Tipo de tierra: Tierra rica en nutrientes, bien aireada y con buen drenaje.
-2024-11-22 11:23:02 - Modo Administrador se activo??: false
-2024-11-22 11:23:02 - Modo administrador actualizado en sesión: False
-2024-11-22 11:23:02 - Mensaje recibido: 'recetas'
-2024-11-22 11:23:02 - Estado de administrador desde sesión: False
-2024-11-22 11:23:02 - Respuesta recibida del servidor.
-2024-11-22 11:23:02 - Respuesta enviada al usuario: Recetas disponibles:<br>1. churros<br>2. donas<br>3. pastaflora<br>4. bizcochuelo<br>5. lemonpay<br>6. budin<br>Elige el número de la receta que quieres ver.
-2024-11-22 11:23:06 - Modo Administrador se activo??: false
-2024-11-22 11:23:06 - Modo administrador actualizado en sesión: False
-2024-11-22 11:23:06 - Mensaje recibido: '6'
-2024-11-22 11:23:06 - Estado de administrador desde sesión: False
-2024-11-22 11:23:06 - Respuesta recibida del servidor.
-2024-11-22 11:23:06 - Respuesta enviada al usuario: Receta de budin:<br><br>Ingredientes: <br>- 2 tazas de harina leudante<br>- 1 taza de azúcar<br>- 1/2 taza de manteca<br>- 3 huevos<br>- 1/2 taza de leche<br>- 1 cucharadita de esencia de vainilla<br><br>Paso a paso:<br>-> Bate la manteca con el azúcar hasta que esté cremosa.<br>-> Añade los huevos uno a uno y mezcla bien.<br>-> Incorpora la harina alternando con la leche.<br>-> Agrega la esencia de vainilla y mezcla hasta que esté homogéneo.<br>-> Vierte la mezcla en un molde enmantecado y hornea a 180°C durante 40-45 minutos.
-2024-11-22 11:23:42 - Modo Administrador se activo??: true
-2024-11-22 11:23:42 - Modo administrador actualizado en sesión: True
-2024-11-22 11:23:42 - Mensaje recibido: 'hola'
-2024-11-22 11:23:42 - Estado de administrador desde sesión: True
-2024-11-22 11:23:42 - Modo administrador activado para la pregunta: hola
-2024-11-22 11:23:42 - Pregunta procesada: hola
-2024-11-22 11:23:42 - Pregunta procesada: hola
-2024-11-22 11:23:42 - Modo administrador activo. Buscando en archivos.
-2024-11-22 11:23:42 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
-2024-11-22 11:23:42 - Procesando archivo: 106_curiosidades_animales.txt
-2024-11-22 11:23:42 - Procesando archivo: cv_david_informatica.pdf
-2024-11-22 11:23:42 - Procesando archivo: cv_david_informatica.txt
-2024-11-22 11:23:42 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.pdf
-2024-11-22 11:23:43 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.txt
-2024-11-22 11:23:43 - Procesando archivo: CV_pluche.pdf
-2024-11-22 11:23:43 - Procesando archivo: CV_pluche.txt
-2024-11-22 11:23:43 - Mejor respuesta encontrada en archivos: Receta Tacos al Pastor
+2024-11-22 15:00:13 - Modo Administrador se activo??: false
+2024-11-22 15:00:13 - Modo administrador actualizado en sesión: False
+2024-11-22 15:00:13 - Mensaje recibido: 'buenas amigo'
+2024-11-22 15:00:13 - Estado de administrador desde sesión: False
+2024-11-22 15:00:13 - Procesando mensaje: buenas amigo, Modo administrador: False
+2024-11-22 15:00:13 - Pregunta procesada: buenas amigo
+2024-11-22 15:00:13 - Pregunta procesada: buenas amigo
+2024-11-22 15:00:13 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:00:13 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:00:13 - Modo administrador actualizado en sesión: False
+2024-11-22 15:00:13 - Mensaje recibido: 'buenas amigo'
+2024-11-22 15:00:13 - Estado de administrador desde sesión: False
+2024-11-22 15:00:13 - Procesando mensaje: buenas amigo, Modo administrador: False
+2024-11-22 15:00:13 - Pregunta procesada: buenas amigo
+2024-11-22 15:00:13 - Pregunta procesada: buenas amigo
+2024-11-22 15:00:13 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:00:13 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:00:13 - Respuesta recibida del servidor.
+2024-11-22 15:01:23 - Modo Administrador se activo??: true
+2024-11-22 15:01:23 - Modo administrador actualizado en sesión: True
+2024-11-22 15:01:23 - Mensaje recibido: 'el hamster es capaz de mantener'
+2024-11-22 15:01:23 - Estado de administrador desde sesión: True
+2024-11-22 15:01:23 - Modo administrador activado para la pregunta: el hamster es capaz de mantener
+2024-11-22 15:01:23 - Pregunta procesada: el hamster es capaz de mantener
+2024-11-22 15:01:23 - Pregunta procesada: el hamster es capaz de mantener
+2024-11-22 15:01:23 - Modo administrador activo. Buscando en archivos.
+2024-11-22 15:01:23 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 15:01:24 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 15:01:24 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 15:01:25 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 15:01:25 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 15:03:22 - Modo Administrador se activo??: false
+2024-11-22 15:03:22 - Modo administrador actualizado en sesión: False
+2024-11-22 15:03:22 - Mensaje recibido: 'buenas tardes'
+2024-11-22 15:03:22 - Estado de administrador desde sesión: False
+2024-11-22 15:03:22 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 15:03:22 - Pregunta procesada: buenas tardes
+2024-11-22 15:03:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:03:22 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:03:22 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:03:22 - Modo administrador actualizado en sesión: False
+2024-11-22 15:03:22 - Mensaje recibido: 'buenas tardes'
+2024-11-22 15:03:22 - Estado de administrador desde sesión: False
+2024-11-22 15:03:22 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 15:03:22 - Pregunta procesada: buenas tardes
+2024-11-22 15:03:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:03:22 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:03:22 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:03:22 - Respuesta recibida del servidor.
+2024-11-22 15:04:10 - Modo Administrador se activo??: true
+2024-11-22 15:04:10 - Modo administrador actualizado en sesión: True
+2024-11-22 15:04:10 - Mensaje recibido: 'el hamster es capas'
+2024-11-22 15:04:10 - Estado de administrador desde sesión: True
+2024-11-22 15:04:10 - Modo administrador activado para la pregunta: el hamster es capas
+2024-11-22 15:04:10 - Pregunta procesada: el hamster es capas
+2024-11-22 15:04:10 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:04:11 - Modo administrador actualizado en sesión: True
+2024-11-22 15:04:11 - Mensaje recibido: 'el hamster es capas'
+2024-11-22 15:04:11 - Estado de administrador desde sesión: True
+2024-11-22 15:04:11 - Modo administrador activado para la pregunta: el hamster es capas
+2024-11-22 15:04:11 - Pregunta procesada: el hamster es capas
+2024-11-22 15:04:11 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:04:11 - Respuesta recibida del servidor.
+2024-11-22 15:05:00 - Modo Administrador se activo??: true
+2024-11-22 15:05:00 - Modo administrador actualizado en sesión: True
+2024-11-22 15:05:00 - Mensaje recibido: 'el caballo que mas vivio'
+2024-11-22 15:05:00 - Estado de administrador desde sesión: True
+2024-11-22 15:05:00 - Modo administrador activado para la pregunta: el caballo que mas vivio
+2024-11-22 15:05:00 - Pregunta procesada: el caballo que mas vivio
+2024-11-22 15:05:00 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:05:00 - Modo administrador actualizado en sesión: True
+2024-11-22 15:05:00 - Mensaje recibido: 'el caballo que mas vivio'
+2024-11-22 15:05:00 - Estado de administrador desde sesión: True
+2024-11-22 15:05:00 - Modo administrador activado para la pregunta: el caballo que mas vivio
+2024-11-22 15:05:00 - Pregunta procesada: el caballo que mas vivio
+2024-11-22 15:05:00 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:05:00 - Respuesta recibida del servidor.
+2024-11-22 15:05:27 - Modo administrador actualizado en sesión: True
+2024-11-22 15:05:27 - Mensaje recibido: 'el material mas resistente creado'
+2024-11-22 15:05:27 - Estado de administrador desde sesión: True
+2024-11-22 15:05:27 - Modo administrador activado para la pregunta: el material mas resistente creado
+2024-11-22 15:05:27 - Pregunta procesada: el material mas resistente creado
+2024-11-22 15:05:27 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:05:27 - Modo administrador actualizado en sesión: True
+2024-11-22 15:05:27 - Mensaje recibido: 'el material mas resistente creado'
+2024-11-22 15:05:27 - Estado de administrador desde sesión: True
+2024-11-22 15:05:27 - Modo administrador activado para la pregunta: el material mas resistente creado
+2024-11-22 15:05:27 - Pregunta procesada: el material mas resistente creado
+2024-11-22 15:05:27 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:05:27 - Respuesta recibida del servidor.
+2024-11-22 15:07:10 - Modo Administrador se activo??: false
+2024-11-22 15:07:10 - Modo administrador actualizado en sesión: False
+2024-11-22 15:07:10 - Mensaje recibido: 'como te llamas'
+2024-11-22 15:07:10 - Estado de administrador desde sesión: False
+2024-11-22 15:07:10 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 15:07:10 - Modo administrador actualizado en sesión: False
+2024-11-22 15:07:10 - Mensaje recibido: 'como te llamas'
+2024-11-22 15:07:10 - Estado de administrador desde sesión: False
+2024-11-22 15:07:10 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 15:07:10 - Respuesta recibida del servidor.
+2024-11-22 15:07:32 - Modo Administrador se activo??: true
+2024-11-22 15:07:32 - Modo administrador actualizado en sesión: True
+2024-11-22 15:07:32 - Mensaje recibido: 'el material mas resistente creado'
+2024-11-22 15:07:32 - Estado de administrador desde sesión: True
+2024-11-22 15:07:32 - Modo administrador activado para la pregunta: el material mas resistente creado
+2024-11-22 15:07:32 - Pregunta procesada: el material mas resistente creado
+2024-11-22 15:07:32 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:07:32 - Mensaje temporal enviado.
+2024-11-22 15:07:32 - Modo administrador activo. Buscando en archivos.
+2024-11-22 15:07:32 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 15:07:33 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 15:07:33 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 15:07:34 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 15:07:34 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 15:23:42 - Modo Administrador se activo??: false
+2024-11-22 15:23:42 - Modo administrador actualizado en sesión: False
+2024-11-22 15:23:42 - Mensaje recibido: 'buenas tardes'
+2024-11-22 15:23:42 - Estado de administrador desde sesión: False
+2024-11-22 15:23:42 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 15:23:42 - Pregunta procesada: buenas tardes
+2024-11-22 15:23:42 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:23:42 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:23:42 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:23:42 - Modo administrador actualizado en sesión: False
+2024-11-22 15:23:42 - Mensaje recibido: 'buenas tardes'
+2024-11-22 15:23:42 - Estado de administrador desde sesión: False
+2024-11-22 15:23:42 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 15:23:42 - Pregunta procesada: buenas tardes
+2024-11-22 15:23:42 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:23:42 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:23:42 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:23:42 - Respuesta recibida del servidor.
+2024-11-22 15:27:04 - Modo Administrador se activo??: true
+2024-11-22 15:27:04 - Modo administrador actualizado en sesión: True
+2024-11-22 15:27:04 - Mensaje recibido: 'el material mas resistente creado'
+2024-11-22 15:27:04 - Estado de administrador desde sesión: True
+2024-11-22 15:27:04 - Modo administrador activado para la pregunta: el material mas resistente creado
+2024-11-22 15:27:04 - Pregunta procesada: el material mas resistente creado
+2024-11-22 15:27:04 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:27:04 - Modo administrador actualizado en sesión: True
+2024-11-22 15:27:04 - Mensaje recibido: 'el material mas resistente creado'
+2024-11-22 15:27:04 - Estado de administrador desde sesión: True
+2024-11-22 15:27:04 - Modo administrador activado para la pregunta: el material mas resistente creado
+2024-11-22 15:27:04 - Pregunta procesada: el material mas resistente creado
+2024-11-22 15:27:04 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:27:04 - Respuesta recibida del servidor.
+2024-11-22 15:33:49 - Modo Administrador se activo??: false
+2024-11-22 15:33:49 - Modo administrador actualizado en sesión: False
+2024-11-22 15:33:49 - Mensaje recibido: 'que musica te gusta'
+2024-11-22 15:33:49 - Estado de administrador desde sesión: False
+2024-11-22 15:33:49 - Procesando mensaje: que musica te gusta, Modo administrador: False
+2024-11-22 15:33:49 - Pregunta procesada: que musica te gusta
+2024-11-22 15:33:49 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:33:49 - Respuesta exacta encontrada: Me gusta la musica electronica
+2024-11-22 15:33:49 - Respuesta encontrada en 'publico': Me gusta la musica electronica
+2024-11-22 15:33:50 - Modo administrador actualizado en sesión: False
+2024-11-22 15:33:50 - Mensaje recibido: 'que musica te gusta'
+2024-11-22 15:33:50 - Estado de administrador desde sesión: False
+2024-11-22 15:33:50 - Procesando mensaje: que musica te gusta, Modo administrador: False
+2024-11-22 15:33:50 - Pregunta procesada: que musica te gusta
+2024-11-22 15:33:50 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:33:50 - Respuesta exacta encontrada: Me gusta la musica electronica
+2024-11-22 15:33:50 - Respuesta encontrada en 'publico': Me gusta la musica electronica
+2024-11-22 15:33:50 - Respuesta recibida del servidor.
+2024-11-22 15:34:18 - Modo Administrador se activo??: true
+2024-11-22 15:34:18 - Modo administrador actualizado en sesión: True
+2024-11-22 15:34:18 - Mensaje recibido: 'tacos'
+2024-11-22 15:34:18 - Estado de administrador desde sesión: True
+2024-11-22 15:34:18 - Modo administrador activado para la pregunta: tacos
+2024-11-22 15:34:18 - Pregunta procesada: tacos
+2024-11-22 15:34:18 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:34:18 - Modo administrador actualizado en sesión: True
+2024-11-22 15:34:18 - Mensaje recibido: 'tacos'
+2024-11-22 15:34:18 - Estado de administrador desde sesión: True
+2024-11-22 15:34:18 - Modo administrador activado para la pregunta: tacos
+2024-11-22 15:34:18 - Pregunta procesada: tacos
+2024-11-22 15:34:18 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 15:34:18 - Respuesta recibida del servidor.
+2024-11-22 15:48:22 - Modo Administrador se activo??: false
+2024-11-22 15:48:22 - Modo administrador actualizado en sesión: False
+2024-11-22 15:48:22 - Mensaje recibido: 'buenas amigo'
+2024-11-22 15:48:22 - Estado de administrador desde sesión: False
+2024-11-22 15:48:22 - Procesando mensaje: buenas amigo, Modo administrador: False
+2024-11-22 15:48:22 - Pregunta procesada: buenas amigo
+2024-11-22 15:48:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 15:48:22 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 15:48:31 - Modo Administrador se activo??: false
+2024-11-22 15:48:31 - Modo administrador actualizado en sesión: False
+2024-11-22 15:48:31 - Mensaje recibido: 'como te llamas'
+2024-11-22 15:48:31 - Estado de administrador desde sesión: False
+2024-11-22 15:48:31 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 15:49:05 - Modo Administrador se activo??: true
+2024-11-22 15:49:05 - Modo administrador actualizado en sesión: True
+2024-11-22 15:49:05 - Mensaje recibido: 'la jirafa duerme'
+2024-11-22 15:49:05 - Estado de administrador desde sesión: True
+2024-11-22 15:49:05 - Modo administrador activado para la pregunta: la jirafa duerme
+2024-11-22 15:49:05 - Pregunta procesada: la jirafa duerme
+2024-11-22 15:49:05 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 16:00:10 - Modo administrador actualizado en sesión: False
+2024-11-22 16:00:10 - Mensaje recibido: 'como te llamas'
+2024-11-22 16:00:10 - Estado de administrador desde sesión: False
+2024-11-22 16:00:10 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 16:00:18 - Modo Administrador se activo??: false
+2024-11-22 16:00:18 - Modo administrador actualizado en sesión: False
+2024-11-22 16:00:18 - Mensaje recibido: 'kasdfbsdklfbsdklf'
+2024-11-22 16:00:18 - Estado de administrador desde sesión: False
+2024-11-22 16:00:18 - Procesando mensaje: kasdfbsdklfbsdklf, Modo administrador: False
+2024-11-22 16:00:18 - Pregunta procesada: kasdfbsdklfbsdklf
+2024-11-22 16:00:18 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:00:18 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:00:18 - Modo administrador: No se encontraron resultados relevantes.
+2024-11-22 16:00:21 - Modo administrador actualizado en sesión: False
+2024-11-22 16:00:21 - Mensaje recibido: 'sdfsdfsd'
+2024-11-22 16:00:21 - Estado de administrador desde sesión: False
+2024-11-22 16:00:21 - Procesando mensaje: sdfsdfsd, Modo administrador: False
+2024-11-22 16:00:21 - Pregunta procesada: sdfsdfsd
+2024-11-22 16:00:21 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:00:21 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:00:21 - Modo administrador: No se encontraron resultados relevantes.
+2024-11-22 16:01:05 - Modo Administrador se activo??: true
+2024-11-22 16:01:05 - Modo administrador actualizado en sesión: True
+2024-11-22 16:01:05 - Mensaje recibido: 'el corazon del colibri'
+2024-11-22 16:01:05 - Estado de administrador desde sesión: True
+2024-11-22 16:01:05 - Modo administrador activado para la pregunta: el corazon del colibri
+2024-11-22 16:01:05 - Pregunta procesada: el corazon del colibri
+2024-11-22 16:01:05 - Modo administrador activo. Buscando en archivos.
+2024-11-22 16:01:05 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 16:01:06 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 16:01:06 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 16:01:07 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 16:01:07 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 16:02:18 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.txt
+2024-11-22 16:02:18 - Modo administrador activo. Enviando mensaje temporal 'Pensando...'.
+2024-11-22 16:04:56 - Modo Administrador se activo??: false
+2024-11-22 16:04:56 - Modo administrador actualizado en sesión: False
+2024-11-22 16:04:56 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:04:56 - Estado de administrador desde sesión: False
+2024-11-22 16:04:56 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:04:56 - Pregunta procesada: buenas tardes
+2024-11-22 16:04:56 - Pregunta procesada: buenas tardes
+2024-11-22 16:04:56 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:04:56 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:04:56 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:04:56 - Modo administrador actualizado en sesión: False
+2024-11-22 16:04:56 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:04:56 - Estado de administrador desde sesión: False
+2024-11-22 16:04:56 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:04:56 - Pregunta procesada: buenas tardes
+2024-11-22 16:04:56 - Pregunta procesada: buenas tardes
+2024-11-22 16:04:56 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:04:56 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:04:56 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:04:56 - Respuesta recibida del servidor.
+2024-11-22 16:05:30 - Modo Administrador se activo??: true
+2024-11-22 16:05:30 - Modo administrador actualizado en sesión: True
+2024-11-22 16:05:30 - Mensaje recibido: 'el corazon del colibri'
+2024-11-22 16:05:30 - Estado de administrador desde sesión: True
+2024-11-22 16:05:30 - Modo administrador activado para la pregunta: el corazon del colibri
+2024-11-22 16:05:30 - Pregunta procesada: el corazon del colibri
+2024-11-22 16:05:30 - Pregunta procesada: el corazon del colibri
+2024-11-22 16:05:30 - Modo administrador activo. Buscando en archivos.
+2024-11-22 16:05:30 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 16:05:31 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 16:05:31 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 16:05:32 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 16:05:32 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 16:06:40 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.txt
+2024-11-22 16:06:40 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:06:40 - Modo administrador actualizado en sesión: True
+2024-11-22 16:06:40 - Mensaje recibido: 'el corazon del colibri'
+2024-11-22 16:06:40 - Estado de administrador desde sesión: True
+2024-11-22 16:06:40 - Modo administrador activado para la pregunta: el corazon del colibri
+2024-11-22 16:06:40 - Pregunta procesada: el corazon del colibri
+2024-11-22 16:06:40 - Pregunta procesada: el corazon del colibri
+2024-11-22 16:06:40 - Modo administrador activo. Buscando en archivos.
+2024-11-22 16:06:40 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 16:06:41 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 16:06:41 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 16:06:42 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 16:06:42 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 16:07:51 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.txt
+2024-11-22 16:07:51 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:07:51 - Respuesta recibida del servidor.
+2024-11-22 16:11:04 - Modo Administrador se activo??: true
+2024-11-22 16:11:04 - Modo administrador actualizado en sesión: True
+2024-11-22 16:11:04 - Mensaje recibido: 'el avestruz es el animal que mas velocidad'
+2024-11-22 16:11:04 - Estado de administrador desde sesión: True
+2024-11-22 16:11:04 - Modo administrador activado para la pregunta: el avestruz es el animal que mas velocidad
+2024-11-22 16:11:04 - Pregunta procesada: el avestruz es el animal que mas velocidad
+2024-11-22 16:11:04 - Pregunta procesada: el avestruz es el animal que mas velocidad
+2024-11-22 16:11:04 - Modo administrador activo. Buscando en archivos.
+2024-11-22 16:11:04 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 16:11:05 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 16:11:05 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 16:11:06 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 16:11:06 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 16:12:15 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.txt
+2024-11-22 16:12:15 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:12:16 - Modo administrador actualizado en sesión: True
+2024-11-22 16:12:16 - Mensaje recibido: 'el avestruz es el animal que mas velocidad'
+2024-11-22 16:12:16 - Estado de administrador desde sesión: True
+2024-11-22 16:12:16 - Modo administrador activado para la pregunta: el avestruz es el animal que mas velocidad
+2024-11-22 16:12:16 - Pregunta procesada: el avestruz es el animal que mas velocidad
+2024-11-22 16:12:16 - Pregunta procesada: el avestruz es el animal que mas velocidad
+2024-11-22 16:12:16 - Modo administrador activo. Buscando en archivos.
+2024-11-22 16:12:16 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 16:12:17 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 16:12:17 - Procesando archivo: 106_curiosidades_animales.pdf
+2024-11-22 16:12:18 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 16:12:18 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 16:13:29 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.txt
+2024-11-22 16:13:29 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 16:13:29 - Respuesta recibida del servidor.
+2024-11-22 16:21:34 - Modo Administrador se activo??: false
+2024-11-22 16:21:34 - Modo administrador actualizado en sesión: False
+2024-11-22 16:21:34 - Mensaje recibido: 'buenas tardes amigo'
+2024-11-22 16:21:34 - Estado de administrador desde sesión: False
+2024-11-22 16:21:34 - Procesando mensaje: buenas tardes amigo, Modo administrador: False
+2024-11-22 16:21:34 - Pregunta procesada: buenas tardes amigo
+2024-11-22 16:21:34 - Pregunta procesada: buenas tardes amigo
+2024-11-22 16:21:34 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:21:34 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:21:34 - Modo administrador actualizado en sesión: False
+2024-11-22 16:21:34 - Mensaje recibido: 'buenas tardes amigo'
+2024-11-22 16:21:34 - Estado de administrador desde sesión: False
+2024-11-22 16:21:34 - Procesando mensaje: buenas tardes amigo, Modo administrador: False
+2024-11-22 16:21:34 - Pregunta procesada: buenas tardes amigo
+2024-11-22 16:21:34 - Pregunta procesada: buenas tardes amigo
+2024-11-22 16:21:34 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:21:34 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:21:34 - Respuesta recibida del servidor.
+2024-11-22 16:21:39 - Modo Administrador se activo??: false
+2024-11-22 16:21:39 - Modo administrador actualizado en sesión: False
+2024-11-22 16:21:39 - Mensaje recibido: 'hola'
+2024-11-22 16:21:39 - Estado de administrador desde sesión: False
+2024-11-22 16:21:39 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:21:39 - Pregunta procesada: hola
+2024-11-22 16:21:39 - Pregunta procesada: hola
+2024-11-22 16:21:39 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:21:39 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:21:39 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:21:39 - Modo administrador actualizado en sesión: False
+2024-11-22 16:21:39 - Mensaje recibido: 'hola'
+2024-11-22 16:21:39 - Estado de administrador desde sesión: False
+2024-11-22 16:21:39 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:21:39 - Pregunta procesada: hola
+2024-11-22 16:21:39 - Pregunta procesada: hola
+2024-11-22 16:21:39 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:21:39 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:21:39 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:21:39 - Respuesta recibida del servidor.
+2024-11-22 16:22:17 - Modo Administrador se activo??: false
+2024-11-22 16:22:17 - Modo administrador actualizado en sesión: False
+2024-11-22 16:22:17 - Mensaje recibido: 'hola'
+2024-11-22 16:22:17 - Estado de administrador desde sesión: False
+2024-11-22 16:22:17 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:22:17 - Pregunta procesada: hola
+2024-11-22 16:22:17 - Pregunta procesada: hola
+2024-11-22 16:22:17 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:22:17 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:22:17 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:22:17 - Modo administrador actualizado en sesión: False
+2024-11-22 16:22:17 - Mensaje recibido: 'hola'
+2024-11-22 16:22:17 - Estado de administrador desde sesión: False
+2024-11-22 16:22:17 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:22:17 - Pregunta procesada: hola
+2024-11-22 16:22:17 - Pregunta procesada: hola
+2024-11-22 16:22:17 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:22:17 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:22:17 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:22:17 - Respuesta recibida del servidor.
+2024-11-22 16:22:21 - Modo Administrador se activo??: false
+2024-11-22 16:22:21 - Modo administrador actualizado en sesión: False
+2024-11-22 16:22:21 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:22:21 - Estado de administrador desde sesión: False
+2024-11-22 16:22:21 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:22:21 - Pregunta procesada: buenas tardes
+2024-11-22 16:22:21 - Pregunta procesada: buenas tardes
+2024-11-22 16:22:21 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:22:21 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:22:21 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:22:21 - Modo administrador actualizado en sesión: False
+2024-11-22 16:22:21 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:22:21 - Estado de administrador desde sesión: False
+2024-11-22 16:22:21 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:22:21 - Pregunta procesada: buenas tardes
+2024-11-22 16:22:21 - Pregunta procesada: buenas tardes
+2024-11-22 16:22:21 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:22:21 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:22:21 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:22:21 - Respuesta recibida del servidor.
+2024-11-22 16:23:12 - Modo Administrador se activo??: false
+2024-11-22 16:23:12 - Modo administrador actualizado en sesión: False
+2024-11-22 16:23:12 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:23:12 - Estado de administrador desde sesión: False
+2024-11-22 16:23:12 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:23:12 - Pregunta procesada: buenas tardes
+2024-11-22 16:23:12 - Pregunta procesada: buenas tardes
+2024-11-22 16:23:12 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:23:12 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:23:12 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:23:12 - Modo administrador actualizado en sesión: False
+2024-11-22 16:23:12 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:23:12 - Estado de administrador desde sesión: False
+2024-11-22 16:23:12 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:23:12 - Pregunta procesada: buenas tardes
+2024-11-22 16:23:12 - Pregunta procesada: buenas tardes
+2024-11-22 16:23:12 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:23:12 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:23:12 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:23:13 - Respuesta recibida del servidor.
+2024-11-22 16:23:15 - Modo Administrador se activo??: false
+2024-11-22 16:23:15 - Modo administrador actualizado en sesión: False
+2024-11-22 16:23:15 - Mensaje recibido: 'hola'
+2024-11-22 16:23:15 - Estado de administrador desde sesión: False
+2024-11-22 16:23:15 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:23:15 - Pregunta procesada: hola
+2024-11-22 16:23:15 - Pregunta procesada: hola
+2024-11-22 16:23:15 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:23:15 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:23:15 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:23:15 - Modo administrador actualizado en sesión: False
+2024-11-22 16:23:15 - Mensaje recibido: 'hola'
+2024-11-22 16:23:15 - Estado de administrador desde sesión: False
+2024-11-22 16:23:15 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:23:15 - Pregunta procesada: hola
+2024-11-22 16:23:15 - Pregunta procesada: hola
+2024-11-22 16:23:15 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:23:15 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:23:15 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:23:15 - Respuesta recibida del servidor.
+2024-11-22 16:24:15 - Modo Administrador se activo??: false
+2024-11-22 16:24:15 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:15 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:24:15 - Estado de administrador desde sesión: False
+2024-11-22 16:24:15 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:24:15 - Pregunta procesada: buenas tardes
+2024-11-22 16:24:15 - Pregunta procesada: buenas tardes
+2024-11-22 16:24:15 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:15 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:24:15 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:24:15 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:15 - Mensaje recibido: 'buenas tardes'
+2024-11-22 16:24:15 - Estado de administrador desde sesión: False
+2024-11-22 16:24:15 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 16:24:15 - Pregunta procesada: buenas tardes
+2024-11-22 16:24:15 - Pregunta procesada: buenas tardes
+2024-11-22 16:24:15 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:15 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:24:15 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 16:24:15 - Respuesta recibida del servidor.
+2024-11-22 16:24:18 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:18 - Mensaje recibido: 'hola'
+2024-11-22 16:24:18 - Estado de administrador desde sesión: False
+2024-11-22 16:24:18 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:24:18 - Pregunta procesada: hola
+2024-11-22 16:24:18 - Pregunta procesada: hola
+2024-11-22 16:24:18 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:18 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:18 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:18 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:18 - Mensaje recibido: 'hola'
+2024-11-22 16:24:18 - Estado de administrador desde sesión: False
+2024-11-22 16:24:18 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:24:18 - Pregunta procesada: hola
+2024-11-22 16:24:18 - Pregunta procesada: hola
+2024-11-22 16:24:18 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:18 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:18 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:18 - Respuesta recibida del servidor.
+2024-11-22 16:24:22 - Modo Administrador se activo??: false
+2024-11-22 16:24:22 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:22 - Mensaje recibido: 'hola'
+2024-11-22 16:24:22 - Estado de administrador desde sesión: False
+2024-11-22 16:24:22 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:24:22 - Pregunta procesada: hola
+2024-11-22 16:24:22 - Pregunta procesada: hola
+2024-11-22 16:24:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:22 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:22 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:22 - Modo administrador actualizado en sesión: False
+2024-11-22 16:24:22 - Mensaje recibido: 'hola'
+2024-11-22 16:24:22 - Estado de administrador desde sesión: False
+2024-11-22 16:24:22 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 16:24:22 - Pregunta procesada: hola
+2024-11-22 16:24:22 - Pregunta procesada: hola
+2024-11-22 16:24:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:24:22 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:22 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 16:24:22 - Respuesta recibida del servidor.
+2024-11-22 16:25:19 - Modo Administrador se activo??: false
+2024-11-22 16:25:19 - Modo administrador actualizado en sesión: False
+2024-11-22 16:25:19 - Mensaje recibido: 'hola amigo'
+2024-11-22 16:25:19 - Estado de administrador desde sesión: False
+2024-11-22 16:25:19 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 16:25:19 - Pregunta procesada: hola amigo
+2024-11-22 16:25:19 - Pregunta procesada: hola amigo
+2024-11-22 16:25:19 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:25:19 - Respuesta exacta encontrada: Receta Tacos al Pastor
 Receta Tacos al Pastor
 Receta Tacos al Pasto
 Hola amigos iniciamos el día con una deliciosa Receta de Tacos
@@ -70,123 +507,7 @@ hoy las vamos a preparar en la estufa te van a quedar como en
 la taqueria, son fáciles y sobre todo deliciosos que vas
 querer repetir, no dejes pasar la ocasión y prepáralos te van
 a encantar
-2024-11-22 11:23:43 - Respuesta recibida del servidor.
-2024-11-22 11:23:43 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'Receta Tacos al Pastor
-Receta Tacos al Pastor
-Receta Tacos al Pasto
-Hola amigos iniciamos el día con una deliciosa Receta de Tacos
-al Pastor son muy populares en la mayor parte de México, los
-que conocemos los tacos de pastor regularmente las preparan en
-un trompo, pero no todos tenemos un trompo en casa, así que
-hoy las vamos a preparar en la estufa te van a quedar como en
-la taqueria, son fáciles y sobre todo deliciosos que vas
-querer repetir, no dejes pasar la ocasión y prepáralos te van
-a encantar'. Responde con 'si', 'no' o 'crear nueva'.,true
-2024-11-22 11:23:50 - Modo Administrador se activo??: true
-2024-11-22 11:23:50 - Modo administrador actualizado en sesión: True
-2024-11-22 11:23:50 - Mensaje recibido: 'no'
-2024-11-22 11:23:50 - Estado de administrador desde sesión: True
-2024-11-22 11:23:50 - Modo administrador activado para la pregunta: no
-2024-11-22 11:23:50 - Pregunta procesada: no
-2024-11-22 11:23:50 - Pregunta procesada: no
-2024-11-22 11:23:50 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:23:50 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:23:50 - Confirmación rechazada. Solicitando nueva respuesta.
-2024-11-22 11:23:50 - Respuesta enviada al usuario: Por favor, escribe una nueva respuesta para guardar.,true
-2024-11-22 11:24:09 - Modo Administrador se activo??: true
-2024-11-22 11:24:09 - Modo administrador actualizado en sesión: True
-2024-11-22 11:24:09 - Mensaje recibido: 'hola amigo/a como estas, que hacemos hoy'
-2024-11-22 11:24:09 - Estado de administrador desde sesión: True
-2024-11-22 11:24:09 - Modo administrador activado para la pregunta: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:24:09 - Pregunta procesada: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:24:09 - Pregunta procesada: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:24:09 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:24:09 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:24:09 - Respuesta personalizada recibida: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:24:09 - Respuesta recibida del servidor.
-2024-11-22 11:24:09 - Respuesta enviada al usuario: Selecciona una categoría para guardar la nueva respuesta: clima, salud, animales, saludo, musica, camperos o escribe 'crear nueva'.,true
-2024-11-22 11:24:13 - Modo Administrador se activo??: true
-2024-11-22 11:24:13 - Modo administrador actualizado en sesión: True
-2024-11-22 11:24:13 - Mensaje recibido: 'saludo'
-2024-11-22 11:24:13 - Estado de administrador desde sesión: True
-2024-11-22 11:24:13 - Modo administrador activado para la pregunta: saludo
-2024-11-22 11:24:13 - Pregunta procesada: saludo
-2024-11-22 11:24:13 - Pregunta procesada: saludo
-2024-11-22 11:24:13 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:24:13 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:24:13 - Respuesta guardada en la categoría: saludo
-2024-11-22 11:24:13 - Respuesta recibida del servidor.
-2024-11-22 11:24:13 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'saludo'.,false
-2024-11-22 11:28:02 - Modo Administrador se activo??: true
-2024-11-22 11:28:06 - Modo Administrador se activo??: true
-2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:40:40 - Modo Administrador se activo??: false
-2024-11-22 11:40:40 - Modo administrador actualizado en sesión: False
-2024-11-22 11:40:40 - Mensaje recibido: 'hola'
-2024-11-22 11:40:40 - Estado de administrador desde sesión: False
-2024-11-22 11:40:40 - Procesando mensaje: hola, Modo administrador: False
-2024-11-22 11:40:40 - Pregunta procesada: hola
-2024-11-22 11:40:40 - Pregunta procesada: hola
-2024-11-22 11:40:40 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-22 11:40:40 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:40:40 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:40:40 - Respuesta recibida del servidor.
-2024-11-22 11:40:40 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:41:09 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:41:23 - Modo Administrador se activo??: true
-2024-11-22 11:41:23 - Modo administrador actualizado en sesión: True
-2024-11-22 11:41:23 - Mensaje recibido: '5+5'
-2024-11-22 11:41:23 - Estado de administrador desde sesión: True
-2024-11-22 11:41:23 - Modo administrador activado para la pregunta: 5+5
-2024-11-22 11:41:23 - Pregunta procesada: 5+5
-2024-11-22 11:41:23 - Pregunta procesada: 5+5
-2024-11-22 11:41:23 - Modo administrador activo. Buscando en archivos.
-2024-11-22 11:41:23 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
-2024-11-22 11:41:23 - Procesando archivo: 106_curiosidades_animales.txt
-2024-11-22 11:41:24 - Procesando archivo: cv_david_informatica.pdf
-2024-11-22 11:41:25 - Procesando archivo: cv_david_informatica.txt
-2024-11-22 11:41:26 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.pdf
-2024-11-22 11:41:28 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.txt
-2024-11-22 11:41:28 - Procesando archivo: CV_pluche.pdf
-2024-11-22 11:41:29 - Procesando archivo: CV_pluche.txt
-2024-11-22 11:41:29 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:43:52 - Modo administrador actualizado en sesión: False
-2024-11-22 11:43:52 - Mensaje recibido: 'hola'
-2024-11-22 11:43:52 - Estado de administrador desde sesión: False
-2024-11-22 11:43:52 - Procesando mensaje: hola, Modo administrador: False
-2024-11-22 11:43:52 - Pregunta procesada: hola
-2024-11-22 11:43:52 - Pregunta procesada: hola
-2024-11-22 11:43:52 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-22 11:43:52 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:43:52 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:43:52 - Respuesta recibida del servidor.
-2024-11-22 11:43:52 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a como estas, que hacemos hoy
-2024-11-22 11:44:16 - Modo Administrador se activo??: true
-2024-11-22 11:44:16 - Modo administrador actualizado en sesión: True
-2024-11-22 11:44:16 - Mensaje recibido: '5+5'
-2024-11-22 11:44:16 - Estado de administrador desde sesión: True
-2024-11-22 11:44:16 - Modo administrador activado para la pregunta: 5+5
-2024-11-22 11:44:16 - Pregunta procesada: 5+5
-2024-11-22 11:44:16 - Pregunta procesada: 5+5
-2024-11-22 11:44:16 - Modo administrador activo. Buscando en archivos.
-2024-11-22 11:44:16 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
-2024-11-22 11:44:16 - Procesando archivo: 106_curiosidades_animales.txt
-2024-11-22 11:44:16 - El usuario no ha ingresado una pregunta válida.
-2024-11-22 11:44:16 - Respuesta recibida del servidor.
-2024-11-22 11:44:16 - Respuesta enviada al usuario: No se encontró una respuesta relevante, por favor carga archivos sobre el tema.
-2024-11-22 11:44:27 - Modo Administrador se activo??: true
-2024-11-22 11:44:27 - Modo administrador actualizado en sesión: True
-2024-11-22 11:44:27 - Mensaje recibido: 'hola amigo'
-2024-11-22 11:44:27 - Estado de administrador desde sesión: True
-2024-11-22 11:44:27 - Modo administrador activado para la pregunta: hola amigo
-2024-11-22 11:44:27 - Pregunta procesada: hola amigo
-2024-11-22 11:44:27 - Pregunta procesada: hola amigo
-2024-11-22 11:44:27 - Modo administrador activo. Buscando en archivos.
-2024-11-22 11:44:27 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
-2024-11-22 11:44:27 - Procesando archivo: 106_curiosidades_animales.txt
-2024-11-22 11:44:27 - Mejor respuesta encontrada en archivos: Receta Tacos al Pastor
+2024-11-22 16:25:19 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
 Receta Tacos al Pastor
 Receta Tacos al Pasto
 Hola amigos iniciamos el día con una deliciosa Receta de Tacos
@@ -197,61 +518,14 @@ hoy las vamos a preparar en la estufa te van a quedar como en
 la taqueria, son fáciles y sobre todo deliciosos que vas
 querer repetir, no dejes pasar la ocasión y prepáralos te van
 a encantar
-2024-11-22 11:44:27 - Respuesta recibida del servidor.
-2024-11-22 11:44:27 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'Receta Tacos al Pastor
-Receta Tacos al Pastor
-Receta Tacos al Pasto
-Hola amigos iniciamos el día con una deliciosa Receta de Tacos
-al Pastor son muy populares en la mayor parte de México, los
-que conocemos los tacos de pastor regularmente las preparan en
-un trompo, pero no todos tenemos un trompo en casa, así que
-hoy las vamos a preparar en la estufa te van a quedar como en
-la taqueria, son fáciles y sobre todo deliciosos que vas
-querer repetir, no dejes pasar la ocasión y prepáralos te van
-a encantar'. Responde con 'si', 'no' o 'crear nueva'.,true
-2024-11-22 11:44:38 - Modo Administrador se activo??: true
-2024-11-22 11:44:38 - Modo administrador actualizado en sesión: True
-2024-11-22 11:44:38 - Mensaje recibido: 'si'
-2024-11-22 11:44:38 - Estado de administrador desde sesión: True
-2024-11-22 11:44:38 - Modo administrador activado para la pregunta: si
-2024-11-22 11:44:38 - Pregunta procesada: si
-2024-11-22 11:44:38 - Pregunta procesada: si
-2024-11-22 11:44:38 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:44:38 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:44:38 - Confirmación afirmativa. Categorías disponibles: ['clima', 'salud', 'animales', 'saludo', 'musica', 'camperos']
-2024-11-22 11:44:38 - Respuesta recibida del servidor.
-2024-11-22 11:44:38 - Respuesta enviada al usuario: Selecciona una categoría para guardar: clima, salud, animales, saludo, musica, camperos o escribe 'crear nueva'.,true
-2024-11-22 11:44:43 - Modo Administrador se activo??: true
-2024-11-22 11:44:43 - Modo administrador actualizado en sesión: True
-2024-11-22 11:44:43 - Mensaje recibido: 'saludo'
-2024-11-22 11:44:43 - Estado de administrador desde sesión: True
-2024-11-22 11:44:43 - Modo administrador activado para la pregunta: saludo
-2024-11-22 11:44:43 - Pregunta procesada: saludo
-2024-11-22 11:44:43 - Pregunta procesada: saludo
-2024-11-22 11:44:43 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:44:43 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-22 11:44:43 - Respuesta guardada en la categoría: saludo
-2024-11-22 11:44:43 - Respuesta recibida del servidor.
-2024-11-22 11:44:43 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'saludo'.,false
-2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 11:48:10 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 11:48:11 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 11:48:13 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 11:48:14 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 11:48:15 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 12:22:39 - Modo Administrador se activo??: false
-2024-11-22 12:22:39 - Modo administrador actualizado en sesión: False
-2024-11-22 12:22:39 - Mensaje recibido: 'hola amigo'
-2024-11-22 12:22:39 - Estado de administrador desde sesión: False
-2024-11-22 12:22:39 - Procesando mensaje: hola amigo, Modo administrador: False
-2024-11-22 12:22:39 - Pregunta procesada: hola amigo
-2024-11-22 12:22:39 - Pregunta procesada: hola amigo
-2024-11-22 12:22:39 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-22 12:22:39 - Respuesta exacta encontrada: Receta Tacos al Pastor
+2024-11-22 16:25:19 - Modo administrador actualizado en sesión: False
+2024-11-22 16:25:19 - Mensaje recibido: 'hola amigo'
+2024-11-22 16:25:19 - Estado de administrador desde sesión: False
+2024-11-22 16:25:19 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 16:25:19 - Pregunta procesada: hola amigo
+2024-11-22 16:25:19 - Pregunta procesada: hola amigo
+2024-11-22 16:25:19 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 16:25:19 - Respuesta exacta encontrada: Receta Tacos al Pastor
 Receta Tacos al Pastor
 Receta Tacos al Pasto
 Hola amigos iniciamos el día con una deliciosa Receta de Tacos
@@ -262,7 +536,7 @@ hoy las vamos a preparar en la estufa te van a quedar como en
 la taqueria, son fáciles y sobre todo deliciosos que vas
 querer repetir, no dejes pasar la ocasión y prepáralos te van
 a encantar
-2024-11-22 12:22:39 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+2024-11-22 16:25:19 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
 Receta Tacos al Pastor
 Receta Tacos al Pasto
 Hola amigos iniciamos el día con una deliciosa Receta de Tacos
@@ -273,8 +547,174 @@ hoy las vamos a preparar en la estufa te van a quedar como en
 la taqueria, son fáciles y sobre todo deliciosos que vas
 querer repetir, no dejes pasar la ocasión y prepáralos te van
 a encantar
-2024-11-22 12:22:39 - Respuesta recibida del servidor.
-2024-11-22 12:22:39 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Receta Tacos al Pastor
+2024-11-22 16:25:19 - Respuesta recibida del servidor.
+2024-11-22 16:25:25 - Modo Administrador se activo??: false
+2024-11-22 16:25:25 - Modo administrador actualizado en sesión: False
+2024-11-22 16:25:25 - Mensaje recibido: 'como te llamas'
+2024-11-22 16:25:25 - Estado de administrador desde sesión: False
+2024-11-22 16:25:25 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 16:25:25 - Modo administrador actualizado en sesión: False
+2024-11-22 16:25:25 - Mensaje recibido: 'como te llamas'
+2024-11-22 16:25:25 - Estado de administrador desde sesión: False
+2024-11-22 16:25:25 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 16:25:25 - Respuesta recibida del servidor.
+2024-11-22 17:21:24 - Modo Administrador se activo??: false
+2024-11-22 17:21:24 - Modo administrador actualizado en sesión: False
+2024-11-22 17:21:24 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:21:24 - Estado de administrador desde sesión: False
+2024-11-22 17:21:24 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:21:24 - Pregunta procesada: buenas tardes
+2024-11-22 17:21:24 - Pregunta procesada: buenas tardes
+2024-11-22 17:21:24 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:21:24 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:21:24 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:21:24 - Modo administrador actualizado en sesión: False
+2024-11-22 17:21:24 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:21:24 - Estado de administrador desde sesión: False
+2024-11-22 17:21:24 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:21:24 - Pregunta procesada: buenas tardes
+2024-11-22 17:21:24 - Pregunta procesada: buenas tardes
+2024-11-22 17:21:24 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:21:24 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:21:24 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:21:24 - Respuesta recibida del servidor.
+2024-11-22 17:21:31 - Modo Administrador se activo??: false
+2024-11-22 17:21:31 - Modo administrador actualizado en sesión: False
+2024-11-22 17:21:31 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:21:31 - Estado de administrador desde sesión: False
+2024-11-22 17:21:31 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:21:31 - Modo administrador actualizado en sesión: False
+2024-11-22 17:21:31 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:21:31 - Estado de administrador desde sesión: False
+2024-11-22 17:21:31 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:21:31 - Respuesta recibida del servidor.
+2024-11-22 17:22:07 - Modo Administrador se activo??: false
+2024-11-22 17:22:07 - Modo administrador actualizado en sesión: False
+2024-11-22 17:22:07 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:22:07 - Estado de administrador desde sesión: False
+2024-11-22 17:22:07 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:22:07 - Modo administrador actualizado en sesión: False
+2024-11-22 17:22:07 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:22:07 - Estado de administrador desde sesión: False
+2024-11-22 17:22:07 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:22:07 - Respuesta recibida del servidor.
+2024-11-22 17:23:10 - Modo Administrador se activo??: false
+2024-11-22 17:23:10 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:10 - Mensaje recibido: 'hola'
+2024-11-22 17:23:10 - Estado de administrador desde sesión: False
+2024-11-22 17:23:10 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:23:10 - Pregunta procesada: hola
+2024-11-22 17:23:10 - Pregunta procesada: hola
+2024-11-22 17:23:10 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:23:10 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:10 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:10 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:10 - Mensaje recibido: 'hola'
+2024-11-22 17:23:10 - Estado de administrador desde sesión: False
+2024-11-22 17:23:10 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:23:10 - Pregunta procesada: hola
+2024-11-22 17:23:10 - Pregunta procesada: hola
+2024-11-22 17:23:10 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:23:10 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:10 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:10 - Respuesta recibida del servidor.
+2024-11-22 17:23:16 - Modo Administrador se activo??: false
+2024-11-22 17:23:16 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:16 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:23:16 - Estado de administrador desde sesión: False
+2024-11-22 17:23:16 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:23:16 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:16 - Mensaje recibido: 'como te llamas'
+2024-11-22 17:23:16 - Estado de administrador desde sesión: False
+2024-11-22 17:23:16 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 17:23:16 - Respuesta recibida del servidor.
+2024-11-22 17:23:58 - Modo Administrador se activo??: false
+2024-11-22 17:23:58 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:58 - Mensaje recibido: 'hola'
+2024-11-22 17:23:58 - Estado de administrador desde sesión: False
+2024-11-22 17:23:58 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:23:58 - Pregunta procesada: hola
+2024-11-22 17:23:58 - Pregunta procesada: hola
+2024-11-22 17:23:58 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:23:58 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:58 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:58 - Modo administrador actualizado en sesión: False
+2024-11-22 17:23:58 - Mensaje recibido: 'hola'
+2024-11-22 17:23:58 - Estado de administrador desde sesión: False
+2024-11-22 17:23:58 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:23:58 - Pregunta procesada: hola
+2024-11-22 17:23:58 - Pregunta procesada: hola
+2024-11-22 17:23:58 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:23:58 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:58 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:23:58 - Respuesta recibida del servidor.
+2024-11-22 17:24:02 - Modo administrador actualizado en sesión: False
+2024-11-22 17:24:02 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:24:02 - Estado de administrador desde sesión: False
+2024-11-22 17:24:02 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:24:02 - Pregunta procesada: buenas tardes
+2024-11-22 17:24:02 - Pregunta procesada: buenas tardes
+2024-11-22 17:24:02 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:24:02 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:24:02 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:24:02 - Modo administrador actualizado en sesión: False
+2024-11-22 17:24:02 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:24:02 - Estado de administrador desde sesión: False
+2024-11-22 17:24:02 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:24:02 - Pregunta procesada: buenas tardes
+2024-11-22 17:24:02 - Pregunta procesada: buenas tardes
+2024-11-22 17:24:02 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:24:02 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:24:02 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:24:02 - Respuesta recibida del servidor.
+2024-11-22 17:31:24 - Modo administrador actualizado en sesión: False
+2024-11-22 17:31:24 - Mensaje recibido: 'hola'
+2024-11-22 17:31:24 - Estado de administrador desde sesión: False
+2024-11-22 17:31:24 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:31:24 - Pregunta procesada: hola
+2024-11-22 17:31:24 - Pregunta procesada: hola
+2024-11-22 17:31:24 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:31:24 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:31:24 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:31:24 - Modo administrador actualizado en sesión: False
+2024-11-22 17:31:24 - Mensaje recibido: 'hola'
+2024-11-22 17:31:24 - Estado de administrador desde sesión: False
+2024-11-22 17:31:24 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:31:24 - Pregunta procesada: hola
+2024-11-22 17:31:24 - Pregunta procesada: hola
+2024-11-22 17:31:24 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:31:24 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:31:24 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:31:24 - Respuesta recibida del servidor.
+2024-11-22 17:31:29 - Modo Administrador se activo??: false
+2024-11-22 17:31:29 - Modo administrador actualizado en sesión: False
+2024-11-22 17:31:29 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:31:29 - Estado de administrador desde sesión: False
+2024-11-22 17:31:29 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:31:29 - Pregunta procesada: buenas tardes
+2024-11-22 17:31:29 - Pregunta procesada: buenas tardes
+2024-11-22 17:31:29 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:31:29 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:31:29 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:31:29 - Modo administrador actualizado en sesión: False
+2024-11-22 17:31:29 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:31:29 - Estado de administrador desde sesión: False
+2024-11-22 17:31:29 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:31:29 - Pregunta procesada: buenas tardes
+2024-11-22 17:31:29 - Pregunta procesada: buenas tardes
+2024-11-22 17:31:29 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:31:29 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:31:29 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:31:29 - Respuesta recibida del servidor.
+2024-11-22 17:32:18 - Modo Administrador se activo??: false
+2024-11-22 17:32:18 - Modo administrador actualizado en sesión: False
+2024-11-22 17:32:18 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:32:18 - Estado de administrador desde sesión: False
+2024-11-22 17:32:18 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:32:18 - Pregunta procesada: hola amigo
+2024-11-22 17:32:18 - Pregunta procesada: hola amigo
+2024-11-22 17:32:18 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:32:18 - Respuesta exacta encontrada: Receta Tacos al Pastor
 Receta Tacos al Pastor
 Receta Tacos al Pasto
 Hola amigos iniciamos el día con una deliciosa Receta de Tacos
@@ -285,7 +725,442 @@ hoy las vamos a preparar en la estufa te van a quedar como en
 la taqueria, son fáciles y sobre todo deliciosos que vas
 querer repetir, no dejes pasar la ocasión y prepáralos te van
 a encantar
-2024-11-22 12:24:50 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
-2024-11-22 12:25:28 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\106_curiosidades_animales.pdf
-2024-11-22 12:27:32 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
-2024-11-22 12:29:18 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\04._Receta_Tacos_al_Pastor_autor_Faby.pdf
+2024-11-22 17:32:18 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:32:18 - Modo administrador actualizado en sesión: False
+2024-11-22 17:32:18 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:32:18 - Estado de administrador desde sesión: False
+2024-11-22 17:32:18 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:32:18 - Pregunta procesada: hola amigo
+2024-11-22 17:32:18 - Pregunta procesada: hola amigo
+2024-11-22 17:32:18 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:32:18 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:32:18 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:32:18 - Respuesta recibida del servidor.
+2024-11-22 17:32:22 - Modo Administrador se activo??: false
+2024-11-22 17:32:22 - Modo administrador actualizado en sesión: False
+2024-11-22 17:32:22 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:32:22 - Estado de administrador desde sesión: False
+2024-11-22 17:32:22 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:32:22 - Pregunta procesada: buenas tardes
+2024-11-22 17:32:22 - Pregunta procesada: buenas tardes
+2024-11-22 17:32:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:32:22 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:32:22 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:32:22 - Modo administrador actualizado en sesión: False
+2024-11-22 17:32:22 - Mensaje recibido: 'buenas tardes'
+2024-11-22 17:32:22 - Estado de administrador desde sesión: False
+2024-11-22 17:32:22 - Procesando mensaje: buenas tardes, Modo administrador: False
+2024-11-22 17:32:22 - Pregunta procesada: buenas tardes
+2024-11-22 17:32:22 - Pregunta procesada: buenas tardes
+2024-11-22 17:32:22 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:32:22 - Respuesta exacta encontrada: Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:32:22 - Respuesta encontrada en 'publico': Buenas tardes, Como puedo ayudarte hoy
+2024-11-22 17:32:22 - Respuesta recibida del servidor.
+2024-11-22 17:53:49 - Modo Administrador se activo??: false
+2024-11-22 17:53:49 - Modo administrador actualizado en sesión: False
+2024-11-22 17:53:49 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:53:49 - Estado de administrador desde sesión: False
+2024-11-22 17:53:49 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:53:49 - Pregunta procesada: hola amigo
+2024-11-22 17:53:49 - Pregunta procesada: hola amigo
+2024-11-22 17:53:49 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:53:49 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:53:49 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:53:54 - Modo administrador actualizado en sesión: False
+2024-11-22 17:53:54 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:53:54 - Estado de administrador desde sesión: False
+2024-11-22 17:53:54 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:53:54 - Pregunta procesada: hola amigo
+2024-11-22 17:53:54 - Pregunta procesada: hola amigo
+2024-11-22 17:53:54 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:53:54 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:53:54 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:53:55 - Respuesta recibida del servidor.
+2024-11-22 17:54:56 - Modo Administrador se activo??: false
+�n: False
+2024-11-22 17:54:56 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:54:56 - Estado de administrador desde sesión: False
+2024-11-22 17:54:56 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:54:56 - Pregunta procesada: hola amigo
+2024-11-22 17:54:56 - Pregunta procesada: hola amigo
+2024-11-22 17:54:56 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:54:56 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:54:56 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:01 - Modo administrador actualizado en sesión: False
+2024-11-22 17:55:01 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:55:01 - Estado de administrador desde sesión: False
+2024-11-22 17:55:01 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:55:01 - Pregunta procesada: hola amigo
+2024-11-22 17:55:01 - Pregunta procesada: hola amigo
+2024-11-22 17:55:01 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:55:01 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:01 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:01 - Respuesta recibida del servidor.
+2024-11-22 17:55:52 - Modo Administrador se activo??: false
+2024-11-22 17:55:52 - Modo administrador actualizado en sesión: False
+2024-11-22 17:55:52 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:55:52 - Estado de administrador desde sesión: False
+2024-11-22 17:55:52 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:55:52 - Pregunta procesada: hola amigo
+2024-11-22 17:55:52 - Pregunta procesada: hola amigo
+2024-11-22 17:55:52 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:55:52 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:52 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:55 - Modo administrador actualizado en sesión: False
+2024-11-22 17:55:55 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:55:55 - Estado de administrador desde sesión: False
+2024-11-22 17:55:55 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:55:55 - Pregunta procesada: hola amigo
+2024-11-22 17:55:55 - Pregunta procesada: hola amigo
+2024-11-22 17:55:55 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:55:55 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:55 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:55:55 - Respuesta recibida del servidor.
+2024-11-22 17:56:39 - Modo administrador actualizado en sesión: False
+2024-11-22 17:56:39 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:56:39 - Estado de administrador desde sesión: False
+2024-11-22 17:56:39 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:56:39 - Pregunta procesada: hola amigo
+2024-11-22 17:56:39 - Pregunta procesada: hola amigo
+2024-11-22 17:56:39 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:56:39 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:56:39 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:56:42 - Modo administrador actualizado en sesión: False
+2024-11-22 17:56:42 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:56:42 - Estado de administrador desde sesión: False
+2024-11-22 17:56:42 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:56:42 - Pregunta procesada: hola amigo
+2024-11-22 17:56:42 - Pregunta procesada: hola amigo
+2024-11-22 17:56:42 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:56:42 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:56:42 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:56:42 - Respuesta recibida del servidor.
+2024-11-22 17:57:42 - Modo Administrador se activo??: false
+2024-11-22 17:57:42 - Modo administrador actualizado en sesión: False
+2024-11-22 17:57:42 - Mensaje recibido: 'hola'
+2024-11-22 17:57:42 - Estado de administrador desde sesión: False
+2024-11-22 17:57:42 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:57:42 - Pregunta procesada: hola
+2024-11-22 17:57:42 - Pregunta procesada: hola
+2024-11-22 17:57:42 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:57:42 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:57:42 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:57:44 - Modo administrador actualizado en sesión: False
+2024-11-22 17:57:44 - Mensaje recibido: 'hola'
+2024-11-22 17:57:44 - Estado de administrador desde sesión: False
+2024-11-22 17:57:44 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 17:57:44 - Pregunta procesada: hola
+2024-11-22 17:57:44 - Pregunta procesada: hola
+2024-11-22 17:57:44 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:57:44 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:57:44 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 17:57:44 - Respuesta recibida del servidor.
+2024-11-22 17:57:52 - Modo Administrador se activo??: false
+2024-11-22 17:57:52 - Modo administrador actualizado en sesión: False
+2024-11-22 17:57:52 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:57:52 - Estado de administrador desde sesión: False
+2024-11-22 17:57:52 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:57:52 - Pregunta procesada: hola amigo
+2024-11-22 17:57:52 - Pregunta procesada: hola amigo
+2024-11-22 17:57:52 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:57:52 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:57:52 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:57:54 - Modo administrador actualizado en sesión: False
+2024-11-22 17:57:54 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:57:54 - Estado de administrador desde sesión: False
+2024-11-22 17:57:54 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:57:54 - Pregunta procesada: hola amigo
+2024-11-22 17:57:54 - Pregunta procesada: hola amigo
+2024-11-22 17:57:54 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:57:54 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:57:54 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:57:54 - Respuesta recibida del servidor.
+2024-11-22 17:58:56 - Modo administrador actualizado en sesión: False
+2024-11-22 17:58:56 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:58:56 - Estado de administrador desde sesión: False
+2024-11-22 17:58:56 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:58:56 - Pregunta procesada: hola amigo
+2024-11-22 17:58:56 - Pregunta procesada: hola amigo
+2024-11-22 17:58:56 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:58:56 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:58:56 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:58:58 - Modo administrador actualizado en sesión: False
+2024-11-22 17:58:58 - Mensaje recibido: 'hola amigo'
+2024-11-22 17:58:58 - Estado de administrador desde sesión: False
+2024-11-22 17:58:58 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 17:58:58 - Pregunta procesada: hola amigo
+2024-11-22 17:58:58 - Pregunta procesada: hola amigo
+2024-11-22 17:58:58 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 17:58:58 - Respuesta exacta encontrada: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:58:58 - Respuesta encontrada en 'publico': Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 17:58:58 - Respuesta recibida del servidor.

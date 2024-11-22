@@ -222,45 +222,47 @@ window.addEventListener("DOMContentLoaded", () => {
         modo_administrador: modo_administrador,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        registrarAccion("Respuesta recibida del servidor.");
-        console.log("Respuesta recibida del servidor:", data);
+      .then(() => {
+        // Mostrar "Pensando..."
+        const pensandoElemento = agregarMensajeIA("", "pensando");
 
-        // Verificar si la respuesta requiere confirmación
-        if (data.solicita_confirmacion === true) {
-          esperandoConfirmacion = true; // Bloquear flujo hasta confirmación
-          registrarAccion("Se requiere confirmación del usuario.");
+        // Temporizador para mantener "Pensando..." durante 5 segundos
+        setTimeout(() => {
+          // Realizar la segunda petición después de los 5 segundos
+          fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              mensaje: mensaje,
+              modo_administrador: modo_administrador,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Eliminar el mensaje "Pensando..."
+              mensajes.removeChild(pensandoElemento);
 
-          // Guardar datos relevantes
-          datosEsperandoConfirmacion = data.datos_confirmacion;
-          registrarAccion(
-            `Datos de confirmación almacenados: ${JSON.stringify(
-              datosEsperandoConfirmacion
-            )}`
-          );
+              registrarAccion("Respuesta recibida del servidor.");
+              console.log("Respuesta recibida del servidor:", data);
 
-          // Agregar mensaje para la interacción del usuario
-          agregarMensajeIA(
-            "¿Tiene coherencia mi respuesta? Responde con 'si' para confirmar o 'no' para rechazar."
-          );
-          registrarAccion(
-            "Mensaje enviado al usuario solicitando confirmación."
-          );
-        } else {
-          // Enviar la respuesta de la IA al usuario
-          agregarMensajeIA(data.respuesta);
-          registrarAccion(`Respuesta enviada al usuario: ${data.respuesta}`);
-        }
+              // Mostrar la respuesta de la IA
+              agregarMensajeIA(data.respuesta);
+            });
+        }, 2000); // Mantener "Pensando..." por 5 segundos (5000 ms)
       })
       .catch((error) => {
+        // Si ocurre un error, eliminar "Pensando..."
+        const pensandoElemento = document.querySelector(".mensaje-pensando");
+        if (pensandoElemento) {
+          mensajes.removeChild(pensandoElemento);
+        }
+
         console.error("Error al contactar con la IA:", error);
         registrarAccion(`Error al contactar con la IA: ${error.message}`);
         agregarMensajeIA(
           "Hubo un problema al procesar tu solicitud. Intenta de nuevo."
         );
       });
-
     // Función para manejar la confirmación del usuario
     function manejarConfirmacion(respuesta) {
       registrarAccion(
@@ -480,12 +482,33 @@ window.addEventListener("DOMContentLoaded", () => {
     mensajes.scrollTop = mensajes.scrollHeight;
   }
 
-  function agregarMensajeIA(respuesta) {
+  function agregarMensajeIA(respuesta, tipo = "respuesta") {
     const mensajeElemento = document.createElement("div");
-    mensajeElemento.innerHTML = `<span style="color: #FF00AB;">[Clark]:</span><br><br>${respuesta}`;
-    mensajeElemento.classList.add("mensaje-ia");
-    mensajes.appendChild(mensajeElemento);
-    mensajes.scrollTop = mensajes.scrollHeight;
+
+    if (tipo === "pensando") {
+      // Mostrar mensaje temporal de "Pensando"
+      mensajeElemento.innerHTML = `<span style="color: red;">[Clark está pensando...]</span>`;
+      mensajeElemento.classList.add("mensaje-pensando");
+
+      // Mostrar el mensaje por 5 segundos antes de reemplazarlo
+      mensajes.appendChild(mensajeElemento);
+      mensajes.scrollTop = mensajes.scrollHeight;
+
+      setTimeout(() => {
+        // Reemplazar con la respuesta de la IA después de 5 segundos
+        mensajeElemento.innerHTML = `<span style="color: #FF00AB;">[Clark]:</span><br><br>${respuesta}`;
+        mensajeElemento.classList.remove("mensaje-pensando");
+        mensajeElemento.classList.add("mensaje-ia");
+      }, 2000); // 5000 ms = 5 segundos
+    } else {
+      // Si no es "pensando", simplemente mostrar la respuesta de la IA
+      mensajeElemento.innerHTML = `<span style="color: #FF00AB;">[Clark]:</span><br><br>${respuesta}`;
+      mensajeElemento.classList.add("mensaje-ia");
+      mensajes.appendChild(mensajeElemento);
+      mensajes.scrollTop = mensajes.scrollHeight;
+    }
+
+    return mensajeElemento; // Devuelve el elemento para manipularlo si es necesario
   }
 
   function mostrarListaArchivos(archivos) {

@@ -25,7 +25,8 @@
             "que musica te gusta": "Me gusta la musica electronica"
         },
         "camperos": {
-            "que sabes de la jirafa": "La Jirafa duerme tan solo 7 minutos por dia y lo hace de pie"
+            "que sabes de la jirafa": "La Jirafa duerme tan solo 7 minutos por dia y lo hace de pie",
+            "acampar en chozas": "Acampar en chozas o en barracas improvisadas"
         }
     }
 }
