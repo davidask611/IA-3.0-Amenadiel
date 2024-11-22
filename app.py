@@ -2,7 +2,7 @@
 from config import Config
 import json
 import mimetypes
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify
 from Amenadiel import procesar_mensaje, conocimientos, geografia_data, matematica, animales_data, comida
 from funcionesAdmin.manejo_archivos import process_json, process_txt, process_pdf
 from werkzeug.utils import secure_filename
@@ -11,6 +11,8 @@ from funciones.funcion_eliminarAcentos import eliminar_acentos
 import sys
 import os
 import time
+from flask import session
+
 # from datetime import timedelta
 from registro_acciones import registrar_accion
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -23,6 +25,7 @@ app.config.from_object(Config)
 # Configuración para la sesión
 app.secret_key = Config.SECRET_KEY
 app.config['SESSION_PERMANENT'] = True
+
 
 # # Función para registrar acciones en un archivo de log
 
@@ -49,7 +52,7 @@ def limpiar_archivos_obsoletos():
     # Verificar si la carpeta de subida existe
     upload_folder = app.config.get('UPLOAD_FOLDER', './uploads')
     if not os.path.exists(upload_folder):
-        print(f"La carpeta {upload_folder} no existe.")
+        registrar_accion(f"La carpeta {upload_folder} no existe.")
         return
 
     for filename in os.listdir(upload_folder):
@@ -59,17 +62,17 @@ def limpiar_archivos_obsoletos():
             if file_age > 60 * 24 * 60 * 60:  # Más de 60 días
                 try:
                     os.remove(file_path)
-                    print(f"Archivo eliminado: {file_path}")
+                    registrar_accion(f"Archivo eliminado: {file_path}")
                 except OSError as e:
-                    print(f"Error eliminando {file_path}: {str(e)}")
+                    registrar_accion(f"Error eliminando {file_path}: {str(e)}")
 
 
 # Ruta principal
-
 @app.route("/", methods=["GET"])
 def home():
-    session['modo_administrador'] = False  # Restablecer a False en cada carga
-    # limpiar_archivos_obsoletos()  # Limpia archivos obsoletos al cargar la página principal
+    if 'modo_administrador' not in session:
+        session['modo_administrador'] = False
+        # limpiar_archivos_obsoletos()  # Limpia archivos obsoletos al cargar la página principal
     return render_template("index.html")
 
 
@@ -79,7 +82,7 @@ def subir_archivo():
     modo_administrador = session.get('modo_administrador', False)
 
     if not archivo:
-        print("No se recibió ningún archivo.")
+        registrar_accion("No se recibió ningún archivo.")
         return jsonify({"error": "No se recibió ningún archivo."}), 400
 
     # Validar tamaño del archivo (solo para usuarios)
@@ -90,7 +93,7 @@ def subir_archivo():
     mime_type, _ = mimetypes.guess_type(archivo.filename)
     allowed_mime_types = ["application/json", "text/plain", "application/pdf"]
     if mime_type not in allowed_mime_types:
-        print("Tipo de archivo no permitido.")
+        registrar_accion("Tipo de archivo no permitido.")
         return jsonify({"error": "Tipo de archivo no permitido."}), 400
 
     # Guardar archivo en 'uploads'
@@ -99,7 +102,7 @@ def subir_archivo():
     file_path = os.path.join(upload_folder, secure_filename(archivo.filename))
     archivo.save(file_path)
 
-    print(f"Archivo guardado exitosamente en: {file_path}")
+    registrar_accion(f"Archivo guardado exitosamente en: {file_path}")
 
     # Procesar el archivo según su extensión
     if archivo.filename.endswith(".json"):
@@ -234,15 +237,25 @@ estado_confirmacion = {}  # Definición global
 def chat():
     pregunta_limpia = request.json.get("mensaje")
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
+
+    # Obtener el valor de modo_administrador desde el frontend (si se envía)
     modo_administrador = request.json.get("modo_administrador", False)
+
+    # Actualizar el valor en la sesión si cambia
+    session['modo_administrador'] = modo_administrador
+
+    # Registro de la acción
+    registrar_accion(
+        f"Modo administrador actualizado en sesión: {session['modo_administrador']}")
+
     global estado_confirmacion  # Indica que estás usando la variable global
 
-    print(f"Mensaje recibido: '{pregunta_limpia}'")
-    print(
-        f"Estado de administrador: {session.get('modo_administrador', False)}")
-    # modo administrador
-    if modo_administrador:
-        print("Modo administrador activado para la pregunta:", pregunta_limpia)
+    registrar_accion(f"Mensaje recibido: '{pregunta_limpia}'")
+    registrar_accion(
+        f"Estado de administrador desde sesión: {session.get('modo_administrador', False)}")
+
+    # Modo administrador
+    if session.get('modo_administrador', False):
         registrar_accion(
             f"Modo administrador activado para la pregunta: {pregunta_limpia}")
 

@@ -158,12 +158,12 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
     global estado_confirmacion  # Indica que estás usando la variable global
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
 
-    print(
+    registrar_accion(
         f"Procesando mensaje: {pregunta_limpia}, Modo administrador: {modo_administrador}")
 
     if modo_administrador and pregunta_limpia == "ver datos":
         contenido = ver_datos(directorio_json='.')
-        print("Contenido obtenido:", contenido)
+        registrar_accion("Contenido obtenido:", contenido)
         return contenido if contenido else "No se pudo obtener el contenido."
 
     # Verificar si es un saludo
@@ -284,16 +284,14 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         registrar_accion(
             f"Modo administrador activado para la pregunta: {pregunta_limpia}")
 
-        # Llamada a entrenando_IA en modo administrador
-        registrar_accion(
-            "Llamando a entrenando_IA con modo_administrador=True...")
-        respuesta_ia = entrenando_IA(
-            pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5)
+        # # Llamada a entrenando_IA en modo administrador
+        # registrar_accion(
+        #     "Llamando a entrenando_IA con modo_administrador=True...")
+        # respuesta_ia = entrenando_IA(
+        #     pregunta_limpia, datos_previos, modo_administrador=True, cutoff_usuario=0.5)
 
         if respuesta_ia:
             registrar_accion(
-                f"Respuesta generada por entrenando_IA (modo administrador): {respuesta_ia}")
-            print(
                 f"Respuesta generada por entrenando_IA (modo administrador): {respuesta_ia}")
             return respuesta_ia
 
@@ -311,7 +309,6 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         if respuesta_ia:
             registrar_accion(
                 f"Respuesta generada por similitud: {respuesta_ia}")
-            print(f"Respuesta generada por similitud: {respuesta_ia}")
             return respuesta_ia
 
         # Llamada a la función para buscar en archivos de uploads
@@ -321,7 +318,6 @@ def procesar_mensaje(pregunta_limpia, conocimientos, geografia_data, animales_da
         if respuesta_ia:
             registrar_accion(
                 f"Resultados de búsqueda en archivos: {respuesta_ia}")
-            print(f"Resultados de búsqueda en archivos: {respuesta_ia}")
             return respuesta_ia
 
     registrar_accion(

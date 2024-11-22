@@ -7,25 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const maxFileSize = modo_administrador ? Infinity : 5 * 1024 * 1024; // No hay límite para admin, 10 MB para usuarios
   const botonSubirArchivo = document.getElementById("botonSubirArchivo");
   const archivoInput = document.getElementById("archivoInput");
-  //funcion registrar acciones
-  function registrarAccion(accion) {
-    fetch("/registrar_accion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ accion: accion }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.respuesta) {
-          console.log("Registro de acción:", data.respuesta);
-        }
-      })
-      .catch((error) => {
-        console.error("Error al registrar la acción:", error);
-      });
-  }
 
   // Verifica si el elemento archivoInput está disponible
   if (!archivoInput) {
@@ -70,10 +51,10 @@ window.addEventListener("DOMContentLoaded", () => {
   botonUsuario.addEventListener("click", () => {
     if (modo_administrador) {
       modo_administrador = false;
-      // registrarAccion("Modo administrador desactivado");
+      registrarAccion(`Modo administrador desactivado: ${modo_administrador}`);
       console.log("Modo administrador desactivado");
       agregarMensajeIA("Modo usuario activado");
-      // registrarAccion(`Modo usuario activado: ${modo_administrador}`);
+      registrarAccion(`Modo usuario activado: ${modo_administrador}`);
     }
   });
 
@@ -125,18 +106,22 @@ window.addEventListener("DOMContentLoaded", () => {
         const claveAdminCorrecta = "silvestre";
         if (mensaje === claveAdminCorrecta && usuarioAdmin === "abuelo") {
           modo_administrador = true;
-          esperandoClaveAdmin = false;
-          // registrarAccion(`Modo Administrador activado: ${modo_administrador}`);
-          console.log("Modo administrador activado");
+          window.modo_administrador = true; // Actualizando el valor global
+          console.log(
+            "Modo administrador activado:",
+            window.modo_administrador
+          ); // Verifica el valor
           agregarMensajeIA("¡Modo administrador activado!");
+          esperandoClaveAdmin = false; // Restablecer espera
         } else {
           agregarMensajeIA("Usuario o clave incorrectos. Intenta nuevamente.");
           console.log("Usuario o clave incorrectos");
-          esperandoClaveAdmin = true;
+          esperandoClaveAdmin = true; // Mantener esperando
         }
-        usuarioAdmin = "";
-        return;
+        usuarioAdmin = ""; // Restablecer el usuario
+        return; // No es necesario devolver "modo_administrador"
       }
+      registrarAccion(`Modo Administrador se activo??: ${modo_administrador}`);
       // Ver datos
       if (mensaje.toLowerCase() === "ver datos") {
         if (!modo_administrador) {
@@ -401,7 +386,6 @@ window.addEventListener("DOMContentLoaded", () => {
         console.error("Error al subir el archivo:", error);
       }
     });
-    //
     // Código para manejar la confirmación o rechazo de respuestas generadas por la IA
     // - Este código permite al usuario responder con "si" o "no" para confirmar o rechazar respuestas.
     // - Si se confirma, se envía una solicitud al servidor para guardar la respuesta en la categoría correspondiente.
@@ -460,6 +444,25 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       }
     }
+  }
+  //funcion registrar acciones
+  function registrarAccion(accion) {
+    fetch("/registrar_accion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ accion: accion }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.respuesta) {
+          console.log("Registro de acción:", data.respuesta);
+        }
+      })
+      .catch((error) => {
+        console.error("Error al registrar la acción:", error);
+      });
   }
 
   function agregarMensajeUsuario(mensaje) {

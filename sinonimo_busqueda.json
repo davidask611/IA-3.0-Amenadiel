@@ -1,0 +1,54 @@
+{
+  "general": {
+    "guardar": ["almacenar", "archivar"],
+    "eliminar": ["quitar", "borrar", "suprimir"],
+    "agregar": ["incluir", "añadir"],
+    "datos": ["información", "conocimiento"],
+    "categoría": ["tipo", "clasificación"],
+    "subcategoría": ["subtipo", "sección"],
+    "idea": ["concepto", "propuesta"],
+    "pregunta": ["interrogante", "cuestionamiento"],
+    "respuesta": ["contestación", "solución"]
+  },
+  "matemáticas": {
+    "sumar": ["agregar", "adicionar"],
+    "restar": ["sustraer", "quitar"],
+    "multiplicar": ["incrementar", "por"],
+    "dividir": ["partir", "separar"],
+    "porcentaje": ["porcion", "tanto por ciento"],
+    "logaritmo": ["función logarítmica"],
+    "trigonometría": ["matemáticas trigonométricas"]
+  },
+  "naturaleza": {
+    "animal": ["ser vivo", "criatura"],
+    "planta": ["vegetal", "flora"],
+    "huerta": ["jardín", "cultivo"],
+    "árboles": ["vegetación arbórea", "bosque"],
+    "perro": ["can", "mascota"],
+    "gato": ["felino", "mascota"],
+    "ave": ["pájaro", "volador"]
+  },
+  "social": {
+    "saludo": ["hola", "buenas"],
+    "despedida": ["adiós", "hasta luego"],
+    "gracias": ["agradecimiento", "reconocimiento"],
+    "nombre": ["identidad", "designación"],
+    "edad": ["años", "antigüedad"]
+  },
+  "recetas": {
+    "ingredientes": ["componentes", "materiales"],
+    "recetario": ["libro de recetas"],
+    "bizcochuelo": ["bizcocho", "pastel"],
+    "churros": ["masa frita"],
+    "donas": ["rosquillas"],
+    "pastaflora": ["tarta de mermelada"],
+    "budín": ["pastel", "postre"]
+  },
+  "tecnología": {
+    "clave": ["llave", "contraseña"],
+    "usuario": ["persona", "identificador"],
+    "guardar": ["almacenar", "registrar"],
+    "cargar": ["subir", "actualizar"],
+    "borrar": ["eliminar", "resetear"]
+  }
+}

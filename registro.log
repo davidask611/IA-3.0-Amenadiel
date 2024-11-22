@@ -1,96 +1,245 @@
-2024-11-21 13:58:06 - Pregunta procesada: hola
-2024-11-21 13:58:06 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-21 13:58:06 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
-2024-11-21 13:58:06 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
-2024-11-21 13:58:06 - Respuesta recibida del servidor.
-2024-11-21 13:58:06 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
-2024-11-21 13:58:30 - Modo administrador activado para la pregunta: el ojo del avestruz
-2024-11-21 13:58:30 - Pregunta procesada: el ojo del avestruz
-2024-11-21 13:58:30 - Buscando en la sección 'publico' con cutoff 0.7
-2024-11-21 13:58:30 - Modo administrador activo. Buscando en archivos.
-2024-11-21 13:58:30 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
-2024-11-21 13:58:31 - Procesando archivo: 106_curiosidades_animales.pdf
-2024-11-21 13:58:32 - Procesando archivo: 109-Poemas-escogidos.pdf
-2024-11-21 13:58:36 - Mejor respuesta encontrada en archivos: El ojo del avestruz es más grande que su cerebro
-2024-11-21 13:58:37 - Respuesta recibida del servidor.
-2024-11-21 13:58:37 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'El ojo del avestruz es más grande que su cerebro'. Responde con 'si' o 'no.'
-2024-11-21 13:58:41 - Modo administrador activado para la pregunta: si
-2024-11-21 13:58:41 - Pregunta procesada: si
-2024-11-21 13:58:41 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-21 13:58:41 - Confirmación afirmativa. Categorías disponibles: ['clima', 'salud', 'animales', 'saludo', 'musica']
-2024-11-21 13:58:41 - Respuesta recibida del servidor.
-2024-11-21 13:58:41 - Respuesta enviada al usuario: Selecciona una categoría para guardar: clima, salud, animales, saludo, musica,true
-2024-11-21 13:58:54 - Modo administrador activado para la pregunta: animales
-2024-11-21 13:58:54 - Pregunta procesada: animales
-2024-11-21 13:58:54 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-21 13:58:54 - Respuesta guardada en la categoría: animales
-2024-11-21 13:58:54 - Respuesta recibida del servidor.
-2024-11-21 13:58:54 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'animales'.,false
-2024-11-21 14:02:03 - Pregunta procesada: hola
-2024-11-21 14:02:03 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-21 14:02:03 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
-2024-11-21 14:02:03 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
-2024-11-21 14:02:03 - Respuesta recibida del servidor.
-2024-11-21 14:02:03 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
-2024-11-21 14:02:07 - Respuesta recibida del servidor.
-2024-11-21 14:02:07 - Respuesta enviada al usuario: Mi nombre es Clark
-2024-11-21 14:02:28 - Modo administrador activado para la pregunta: como te llamas
-2024-11-21 14:02:28 - Pregunta procesada: como te llamas
-2024-11-21 14:02:28 - Buscando en la sección 'publico' con cutoff 0.7
-2024-11-21 14:02:28 - Modo administrador activo. Buscando en archivos.
-2024-11-21 14:02:28 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
-2024-11-21 14:02:29 - Procesando archivo: 106_curiosidades_animales.pdf
-2024-11-21 14:02:30 - Procesando archivo: 109-Poemas-escogidos.pdf
-2024-11-21 14:02:35 - No se encontró información relevante.
-2024-11-21 14:02:35 - Respuesta recibida del servidor.
-2024-11-21 14:02:35 - Respuesta enviada al usuario: No se encontró información relevante.
-2024-11-21 14:03:04 - Modo administrador activado para la pregunta: cual es el ave mas rapida
-2024-11-21 14:03:04 - Pregunta procesada: cual es el ave mas rapida
-2024-11-21 14:03:04 - Buscando en la sección 'publico' con cutoff 0.7
-2024-11-21 14:03:04 - Modo administrador activo. Buscando en archivos.
-2024-11-21 14:03:04 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
-2024-11-21 14:03:05 - Procesando archivo: 106_curiosidades_animales.pdf
-2024-11-21 14:03:06 - Procesando archivo: 109-Poemas-escogidos.pdf
-2024-11-21 14:03:11 - No se encontró información relevante.
-2024-11-21 14:03:11 - Respuesta recibida del servidor.
-2024-11-21 14:03:11 - Respuesta enviada al usuario: No se encontró información relevante.
-2024-11-21 14:03:22 - Modo administrador activado para la pregunta: el ave mas rapida
-2024-11-21 14:03:22 - Pregunta procesada: el ave mas rapida
-2024-11-21 14:03:22 - Buscando en la sección 'publico' con cutoff 0.7
-2024-11-21 14:03:22 - Modo administrador activo. Buscando en archivos.
-2024-11-21 14:03:22 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
-2024-11-21 14:03:23 - Procesando archivo: 106_curiosidades_animales.pdf
-2024-11-21 14:03:23 - Procesando archivo: 109-Poemas-escogidos.pdf
-2024-11-21 14:03:28 - No se encontró información relevante.
-2024-11-21 14:03:28 - Respuesta recibida del servidor.
-2024-11-21 14:03:28 - Respuesta enviada al usuario: No se encontró información relevante.
-2024-11-21 14:03:37 - Modo administrador activado para la pregunta: el ave
-2024-11-21 14:03:37 - Pregunta procesada: el ave
-2024-11-21 14:03:37 - Buscando en la sección 'publico' con cutoff 0.7
-2024-11-21 14:03:37 - Modo administrador activo. Buscando en archivos.
-2024-11-21 14:03:37 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.pdf
-2024-11-21 14:03:38 - Procesando archivo: 106_curiosidades_animales.pdf
-2024-11-21 14:03:39 - Procesando archivo: 109-Poemas-escogidos.pdf
-2024-11-21 14:03:44 - Mejor respuesta encontrada en archivos: El ojo del avestruz es más grande que su cerebro
-2024-11-21 14:03:44 - Respuesta recibida del servidor.
-2024-11-21 14:03:44 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'El ojo del avestruz es más grande que su cerebro'. Responde con 'si' o 'no.'
-2024-11-21 14:03:54 - Modo administrador activado para la pregunta: no
-2024-11-21 14:03:54 - Pregunta procesada: no
-2024-11-21 14:03:54 - Confirmación pendiente detectada. Procesando respuesta...
-2024-11-21 14:03:54 - Confirmación rechazada. Liberando estado.
-2024-11-21 14:03:54 - Respuesta recibida del servidor.
-2024-11-21 14:03:54 - Respuesta enviada al usuario: La propuesta fue rechazada. Puedes hacer otra consulta.,false
-2024-11-21 15:24:32 - Pregunta procesada: hola
-2024-11-21 15:24:32 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-21 15:24:32 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
-2024-11-21 15:24:32 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
-2024-11-21 15:24:32 - Respuesta recibida del servidor.
-2024-11-21 15:24:32 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
-2024-11-21 15:24:38 - Respuesta recibida del servidor.
-2024-11-21 15:24:38 - Respuesta enviada al usuario: Mi nombre es Clark
-2024-11-21 16:18:39 - Pregunta procesada: hola
-2024-11-21 16:18:39 - Buscando en la sección 'publico' con cutoff 0.5
-2024-11-21 16:18:39 - Respuesta exacta encontrada: Hola, en que puedo ayudarte
-2024-11-21 16:18:39 - Respuesta encontrada en 'publico': Hola, en que puedo ayudarte
-2024-11-21 16:18:39 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>Hola, en que puedo ayudarte
-2024-11-21 16:18:39 - Respuesta recibida del servidor.
+2024-11-22 10:51:24 - Modo Administrador se activo??: false
+2024-11-22 10:51:24 - Modo administrador actualizado en sesión: False
+2024-11-22 10:51:24 - Mensaje recibido: 'hola amigo'
+2024-11-22 10:51:24 - Estado de administrador desde sesión: False
+2024-11-22 10:51:24 - Procesando mensaje: hola amigo, Modo administrador: False
+2024-11-22 10:51:24 - Pregunta procesada: hola amigo
+2024-11-22 10:51:24 - Pregunta procesada: hola amigo
+2024-11-22 10:51:24 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 10:51:24 - Respuesta exacta encontrada: hola amigo/a todo bien, que hacemos hoy
+2024-11-22 10:51:24 - Respuesta encontrada en 'publico': hola amigo/a todo bien, que hacemos hoy
+2024-11-22 10:51:24 - Respuesta recibida del servidor.
+2024-11-22 10:51:24 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a todo bien, que hacemos hoy
+2024-11-22 11:22:37 - Modo Administrador se activo??: false
+2024-11-22 11:22:37 - Modo administrador actualizado en sesión: False
+2024-11-22 11:22:37 - Mensaje recibido: 'como te llamas'
+2024-11-22 11:22:37 - Estado de administrador desde sesión: False
+2024-11-22 11:22:37 - Procesando mensaje: como te llamas, Modo administrador: False
+2024-11-22 11:22:37 - Respuesta recibida del servidor.
+2024-11-22 11:22:37 - Respuesta enviada al usuario: Mi nombre es Clark
+2024-11-22 11:22:53 - Modo Administrador se activo??: false
+2024-11-22 11:22:53 - Modo administrador actualizado en sesión: False
+2024-11-22 11:22:53 - Mensaje recibido: 'huerta'
+2024-11-22 11:22:53 - Estado de administrador desde sesión: False
+2024-11-22 11:22:53 - Procesando mensaje: huerta, Modo administrador: False
+2024-11-22 11:22:53 - Respuesta recibida del servidor.
+2024-11-22 11:22:53 - Respuesta enviada al usuario: Verduras disponibles:<br>1. Tomate<br>2. Acelga<br>3. Morron<br>4. Zanahoria<br>5. Lechuga<br>6. Espinaca<br>7. Pepino<br>8. Berenjena<br>9. Rábano<br>10. Papa<br>11. Cebolla<br>12. Ajo<br>13. Brócoli<br>14. Col<br><br>Escribe un nombre para obtener mas detalles.
+2024-11-22 11:22:56 - Modo Administrador se activo??: false
+2024-11-22 11:22:56 - Modo administrador actualizado en sesión: False
+2024-11-22 11:22:56 - Mensaje recibido: 'papa'
+2024-11-22 11:22:56 - Estado de administrador desde sesión: False
+2024-11-22 11:22:56 - Procesando mensaje: papa, Modo administrador: False
+2024-11-22 11:22:56 - Respuesta recibida del servidor.
+2024-11-22 11:22:56 - Respuesta enviada al usuario: Nombre: Papa<br>• Temporada de siembra: Primavera<br>• Temporada de cosecha: Verano/otoño<br>• Frecuencia de riego: Cada 4 días<br>• Tipo de tierra: Tierra rica en nutrientes, bien aireada y con buen drenaje.
+2024-11-22 11:23:02 - Modo Administrador se activo??: false
+2024-11-22 11:23:02 - Modo administrador actualizado en sesión: False
+2024-11-22 11:23:02 - Mensaje recibido: 'recetas'
+2024-11-22 11:23:02 - Estado de administrador desde sesión: False
+2024-11-22 11:23:02 - Respuesta recibida del servidor.
+2024-11-22 11:23:02 - Respuesta enviada al usuario: Recetas disponibles:<br>1. churros<br>2. donas<br>3. pastaflora<br>4. bizcochuelo<br>5. lemonpay<br>6. budin<br>Elige el número de la receta que quieres ver.
+2024-11-22 11:23:06 - Modo Administrador se activo??: false
+2024-11-22 11:23:06 - Modo administrador actualizado en sesión: False
+2024-11-22 11:23:06 - Mensaje recibido: '6'
+2024-11-22 11:23:06 - Estado de administrador desde sesión: False
+2024-11-22 11:23:06 - Respuesta recibida del servidor.
+2024-11-22 11:23:06 - Respuesta enviada al usuario: Receta de budin:<br><br>Ingredientes: <br>- 2 tazas de harina leudante<br>- 1 taza de azúcar<br>- 1/2 taza de manteca<br>- 3 huevos<br>- 1/2 taza de leche<br>- 1 cucharadita de esencia de vainilla<br><br>Paso a paso:<br>-> Bate la manteca con el azúcar hasta que esté cremosa.<br>-> Añade los huevos uno a uno y mezcla bien.<br>-> Incorpora la harina alternando con la leche.<br>-> Agrega la esencia de vainilla y mezcla hasta que esté homogéneo.<br>-> Vierte la mezcla en un molde enmantecado y hornea a 180°C durante 40-45 minutos.
+2024-11-22 11:23:42 - Modo Administrador se activo??: true
+2024-11-22 11:23:42 - Modo administrador actualizado en sesión: True
+2024-11-22 11:23:42 - Mensaje recibido: 'hola'
+2024-11-22 11:23:42 - Estado de administrador desde sesión: True
+2024-11-22 11:23:42 - Modo administrador activado para la pregunta: hola
+2024-11-22 11:23:42 - Pregunta procesada: hola
+2024-11-22 11:23:42 - Pregunta procesada: hola
+2024-11-22 11:23:42 - Modo administrador activo. Buscando en archivos.
+2024-11-22 11:23:42 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 11:23:42 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 11:23:42 - Procesando archivo: cv_david_informatica.pdf
+2024-11-22 11:23:42 - Procesando archivo: cv_david_informatica.txt
+2024-11-22 11:23:42 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.pdf
+2024-11-22 11:23:43 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.txt
+2024-11-22 11:23:43 - Procesando archivo: CV_pluche.pdf
+2024-11-22 11:23:43 - Procesando archivo: CV_pluche.txt
+2024-11-22 11:23:43 - Mejor respuesta encontrada en archivos: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 11:23:43 - Respuesta recibida del servidor.
+2024-11-22 11:23:43 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar'. Responde con 'si', 'no' o 'crear nueva'.,true
+2024-11-22 11:23:50 - Modo Administrador se activo??: true
+2024-11-22 11:23:50 - Modo administrador actualizado en sesión: True
+2024-11-22 11:23:50 - Mensaje recibido: 'no'
+2024-11-22 11:23:50 - Estado de administrador desde sesión: True
+2024-11-22 11:23:50 - Modo administrador activado para la pregunta: no
+2024-11-22 11:23:50 - Pregunta procesada: no
+2024-11-22 11:23:50 - Pregunta procesada: no
+2024-11-22 11:23:50 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:23:50 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:23:50 - Confirmación rechazada. Solicitando nueva respuesta.
+2024-11-22 11:23:50 - Respuesta enviada al usuario: Por favor, escribe una nueva respuesta para guardar.,true
+2024-11-22 11:24:09 - Modo Administrador se activo??: true
+2024-11-22 11:24:09 - Modo administrador actualizado en sesión: True
+2024-11-22 11:24:09 - Mensaje recibido: 'hola amigo/a como estas, que hacemos hoy'
+2024-11-22 11:24:09 - Estado de administrador desde sesión: True
+2024-11-22 11:24:09 - Modo administrador activado para la pregunta: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:24:09 - Pregunta procesada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:24:09 - Pregunta procesada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:24:09 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:24:09 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:24:09 - Respuesta personalizada recibida: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:24:09 - Respuesta recibida del servidor.
+2024-11-22 11:24:09 - Respuesta enviada al usuario: Selecciona una categoría para guardar la nueva respuesta: clima, salud, animales, saludo, musica, camperos o escribe 'crear nueva'.,true
+2024-11-22 11:24:13 - Modo Administrador se activo??: true
+2024-11-22 11:24:13 - Modo administrador actualizado en sesión: True
+2024-11-22 11:24:13 - Mensaje recibido: 'saludo'
+2024-11-22 11:24:13 - Estado de administrador desde sesión: True
+2024-11-22 11:24:13 - Modo administrador activado para la pregunta: saludo
+2024-11-22 11:24:13 - Pregunta procesada: saludo
+2024-11-22 11:24:13 - Pregunta procesada: saludo
+2024-11-22 11:24:13 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:24:13 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:24:13 - Respuesta guardada en la categoría: saludo
+2024-11-22 11:24:13 - Respuesta recibida del servidor.
+2024-11-22 11:24:13 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'saludo'.,false
+2024-11-22 11:28:02 - Modo Administrador se activo??: true
+2024-11-22 11:28:06 - Modo Administrador se activo??: true
+2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:39:31 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:40:40 - Modo Administrador se activo??: false
+2024-11-22 11:40:40 - Modo administrador actualizado en sesión: False
+2024-11-22 11:40:40 - Mensaje recibido: 'hola'
+2024-11-22 11:40:40 - Estado de administrador desde sesión: False
+2024-11-22 11:40:40 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 11:40:40 - Pregunta procesada: hola
+2024-11-22 11:40:40 - Pregunta procesada: hola
+2024-11-22 11:40:40 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 11:40:40 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:40:40 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:40:40 - Respuesta recibida del servidor.
+2024-11-22 11:40:40 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:41:09 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:41:23 - Modo Administrador se activo??: true
+2024-11-22 11:41:23 - Modo administrador actualizado en sesión: True
+2024-11-22 11:41:23 - Mensaje recibido: '5+5'
+2024-11-22 11:41:23 - Estado de administrador desde sesión: True
+2024-11-22 11:41:23 - Modo administrador activado para la pregunta: 5+5
+2024-11-22 11:41:23 - Pregunta procesada: 5+5
+2024-11-22 11:41:23 - Pregunta procesada: 5+5
+2024-11-22 11:41:23 - Modo administrador activo. Buscando en archivos.
+2024-11-22 11:41:23 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 11:41:23 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 11:41:24 - Procesando archivo: cv_david_informatica.pdf
+2024-11-22 11:41:25 - Procesando archivo: cv_david_informatica.txt
+2024-11-22 11:41:26 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.pdf
+2024-11-22 11:41:28 - Procesando archivo: CV_Lautaro_Gomez_Tecnico_Electricista-1.txt
+2024-11-22 11:41:28 - Procesando archivo: CV_pluche.pdf
+2024-11-22 11:41:29 - Procesando archivo: CV_pluche.txt
+2024-11-22 11:41:29 - Procesando archivo: Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:43:52 - Modo administrador actualizado en sesión: False
+2024-11-22 11:43:52 - Mensaje recibido: 'hola'
+2024-11-22 11:43:52 - Estado de administrador desde sesión: False
+2024-11-22 11:43:52 - Procesando mensaje: hola, Modo administrador: False
+2024-11-22 11:43:52 - Pregunta procesada: hola
+2024-11-22 11:43:52 - Pregunta procesada: hola
+2024-11-22 11:43:52 - Buscando en la sección 'publico' con cutoff 0.5
+2024-11-22 11:43:52 - Respuesta exacta encontrada: hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:43:52 - Respuesta encontrada en 'publico': hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:43:52 - Respuesta recibida del servidor.
+2024-11-22 11:43:52 - Respuesta enviada al usuario: Respuesta encontrada en Publico: <br><br>hola amigo/a como estas, que hacemos hoy
+2024-11-22 11:44:16 - Modo Administrador se activo??: true
+2024-11-22 11:44:16 - Modo administrador actualizado en sesión: True
+2024-11-22 11:44:16 - Mensaje recibido: '5+5'
+2024-11-22 11:44:16 - Estado de administrador desde sesión: True
+2024-11-22 11:44:16 - Modo administrador activado para la pregunta: 5+5
+2024-11-22 11:44:16 - Pregunta procesada: 5+5
+2024-11-22 11:44:16 - Pregunta procesada: 5+5
+2024-11-22 11:44:16 - Modo administrador activo. Buscando en archivos.
+2024-11-22 11:44:16 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 11:44:16 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 11:44:16 - El usuario no ha ingresado una pregunta válida.
+2024-11-22 11:44:16 - Respuesta recibida del servidor.
+2024-11-22 11:44:16 - Respuesta enviada al usuario: No se encontró una respuesta relevante, por favor carga archivos sobre el tema.
+2024-11-22 11:44:27 - Modo Administrador se activo??: true
+2024-11-22 11:44:27 - Modo administrador actualizado en sesión: True
+2024-11-22 11:44:27 - Mensaje recibido: 'hola amigo'
+2024-11-22 11:44:27 - Estado de administrador desde sesión: True
+2024-11-22 11:44:27 - Modo administrador activado para la pregunta: hola amigo
+2024-11-22 11:44:27 - Pregunta procesada: hola amigo
+2024-11-22 11:44:27 - Pregunta procesada: hola amigo
+2024-11-22 11:44:27 - Modo administrador activo. Buscando en archivos.
+2024-11-22 11:44:27 - Procesando archivo: 04._Receta_Tacos_al_Pastor_autor_Faby.txt
+2024-11-22 11:44:27 - Procesando archivo: 106_curiosidades_animales.txt
+2024-11-22 11:44:27 - Mejor respuesta encontrada en archivos: Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar
+2024-11-22 11:44:27 - Respuesta recibida del servidor.
+2024-11-22 11:44:27 - Respuesta enviada al usuario: ¿Tiene coherencia mi respuesta? 'Receta Tacos al Pastor
+Receta Tacos al Pastor
+Receta Tacos al Pasto
+Hola amigos iniciamos el día con una deliciosa Receta de Tacos
+al Pastor son muy populares en la mayor parte de México, los
+que conocemos los tacos de pastor regularmente las preparan en
+un trompo, pero no todos tenemos un trompo en casa, así que
+hoy las vamos a preparar en la estufa te van a quedar como en
+la taqueria, son fáciles y sobre todo deliciosos que vas
+querer repetir, no dejes pasar la ocasión y prepáralos te van
+a encantar'. Responde con 'si', 'no' o 'crear nueva'.,true
+2024-11-22 11:44:38 - Modo Administrador se activo??: true
+2024-11-22 11:44:38 - Modo administrador actualizado en sesión: True
+2024-11-22 11:44:38 - Mensaje recibido: 'si'
+2024-11-22 11:44:38 - Estado de administrador desde sesión: True
+2024-11-22 11:44:38 - Modo administrador activado para la pregunta: si
+2024-11-22 11:44:38 - Pregunta procesada: si
+2024-11-22 11:44:38 - Pregunta procesada: si
+2024-11-22 11:44:38 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:44:38 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:44:38 - Confirmación afirmativa. Categorías disponibles: ['clima', 'salud', 'animales', 'saludo', 'musica', 'camperos']
+2024-11-22 11:44:38 - Respuesta recibida del servidor.
+2024-11-22 11:44:38 - Respuesta enviada al usuario: Selecciona una categoría para guardar: clima, salud, animales, saludo, musica, camperos o escribe 'crear nueva'.,true
+2024-11-22 11:44:43 - Modo Administrador se activo??: true
+2024-11-22 11:44:43 - Modo administrador actualizado en sesión: True
+2024-11-22 11:44:43 - Mensaje recibido: 'saludo'
+2024-11-22 11:44:43 - Estado de administrador desde sesión: True
+2024-11-22 11:44:43 - Modo administrador activado para la pregunta: saludo
+2024-11-22 11:44:43 - Pregunta procesada: saludo
+2024-11-22 11:44:43 - Pregunta procesada: saludo
+2024-11-22 11:44:43 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:44:43 - Confirmación pendiente detectada. Procesando respuesta...
+2024-11-22 11:44:43 - Respuesta guardada en la categoría: saludo
+2024-11-22 11:44:43 - Respuesta recibida del servidor.
+2024-11-22 11:44:43 - Respuesta enviada al usuario: Respuesta guardada en la categoría 'saludo'.,false
+2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:44:58 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\Diccionario_de_la_Lengua_Espanola._1-2-Real_Academia_Espanola-2014.pdf
+2024-11-22 11:48:10 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
+2024-11-22 11:48:11 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
+2024-11-22 11:48:13 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
+2024-11-22 11:48:14 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt
+2024-11-22 11:48:15 - Archivo guardado exitosamente en: C:\Users\david\OneDrive\Escritorio\IA 3.0 Amenadiel\uploads\w11.txt

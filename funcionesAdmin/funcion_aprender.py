@@ -27,7 +27,7 @@ def cargar_stopwords(ruta='stopwords.txt'):
             # Carga las palabras en un set
             return set(archivo.read().splitlines())
     except Exception as e:
-        print(f"Error al cargar stopwords: {e}")
+        registrar_accion(f"Error al cargar stopwords: {e}")
         return set()
 
 
@@ -41,10 +41,10 @@ def cargar_datos(nombre_archivo='datos_previos.json'):
         with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
             return json.load(archivo)
     except FileNotFoundError:
-        print("Error: Archivo no encontrado.")
+        registrar_accion("Error: Archivo no encontrado.")
         return {}
     except json.JSONDecodeError:
-        print("Error: Formato inválido en el archivo JSON.")
+        registrar_accion("Error: Formato inválido en el archivo JSON.")
         return {}
 
 
@@ -56,7 +56,7 @@ def guardar_datos(datos, nombre_archivo='datos_previos.json'):
         with open(nombre_archivo, "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=4)
     except IOError as e:
-        print(f"Error al guardar el archivo {nombre_archivo}: {e}")
+        registrar_accion(f"Error al guardar el archivo {nombre_archivo}: {e}")
 
 
 estado_confirmacion = {}
@@ -64,100 +64,120 @@ estado_confirmacion = {}
 
 def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cutoff_usuario=0.5):
     pregunta_limpia = eliminar_acentos(pregunta_limpia.lower())
-    print(f"Pregunta procesada: {pregunta_limpia}")
+    registrar_accion(f"Pregunta procesada: {pregunta_limpia}")
     registrar_accion(f"Pregunta procesada: {pregunta_limpia}")
 
     global estado_confirmacion
 
     # Procesar confirmación si está activa
     if estado_confirmacion.get("confirmacion_pendiente"):
-        print("Confirmación pendiente detectada. Procesando respuesta...")
+        registrar_accion(
+            "Confirmación pendiente detectada. Procesando respuesta...")
         registrar_accion(
             "Confirmación pendiente detectada. Procesando respuesta...")
 
         if pregunta_limpia == "si":
             categorias = list(datos_previos["publico"].keys())
             if categorias:
-                print("Categorías disponibles para guardar:", categorias)
                 registrar_accion(
                     f"Confirmación afirmativa. Categorías disponibles: {categorias}")
-                return f"Selecciona una categoría para guardar: {', '.join(categorias)}", True
+                return f"Selecciona una categoría para guardar: {', '.join(categorias)} o escribe 'crear nueva'.", True
             else:
-                print("Error: No se encontraron categorías disponibles.")
                 registrar_accion(
                     "Error: No se encontraron categorías disponibles.")
                 estado_confirmacion["confirmacion_pendiente"] = False
                 return "No se encontraron categorías disponibles para guardar.", False
 
         elif pregunta_limpia in datos_previos["publico"]:
+            # Guardar la respuesta en la categoría seleccionada
             datos_previos["publico"][pregunta_limpia][estado_confirmacion["pregunta"]
                                                       ] = estado_confirmacion["respuesta"]
             guardar_datos(datos_previos)
-            print(f"Respuesta guardada en la categoría: {pregunta_limpia}")
             registrar_accion(
                 f"Respuesta guardada en la categoría: {pregunta_limpia}")
-            estado_confirmacion["confirmacion_pendiente"] = False
+            estado_confirmacion.clear()
             return f"Respuesta guardada en la categoría '{pregunta_limpia}'.", False
 
+        elif pregunta_limpia == "crear nueva":
+            registrar_accion(
+                "El administrador eligió crear una nueva categoría.")
+            estado_confirmacion["crear_categoria"] = True
+            return "Por favor, escribe el nombre de la nueva categoría:", True
+
+        elif estado_confirmacion.get("crear_categoria"):
+            nueva_categoria = pregunta_limpia
+            datos_previos["publico"][nueva_categoria] = {}
+            guardar_datos(datos_previos)
+            registrar_accion(f"Nueva categoría creada: {nueva_categoria}")
+            estado_confirmacion["crear_categoria"] = False
+            return f"Nueva categoría '{nueva_categoria}' creada. Ahora puedes guardar respuestas en ella.", True
+
         elif pregunta_limpia == "no":
-            print("Confirmación rechazada por el usuario.")
-            registrar_accion("Confirmación rechazada. Liberando estado.")
-            estado_confirmacion["confirmacion_pendiente"] = False
-            return f"La propuesta fue rechazada. Puedes hacer otra consulta.", False
+            registrar_accion(
+                "Confirmación rechazada. Solicitando nueva respuesta.")
+            estado_confirmacion["esperando_respuesta_personalizada"] = True
+            return "Por favor, escribe una nueva respuesta para guardar.", True
 
-        # Respuesta inválida durante confirmación
-        print("Respuesta no válida recibida durante confirmación.")
-        registrar_accion("Respuesta inválida recibida durante confirmación.")
-        return "Por favor, responde con 'si' para confirmar o 'no' para rechazar.", True
+        elif estado_confirmacion.get("esperando_respuesta_personalizada"):
+            estado_confirmacion["respuesta"] = pregunta_limpia
+            registrar_accion(
+                f"Respuesta personalizada recibida: {pregunta_limpia}")
+            categorias = list(datos_previos["publico"].keys())
+            if categorias:
+                return f"Selecciona una categoría para guardar la nueva respuesta: {', '.join(categorias)} o escribe 'crear nueva'.", True
+            else:
+                registrar_accion(
+                    "Error: No se encontraron categorías disponibles.")
+                estado_confirmacion.clear()
+                return "No se encontraron categorías disponibles para guardar.", False
 
-    # Continuar flujo normal si no hay confirmación pendiente
-    seccion = "publico"  # Mantener 'publico' siempre para el usuario
-    cutoff = cutoff_usuario  # Solo usar cutoff del usuario
+        registrar_accion("Respuesta inválida durante confirmación.")
+        return "Por favor, responde con 'si' para confirmar, 'no' para rechazar, o 'crear nueva' para agregar categoría.", True
 
-    def buscar_en_seccion(seccion, cutoff):
-        print(f"Buscando en la sección '{seccion}' con cutoff {cutoff}")
-        registrar_accion(
-            f"Buscando en la sección '{seccion}' con cutoff {cutoff}")
-        if seccion not in datos_previos:
-            print(f"Sección '{seccion}' no encontrada en datos_previos.")
-            registrar_accion(f"Sección '{seccion}' no encontrada.")
-            return []
+    # Buscar en "publico" solo para usuarios
+    if not modo_administrador:
+        seccion = "publico"
+        cutoff = cutoff_usuario
 
-        resultados = []
-        for categoria, contenido in datos_previos.get(seccion, {}).items():
-            if isinstance(contenido, dict):
-                respuesta_exacta = contenido.get(pregunta_limpia)
-                if respuesta_exacta:
-                    print(f"Respuesta exacta encontrada: {respuesta_exacta}")
-                    registrar_accion(
-                        f"Respuesta exacta encontrada: {respuesta_exacta}")
-                    return [respuesta_exacta]
-                mejor_coincidencia = get_close_matches(
-                    pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff)
-                if mejor_coincidencia:
-                    resultados.append(contenido[mejor_coincidencia[0]])
-            elif isinstance(contenido, list):
-                for frase in contenido:
-                    if pregunta_limpia in frase.lower():
-                        resultados.append(frase)
-        return resultados
+        def buscar_en_seccion(seccion, cutoff):
+            registrar_accion(
+                f"Buscando en la sección '{seccion}' con cutoff {cutoff}")
+            if seccion not in datos_previos:
+                registrar_accion(f"Sección '{seccion}' no encontrada.")
+                return []
 
-    resultados = buscar_en_seccion(seccion, cutoff)
-    if resultados:
-        registrar_accion(
-            f"Respuesta encontrada en '{seccion}': {resultados[0]}")
-        return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
+            resultados = []
+            for categoria, contenido in datos_previos.get(seccion, {}).items():
+                if isinstance(contenido, dict):
+                    respuesta_exacta = contenido.get(pregunta_limpia)
+                    if respuesta_exacta:
+                        registrar_accion(
+                            f"Respuesta exacta encontrada: {respuesta_exacta}")
+                        return [respuesta_exacta]
+                    mejor_coincidencia = get_close_matches(
+                        pregunta_limpia, contenido.keys(), n=1, cutoff=cutoff)
+                    if mejor_coincidencia:
+                        resultados.append(contenido[mejor_coincidencia[0]])
+                elif isinstance(contenido, list):
+                    for frase in contenido:
+                        if pregunta_limpia in frase.lower():
+                            resultados.append(frase)
+            return resultados
 
+        resultados = buscar_en_seccion(seccion, cutoff)
+        if resultados:
+            registrar_accion(
+                f"Respuesta encontrada en '{seccion}': {resultados[0]}")
+            return f"Respuesta encontrada en {seccion.capitalize()}: <br><br>{resultados[0]}"
+
+    # Buscar en archivos para administradores
     if modo_administrador:
-        print("Modo administrador activo. Buscando en archivos...")
         registrar_accion("Modo administrador activo. Buscando en archivos.")
         archivos_en_uploads = os.listdir("uploads")
-        print("Archivos detectados:", archivos_en_uploads)
-
         resultados_archivos = []
+
         for nombre_archivo in archivos_en_uploads:
             ruta_archivo = os.path.join("uploads", nombre_archivo)
-            print(f"Procesando archivo: {nombre_archivo}")
             registrar_accion(f"Procesando archivo: {nombre_archivo}")
 
             if nombre_archivo.endswith(".json"):
@@ -181,7 +201,7 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
 
         if resultados_archivos:
             mejor_respuesta = sorted(
-                resultados_archivos, key=lambda x: len(x))[0][:500]
+                resultados_archivos, key=lambda x: len(x))[0][:1000]  # <--- Aquí está definido el límite de caracteres
             registrar_accion(
                 f"Mejor respuesta encontrada en archivos: {mejor_respuesta}")
             estado_confirmacion = {
@@ -189,11 +209,12 @@ def entrenando_IA(pregunta_limpia, datos_previos, modo_administrador=False, cuto
                 "pregunta": pregunta_limpia,
                 "respuesta": mejor_respuesta,
                 "categorias": list(datos_previos["publico"].keys()),
+                "crear_categoria": False,
             }
-            return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'si' o 'no.'"
+            return f"¿Tiene coherencia mi respuesta? '{mejor_respuesta}'. Responde con 'si', 'no' o 'crear nueva'.", True
 
-    registrar_accion("No se encontró información relevante.")
-    return "No se encontró información relevante."
+    registrar_accion("El usuario no ha ingresado una pregunta válida.")
+    return None
 
 
 def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
@@ -236,9 +257,9 @@ def generar_respuesta_por_similitud(pregunta_limpia, datos_previos):
     puntaje_similitud = similitudes[0, indice_similitud_maxima]
 
     # Establecer un umbral mínimo de similitud (opcional)
-    umbral_similitud = 0.5
+    umbral_similitud = 0.6
     if puntaje_similitud < umbral_similitud:
-        return "No se encontró una respuesta relevante."
+        return "No se encontró una respuesta relevante, por favor carga archivos sobre el tema."
 
     # Devolver la respuesta más similar
     respuesta_similar = respuestas_posibles[indice_similitud_maxima]
@@ -310,7 +331,8 @@ def buscar_en_archivos_uploads(pregunta_limpia, carpeta_uploads='uploads'):
                         f"Coincidencia más relevante en {nombre_archivo}: {textos_resultados[indice_similitud_maxima]}")
 
         except Exception as e:
-            print(f"Error al procesar el archivo {nombre_archivo}: {e}")
+            registrar_accion(
+                f"Error al procesar el archivo {nombre_archivo}: {e}")
 
     # Si no hay resultados, puede ser útil ofrecer un mensaje adicional
     if not resultados:

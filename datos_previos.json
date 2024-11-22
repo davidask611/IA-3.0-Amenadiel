@@ -7,19 +7,25 @@
         },
         "salud": {
             "como se cura el dolor de cabeza": "el dolor de cabeza se puede quitar o aliviar con ibuprofeno,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico",
-            "como se cura el dolor de cintura": "el dolor de cintura se puede quitar o aliviar con actron,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico"
+            "como se cura el dolor de cintura": "el dolor de cintura se puede quitar o aliviar con actron,acostandote en un lugar oscuro y silencioso, tambien puedes ir a una farmacia o medico",
+            "tacos": "Para armar los tacos tomamos una tortilla, encima la carne, cebolla, cilantro y la salsa picante, buen provecho disfrutas\ntus tacos al pastor\nTip: Para un mejor sabor cocina la carne a la parrilla te\nquedaran de rechupete otra de nuestras recetas cortas y\nf\u00e1ciles\nNo olvides acompa\u00f1ar tus tacos al pastor con una deliciosa\nagua de horchata\nSi te gusto la receta dejamos tus comentarios, comp\u00e1rtelo con\ntus amigos y no olvides suscribirte al bolet\u00edn, nos leemos\nluego\nFaby"
         },
         "animales": {
             "las ballenas son mamiferas": "si asi es, son animales mamiferos",
-            "el ojo del avestruz": "El ojo del avestruz es mas grande que su cerebro"
+            "el ojo del avestruz": "El ojo del avestruz es mas grande que su cerebro",
+            "que sabes del tiburon ballena": "El tiburones ballena tiene 4,500 dientes",
+            "elefantes": "los elefantes son los unicos animales mamiferos que no pueden saltar"
         },
         "saludo": {
-            "hola": "Hola, en que puedo ayudarte",
+            "hola": "hola amigo/a como estas, que hacemos hoy",
             "buenas tardes": "Buenas tardes, Como puedo ayudarte hoy",
-            "hola amigo": "Hola, amigo/a Que haremos hoy"
+            "hola amigo": "Receta Tacos al Pastor\nReceta Tacos al Pastor\nReceta Tacos al Pasto\nHola amigos iniciamos el d\u00eda con una deliciosa Receta de Tacos\nal Pastor son muy populares en la mayor parte de M\u00e9xico, los\nque conocemos los tacos de pastor regularmente las preparan en\nun trompo, pero no todos tenemos un trompo en casa, as\u00ed que\nhoy las vamos a preparar en la estufa te van a quedar como en\nla taqueria, son f\u00e1ciles y sobre todo deliciosos que vas\nquerer repetir, no dejes pasar la ocasi\u00f3n y prep\u00e1ralos te van\na encantar"
         },
         "musica": {
             "que musica te gusta": "Me gusta la musica electronica"
+        },
+        "camperos": {
+            "que sabes de la jirafa": "La Jirafa duerme tan solo 7 minutos por dia y lo hace de pie"
         }
     }
 }
