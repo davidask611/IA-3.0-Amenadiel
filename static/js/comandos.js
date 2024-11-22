@@ -330,7 +330,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // funcion subir archivo
+    // función subir archivo
     botonSubirArchivo.addEventListener("click", async function () {
       const archivo = archivoInput.files[0]; // Aquí intentamos capturar el archivo
 
@@ -349,6 +349,9 @@ window.addEventListener("DOMContentLoaded", () => {
         archivo.size
       );
 
+      // Desactivar el botón de subida para evitar múltiples envíos
+      botonSubirArchivo.disabled = true;
+
       // Verificar tamaño del archivo dinámicamente según el modo actual
       const esAdministrador = window.modo_administrador || modo_administrador; // Validación para el modo administrador
       const limiteTamano = esAdministrador ? Infinity : 5 * 1024 * 1024;
@@ -361,6 +364,7 @@ window.addEventListener("DOMContentLoaded", () => {
               : "Máximo permitido: 5 MB para usuarios."
           }`
         );
+        botonSubirArchivo.disabled = false; // Rehabilitar el botón en caso de error
         return; // Detener el proceso de carga
       }
 
@@ -384,6 +388,9 @@ window.addEventListener("DOMContentLoaded", () => {
         );
       } catch (error) {
         console.error("Error al subir el archivo:", error);
+      } finally {
+        // Rehabilitar el botón al finalizar el proceso
+        botonSubirArchivo.disabled = false;
       }
     });
     // Código para manejar la confirmación o rechazo de respuestas generadas por la IA

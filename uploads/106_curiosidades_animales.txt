@@ -82,7 +82,7 @@ de 145 km/h.
 54. La cobra asiática, Naja naja, causa la muerte de 15.000 personas al año.
 55. La ballena franca de Groenlandia (Balaena mysticetus) puede vivir 210 años.
 56. Las tortugas gigantes de las islas Galápagos pueden alcanzar los 150 años.
-57. Los animales predicen cuando va a haber una catástrofe.58. El tiburón ballena tiene 4,500 dientes.
+57. Los animales predicen cuando va a haber una catástrofe.58. El tiburón ballena tiene 4.500 dientes.
 59. La lombriz tiene 10 corazones situados a los lados del cuerpo.
 60. Los mosquitos prefieren picar a los niños que a los adultos y a los rubios que a los
 morenos.

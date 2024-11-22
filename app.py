@@ -100,8 +100,13 @@ def subir_archivo():
     upload_folder = os.path.join(os.getcwd(), "uploads")
     os.makedirs(upload_folder, exist_ok=True)
     file_path = os.path.join(upload_folder, secure_filename(archivo.filename))
-    archivo.save(file_path)
 
+    # Evitar reprocesamiento si el archivo ya existe
+    if os.path.exists(file_path):
+        registrar_accion(f"El archivo ya existe y no será reprocesado: {file_path}")
+        return jsonify({"respuesta": "El archivo ya fue subido anteriormente."}), 200
+
+    archivo.save(file_path)
     registrar_accion(f"Archivo guardado exitosamente en: {file_path}")
 
     # Procesar el archivo según su extensión
@@ -119,6 +124,7 @@ def subir_archivo():
         return jsonify({"respuesta": "No se pudo leer el contenido del archivo."}), 400
 
     return jsonify({"respuesta": contenido})
+
 
 
 # Endpoint para ver datos
