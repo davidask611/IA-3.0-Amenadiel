@@ -26,26 +26,16 @@ def process_txt(file_path):
         return {"error": f"Error al leer el archivo TXT: {str(e)}"}
 
 
-def process_pdf(file_path, output_dir='uploads'):
-    """Convierte un PDF a texto y guarda el contenido en un archivo .txt."""
+def process_pdf(file_path):
+    """Procesa un archivo PDF y extrae su contenido como texto."""
     try:
-        # Asegurar que el directorio exista
-        ensure_directory_exists(output_dir)
-
         # Extraer texto del PDF
         with pdfplumber.open(file_path) as pdf:
             content = ''.join(
                 (page.extract_text() or '') for page in pdf.pages
             )
 
-        # Guardar el texto extraído como archivo .txt
-        output_txt_path = os.path.join(output_dir, os.path.splitext(
-            os.path.basename(file_path))[0] + '.txt')
-        with open(output_txt_path, 'w', encoding='utf-8') as txt_file:
-            txt_file.write(content)
-
-        # print(f"PDF convertido y guardado en: {output_txt_path}")
-        return content
+        return content  # Devolver el texto extraído directamente
 
     except Exception as e:
         return {"error": f"Error al procesar el archivo PDF: {str(e)}"}

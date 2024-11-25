@@ -211,7 +211,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
     }
-    // Código ajustado para confirmar o rechazar respuestas
+    // Código ajustado para manejar respuestas del servidor
     fetch("/chat", {
       method: "POST",
       headers: {
@@ -222,41 +222,32 @@ window.addEventListener("DOMContentLoaded", () => {
         modo_administrador: modo_administrador,
       }),
     })
-      .then(() => {
-        // Mostrar "Pensando..."
-        const pensandoElemento = agregarMensajeIA("", "pensando");
-
-        // Temporizador para mantener "Pensando..." durante 5 segundos
-        setTimeout(() => {
-          // Realizar la segunda petición después de los 5 segundos
-          fetch("/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              mensaje: mensaje,
-              modo_administrador: modo_administrador,
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              // Eliminar el mensaje "Pensando..."
-              mensajes.removeChild(pensandoElemento);
-
-              registrarAccion("Respuesta recibida del servidor.");
-              console.log("Respuesta recibida del servidor:", data);
-
-              // Mostrar la respuesta de la IA
-              agregarMensajeIA(data.respuesta);
-            });
-        }, 2000); // Mantener "Pensando..." por 5 segundos (5000 ms)
-      })
-      .catch((error) => {
-        // Si ocurre un error, eliminar "Pensando..."
+      .then((response) => response.json())
+      .then((data) => {
+        // Eliminar el mensaje "Pensando..." si existe
         const pensandoElemento = document.querySelector(".mensaje-pensando");
         if (pensandoElemento) {
           mensajes.removeChild(pensandoElemento);
         }
 
+        registrarAccion("Respuesta recibida del servidor.");
+        console.log("Respuesta recibida del servidor:", data);
+
+        // Manejar respuesta según su contenido
+        if (data.categorias) {
+          // Si se envía una lista de categorías
+          agregarMensajeIA(
+            `Selecciona una categoría: ${data.categorias.join(", ")}`
+          );
+        } else if (data.temporal) {
+          // Si es un mensaje temporal (ej. "Pensando...")
+          agregarMensajeIA(data.respuesta, "pensando");
+        } else {
+          // Mostrar la respuesta general de la IA
+          agregarMensajeIA(data.respuesta);
+        }
+      })
+      .catch((error) => {
         console.error("Error al contactar con la IA:", error);
         registrarAccion(`Error al contactar con la IA: ${error.message}`);
         agregarMensajeIA(

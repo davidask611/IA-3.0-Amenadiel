@@ -14,7 +14,9 @@
             "las ballenas son mamiferas": "si asi es, son animales mamiferos",
             "el ojo del avestruz": "El ojo del avestruz es mas grande que su cerebro",
             "que sabes del tiburon ballena": "El tiburones ballena tiene 4,500 dientes",
-            "elefantes": "los elefantes son los unicos animales mamiferos que no pueden saltar"
+            "elefantes": "los elefantes son los unicos animales mamiferos que no pueden saltar",
+            "caballo": "Un cocodrilo puede correr tan r\u00e1pido como un caballo",
+            "ciervo de granja": "Ciervo de granja: El ciervo de granja es un animal criado principalmente por su carne, que es baja en grasa y muy apreciada por su sabor, se alimenta de pasto, hojas, corteza y vegetaci\u00f3n, es conocido por su agilidad y su capacidad para saltar grandes distancias, en algunas granjas, se cr\u00eda para la producci\u00f3n de carne y cuernos, que tienen aplicaciones en medicina tradicional"
         },
         "saludo": {
             "hola": "hola amigo/a como estas, que hacemos hoy",
@@ -27,6 +29,9 @@
         "camperos": {
             "que sabes de la jirafa": "La Jirafa duerme tan solo 7 minutos por dia y lo hace de pie",
             "acampar en chozas": "Acampar en chozas o en barracas improvisadas"
+        },
+        "peste": {
+            "el ojo del avestruz": "El ojo del avestruz es m\u00e1s grande que su cerebro"
         }
     }
 }
